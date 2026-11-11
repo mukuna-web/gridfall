@@ -1,0 +1,5 @@
+[
+  { "claim_id": "CLM-0001", "policy_id": "P-000101", "fips": "99001", "claimed_days_out": 6 },
+  { "claim_id": "CLM-0002", "policy_id": "P-000245", "fips": "99003", "claimed_days_out": 2 },
+  { "claim_id": "CLM-0003", "policy_id": "P-000388", "fips": "99005", "claimed_days_out": 5 }
+]

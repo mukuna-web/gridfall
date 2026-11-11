@@ -1,0 +1,288 @@
+{
+  "recorded_at_utc": "2026-11-09T08:37:26+00:00",
+  "result_file": "docs/lockbox_result.json",
+  "result_sha256": "db6cb77a81c2a784bfe5107a8fd9668f57db2aa032e51c37a92cba0d346e1965",
+  "run_at_utc": "2026-11-09T07:55:07.363465+00:00",
+  "git_head": "7fd2732f0ca36cfb3c7f9c9ca582f299c2fa598e",
+  "environment": {
+    "python": "3.13.12",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "pyarrow": "26.0.1"
+  },
+  "uv_lock_sha256": "7a5d559f41c9b007347b13b10994739e42e09e05687d9a8216087a842ca7fd92",
+  "tables": [
+    {
+      "storm_id": "florence2018",
+      "role": "main",
+      "satellite": "VNP46A2",
+      "table": "county_nights_florence2018.parquet",
+      "rows": 24090,
+      "sha256": "c1c0db21a2104936df294ed404d1975004a0172de34c444e6ae97a615edd4eaa",
+      "bytes": 705972,
+      "mtime_utc": "2026-11-09T05:33:55.897679+00:00",
+      "minutes_before_run": 141.19,
+      "newer_than_run": false
+    },
+    {
+      "storm_id": "michael2018",
+      "role": "main",
+      "satellite": "VNP46A2",
+      "table": "county_nights_michael2018.parquet",
+      "rows": 24145,
+      "sha256": "9db766553c56ae0ee675ea23355290b510bfc0c3bf5ff6e47dafc44d9e0a46e5",
+      "bytes": 816383,
+      "mtime_utc": "2026-11-09T06:23:25.511964+00:00",
+      "minutes_before_run": 91.7,
+      "newer_than_run": false
+    },
+    {
+      "storm_id": "laura2020",
+      "role": "main",
+      "satellite": "VNP46A2",
+      "table": "county_nights_laura2020.parquet",
+      "rows": 26125,
+      "sha256": "9d880daa75e98f0597420915de3562054f5b2f2be952d513852837b425c8b42c",
+      "bytes": 845960,
+      "mtime_utc": "2026-11-09T06:06:14.584990+00:00",
+      "minutes_before_run": 108.88,
+      "newer_than_run": false
+    },
+    {
+      "storm_id": "isaias2020",
+      "role": "main",
+      "satellite": "VNP46A2",
+      "table": "county_nights_isaias2020.parquet",
+      "rows": 29260,
+      "sha256": "5dcfaaeef1dadca65f7aadb39f00effd5416f194cbb2d60c0938f0a88901b2a2",
+      "bytes": 1012850,
+      "mtime_utc": "2026-11-09T06:18:46.990649+00:00",
+      "minutes_before_run": 96.34,
+      "newer_than_run": false
+    },
+    {
+      "storm_id": "ida2021",
+      "role": "main",
+      "satellite": "VNP46A2",
+      "table": "county_nights_ida2021.parquet",
+      "rows": 11715,
+      "sha256": "b86c17c861840e6ff5db9d0675aff3a65003a546ffb876c938036c20e5a61a0c",
+      "bytes": 397037,
+      "mtime_utc": "2026-11-09T06:27:56.114696+00:00",
+      "minutes_before_run": 87.19,
+      "newer_than_run": false
+    },
+    {
+      "storm_id": "ian2022",
+      "role": "main",
+      "satellite": "VNP46A2",
+      "table": "county_nights_ian2022.parquet",
+      "rows": 27775,
+      "sha256": "7766f0f7a526ba93a9563e0985836d5ae94d8ae9669d56e38b4fbf3d7ec88822",
+      "bytes": 890546,
+      "mtime_utc": "2026-11-09T05:33:55.529963+00:00",
+      "minutes_before_run": 141.2,
+      "newer_than_run": false
+    },
+    {
+      "storm_id": "idalia2023",
+      "role": "main",
+      "satellite": "VNP46A2",
+      "table": "county_nights_idalia2023.parquet",
+      "rows": 20460,
+      "sha256": "d7b418a6d420af1dfd7178719ac0804ec562f7c12e875f9832f08ebecabf4740",
+      "bytes": 699319,
+      "mtime_utc": "2026-11-09T06:35:51.478287+00:00",
+      "minutes_before_run": 79.26,
+      "newer_than_run": false
+    },
+    {
+      "storm_id": "beryl2024",
+      "role": "main",
+      "satellite": "VJ146A2",
+      "table": "county_nights_beryl2024.parquet",
+      "rows": 17490,
+      "sha256": "dd558169baf90e8aaeed83d1dcda0c3a14aa0158266db677919ac8cb5edd49fa",
+      "bytes": 605118,
+      "mtime_utc": "2026-11-09T07:04:35.226696+00:00",
+      "minutes_before_run": 50.54,
+      "newer_than_run": false
+    },
+    {
+      "storm_id": "helene2024",
+      "role": "lockbox",
+      "satellite": "VNP46A2",
+      "table": "county_nights_helene2024.parquet",
+      "rows": 43285,
+      "sha256": "8f0b400413093d8119c2e988de7e0bf27c61583b7e97b07d7a2e2bcbcdec7abd",
+      "bytes": 1367476,
+      "mtime_utc": "2026-11-09T07:06:23.215522+00:00",
+      "minutes_before_run": 48.74,
+      "newer_than_run": false
+    },
+    {
+      "storm_id": "milton2024",
+      "role": "lockbox",
+      "satellite": "VNP46A2",
+      "table": "county_nights_milton2024.parquet",
+      "rows": 18496,
+      "sha256": "202c93ab5964f13719cadb4596df3b33bd0f341839de2531bcc2938eb6bd70d9",
+      "bytes": 661940,
+      "mtime_utc": "2026-11-09T07:13:21.132536+00:00",
+      "minutes_before_run": 41.77,
+      "newer_than_run": false
+    },
+    {
+      "storm_id": "uri2021",
+      "role": "stress",
+      "satellite": "VNP46A2",
+      "table": "county_nights_uri2021.parquet",
+      "rows": 13970,
+      "sha256": "6e06af113b68c81efde51fcf81bb67bb371938d1fa765b573f6e5e9ce12ace16",
+      "bytes": 452692,
+      "mtime_utc": "2026-11-09T07:21:42.002105+00:00",
+      "minutes_before_run": 33.42,
+      "newer_than_run": false
+    }
+  ],
+  "cross_check_tables": [
+    {
+      "storm_id": "ian2022",
+      "role": "main",
+      "satellite": "VJ146A2",
+      "table": "county_nights_ian2022_vj146a2.parquet",
+      "rows": 2090,
+      "sha256": "d49439663ae4f68acc99ff762b3f4d8294048df0a6f85886dbf4212bb6c8aeae",
+      "bytes": 115829,
+      "mtime_utc": "2026-11-09T07:23:38.984378+00:00",
+      "minutes_before_run": 31.47,
+      "newer_than_run": false
+    },
+    {
+      "storm_id": "ida2021",
+      "role": "main",
+      "satellite": "VJ146A2",
+      "table": "county_nights_ida2021_vj146a2.parquet",
+      "rows": 11715,
+      "sha256": "a8f969157fe72d5493726e8cb46e656b595dc22fc70949a876b51364d5ba0778",
+      "bytes": 399374,
+      "mtime_utc": "2026-11-09T07:34:17.721795+00:00",
+      "minutes_before_run": 20.83,
+      "newer_than_run": false
+    },
+    {
+      "storm_id": "beryl2024",
+      "role": "main",
+      "satellite": "VNP46A2",
+      "table": "county_nights_beryl2024_vnp46a2.parquet",
+      "rows": 17490,
+      "sha256": "1fd4d64289d66973781d731de406b0b84a00e9a8bcf11c89fbdf4a1f59d8f1ea",
+      "bytes": 545480,
+      "mtime_utc": "2026-11-09T06:53:09.095804+00:00",
+      "minutes_before_run": 61.97,
+      "newer_than_run": false
+    }
+  ],
+  "rebuilt_after_run": false,
+  "predictions": [
+    {
+      "storm_id": "florence2018",
+      "file": "predictions_florence2018.parquet",
+      "mtime_utc": "2026-11-09T07:55:04.518150+00:00",
+      "minutes_from_run": -0.05
+    },
+    {
+      "storm_id": "michael2018",
+      "file": "predictions_michael2018.parquet",
+      "mtime_utc": "2026-11-09T07:55:04.531271+00:00",
+      "minutes_from_run": -0.05
+    },
+    {
+      "storm_id": "laura2020",
+      "file": "predictions_laura2020.parquet",
+      "mtime_utc": "2026-11-09T07:55:04.544624+00:00",
+      "minutes_from_run": -0.05
+    },
+    {
+      "storm_id": "isaias2020",
+      "file": "predictions_isaias2020.parquet",
+      "mtime_utc": "2026-11-09T07:55:04.558962+00:00",
+      "minutes_from_run": -0.05
+    },
+    {
+      "storm_id": "ida2021",
+      "file": "predictions_ida2021.parquet",
+      "mtime_utc": "2026-11-09T07:55:04.569045+00:00",
+      "minutes_from_run": -0.05
+    },
+    {
+      "storm_id": "ian2022",
+      "file": "predictions_ian2022.parquet",
+      "mtime_utc": "2026-11-09T07:55:04.584086+00:00",
+      "minutes_from_run": -0.05
+    },
+    {
+      "storm_id": "idalia2023",
+      "file": "predictions_idalia2023.parquet",
+      "mtime_utc": "2026-11-09T07:55:04.596527+00:00",
+      "minutes_from_run": -0.05
+    },
+    {
+      "storm_id": "beryl2024",
+      "file": "predictions_beryl2024.parquet",
+      "mtime_utc": "2026-11-09T07:55:04.607401+00:00",
+      "minutes_from_run": -0.05
+    },
+    {
+      "storm_id": "helene2024",
+      "file": "predictions_helene2024.parquet",
+      "mtime_utc": "2026-11-09T07:55:07.635913+00:00",
+      "minutes_from_run": 0.0
+    },
+    {
+      "storm_id": "milton2024",
+      "file": "predictions_milton2024.parquet",
+      "mtime_utc": "2026-11-09T07:55:08.962335+00:00",
+      "minutes_from_run": 0.03
+    },
+    {
+      "storm_id": "uri2021",
+      "file": "predictions_uri2021.parquet",
+      "mtime_utc": "2026-11-09T07:55:09.426679+00:00",
+      "minutes_from_run": 0.03
+    }
+  ],
+  "drop_rule": {
+    "helene2024": {
+      "hit_counties": 277,
+      "hit_with_ok_night": 265,
+      "share": 0.957,
+      "dropped": false
+    },
+    "milton2024": {
+      "hit_counties": 74,
+      "hit_with_ok_night": 73,
+      "share": 0.986,
+      "dropped": false
+    }
+  },
+  "customers_check": {
+    "available": true,
+    "per_storm": {
+      "helene2024": {
+        "counties": 787,
+        "differ": 0,
+        "match": true,
+        "differing_fips": []
+      },
+      "milton2024": {
+        "counties": 272,
+        "differ": 0,
+        "match": true,
+        "differing_fips": []
+      }
+    }
+  }
+}

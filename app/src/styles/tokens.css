@@ -1,0 +1,79 @@
+/*
+ * Design tokens: a storm outage report.
+ * Warm paper, near-black ink, hairline rules instead of shadows, and one
+ * signal red that means "flagged / needs review" and nothing else.
+ * The map's % out ramp lives in src/lib/color.ts (MapLibre needs literal
+ * colors); everything a stylesheet paints comes from here.
+ */
+:root {
+  /* Paper and ink */
+  --paper: #f4efe4;
+  --paper-bright: #faf7f0;
+  --paper-deep: #ebe4d4;
+  --map-field: #e8e0cf;
+  --ink: #1b1a17;
+  --ink-2: #4a463f;
+  --ink-3: #6b665c;
+  --hairline: rgba(27, 26, 23, 0.18);
+  --hatch-ink: rgba(27, 26, 23, 0.62);
+  --hatch-faint: rgba(27, 26, 23, 0.08);
+
+  /* Signal: flags and review only (5.8:1 on paper) */
+  --signal: #b3261e;
+  --signal-wash: #f6e1da;
+
+  /* Data marks (match the ramp's dark end) */
+  --estimate: #1d3557;
+  --band: rgba(29, 53, 87, 0.16);
+  --ramp-mid: #77807e;
+
+  /* Type */
+  --font-sans: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --text-2xs: 0.6875rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-md: 1.0625rem;
+  --text-lg: clamp(1.1875rem, 1.05rem + 0.55vw, 1.5rem);
+  --text-xl: clamp(2.25rem, 1.6rem + 2.4vw, 3.5rem);
+  --text-hero: clamp(2.75rem, 1.7rem + 3.8vw, 4.75rem);
+  --text-title: clamp(2.5rem, 1rem + 5.6vw, 6.25rem);
+  --leading-tight: 1;
+  --leading-body: 1.5;
+  --tracking-label: 0.08em;
+  --tracking-display: -0.03em;
+
+  /* Space: a 4px base, with deliberately uneven section rhythm */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --gutter: clamp(1rem, 0.4rem + 2.2vw, 2.25rem);
+  --page-max: 1480px;
+  --map-height: clamp(340px, 58vh, 660px);
+
+  /* Rules */
+  --rule-thick: 4px;
+
+  /* Controls */
+  --control-height: 38px;
+  --icon-button: 32px;
+  --thumb: 18px;
+
+  /* Motion */
+  --duration-fast: 120ms;
+  --duration-normal: 220ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "99001": [
+    { "night": "2024-10-08", "status": "ok", "est": 0.02, "lo": 0.0, "hi": 0.06, "official": 0.01 },
+    { "night": "2024-10-09", "status": "ok", "est": 0.81, "lo": 0.72, "hi": 0.9, "official": 0.85 },
+    { "night": "2024-10-10", "status": "ok", "est": 0.64, "lo": 0.55, "hi": 0.74, "official": 0.7 },
+    { "night": "2024-10-11", "status": "cant_see", "est": null, "lo": null, "hi": null, "official": 0.52 },
+    { "night": "2024-10-12", "status": "ok", "est": 0.12, "lo": 0.06, "hi": 0.2, "official": 0.15 },
+    { "night": "2024-10-13", "status": "ok", "est": 0.03, "lo": 0.0, "hi": 0.08, "official": 0.04 }
+  ],
+  "99003": [
+    { "night": "2024-10-08", "status": "ok", "est": 0.01, "lo": 0.0, "hi": 0.05, "official": 0.0 },
+    { "night": "2024-10-09", "status": "ok", "est": 0.48, "lo": 0.41, "hi": 0.55, "official": 0.52 },
+    { "night": "2024-10-10", "status": "ok", "est": 0.4, "lo": 0.33, "hi": 0.47, "official": null },
+    { "night": "2024-10-11", "status": "cant_see", "est": null, "lo": null, "hi": null, "official": 0.31 },
+    { "night": "2024-10-12", "status": "cant_see", "est": null, "lo": null, "hi": null, "official": 0.2 },
+    { "night": "2024-10-13", "status": "ok", "est": 0.09, "lo": 0.03, "hi": 0.15, "official": 0.08 }
+  ],
+  "99005": [
+    { "night": "2024-10-08", "status": "not_measurable", "est": null, "lo": null, "hi": null, "official": 0.0 },
+    { "night": "2024-10-09", "status": "not_measurable", "est": null, "lo": null, "hi": null, "official": 0.66 },
+    { "night": "2024-10-10", "status": "not_measurable", "est": null, "lo": null, "hi": null, "official": 0.4 },
+    { "night": "2024-10-11", "status": "not_measurable", "est": null, "lo": null, "hi": null, "official": 0.08 },
+    { "night": "2024-10-12", "status": "not_measurable", "est": null, "lo": null, "hi": null, "official": 0.05 },
+    { "night": "2024-10-13", "status": "not_measurable", "est": null, "lo": null, "hi": null, "official": 0.02 }
+  ],
+  "99007": [
+    { "night": "2024-10-08", "status": "ok", "est": 0.0, "lo": 0.0, "hi": 0.04, "official": null },
+    { "night": "2024-10-09", "status": "cant_see", "est": null, "lo": null, "hi": null, "official": null },
+    { "night": "2024-10-10", "status": "cant_see", "est": null, "lo": null, "hi": null, "official": null },
+    { "night": "2024-10-11", "status": "ok", "est": 0.35, "lo": 0.25, "hi": 0.45, "official": null },
+    { "night": "2024-10-12", "status": "ok", "est": 0.2, "lo": 0.1, "hi": 0.3, "official": null },
+    { "night": "2024-10-13", "status": "ok", "est": 0.05, "lo": 0.0, "hi": 0.1, "official": null }
+  ]
+}

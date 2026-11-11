@@ -1,0 +1,727 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Blackout from Space: static export for the app",
+  "description": "The contract between the pipeline (src/blackout/export.py) and the app (app/src/types.ts). Each file validates against one entry in $defs: index.json -> index; <storm>/meta.json -> meta; counties.geojson -> counties; states.geojson -> states; nights.json -> nights; restoration.json -> restoration; exposure.json -> exposure; claims.json -> claims; scorecard.json -> scorecard. Fractions are 0..1. Every number is finite or null, and null means unknown, never zero.",
+  "anyOf": [
+    {
+      "$ref": "#/$defs/index"
+    },
+    {
+      "$ref": "#/$defs/meta"
+    },
+    {
+      "$ref": "#/$defs/counties"
+    },
+    {
+      "$ref": "#/$defs/states"
+    },
+    {
+      "$ref": "#/$defs/nights"
+    },
+    {
+      "$ref": "#/$defs/restoration"
+    },
+    {
+      "$ref": "#/$defs/exposure"
+    },
+    {
+      "$ref": "#/$defs/claims"
+    },
+    {
+      "$ref": "#/$defs/scorecard"
+    }
+  ],
+  "$defs": {
+    "date": {
+      "description": "A calendar date, YYYY-MM-DD. A night is labeled by the evening it starts: the satellite file dated D holds night D - 1.",
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "fips": {
+      "description": "County FIPS code, always 5 characters.",
+      "type": "string",
+      "pattern": "^[0-9]{5}$"
+    },
+    "stormId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_]*$"
+    },
+    "role": {
+      "enum": [
+        "main",
+        "lockbox",
+        "stress"
+      ]
+    },
+    "satellite": {
+      "enum": [
+        "VNP46A2",
+        "VJ146A2"
+      ]
+    },
+    "status": {
+      "description": "ok: the satellite saw the county. cant_see: too little of its normal light was visible (cloud). not_measurable: too dark to measure.",
+      "enum": [
+        "ok",
+        "cant_see",
+        "not_measurable"
+      ]
+    },
+    "waitingPeriod": {
+      "description": "Hours after landfall.",
+      "enum": [
+        24,
+        48,
+        72
+      ]
+    },
+    "fraction": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "fractionOrNull": {
+      "description": "A fraction of customers, or null when unknown.",
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "daysOrNull": {
+      "description": "Days after landfall, or null when unknown.",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "bracket": {
+      "description": "[low, high] fraction out, low <= high.",
+      "type": "array",
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/fraction"
+        },
+        {
+          "$ref": "#/$defs/fraction"
+        }
+      ],
+      "items": false,
+      "minItems": 2
+    },
+    "bracketOrNull": {
+      "description": "null when the satellite can't see the county on either side of the hour: unknown, never zero.",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/bracket"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "stormEntry": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "landfall",
+        "role",
+        "satellite"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/stormId"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "landfall": {
+          "$ref": "#/$defs/date"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "satellite": {
+          "$ref": "#/$defs/satellite"
+        }
+      }
+    },
+    "index": {
+      "description": "app/public/data/index.json: every exported storm, sorted by landfall.",
+      "type": "object",
+      "required": [
+        "storms"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "storms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/stormEntry"
+          }
+        }
+      }
+    },
+    "meta": {
+      "description": "<storm>/meta.json. nights lists, in order, the nights every nights.json list follows.",
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "landfall",
+        "role",
+        "satellite",
+        "nights",
+        "waiting_periods",
+        "default_waiting_period",
+        "generated",
+        "notes"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/stormId"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "landfall": {
+          "$ref": "#/$defs/date"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "satellite": {
+          "$ref": "#/$defs/satellite"
+        },
+        "nights": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/date"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "waiting_periods": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/waitingPeriod"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "default_waiting_period": {
+          "$ref": "#/$defs/waitingPeriod"
+        },
+        "generated": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "position": {
+      "description": "[longitude, latitude] in degrees (EPSG:4326).",
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        },
+        {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        }
+      ],
+      "items": false,
+      "minItems": 2
+    },
+    "ring": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/position"
+      },
+      "minItems": 4
+    },
+    "polygonCoordinates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ring"
+      },
+      "minItems": 1
+    },
+    "geometry": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "coordinates"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "Polygon"
+            },
+            "coordinates": {
+              "$ref": "#/$defs/polygonCoordinates"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "coordinates"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "MultiPolygon"
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/polygonCoordinates"
+              },
+              "minItems": 1
+            }
+          }
+        }
+      ]
+    },
+    "countyFeature": {
+      "type": "object",
+      "required": [
+        "type",
+        "geometry",
+        "properties"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "Feature"
+        },
+        "geometry": {
+          "$ref": "#/$defs/geometry"
+        },
+        "properties": {
+          "type": "object",
+          "required": [
+            "fips",
+            "name",
+            "state",
+            "housing_units",
+            "customers"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "fips": {
+              "$ref": "#/$defs/fips"
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "state": {
+              "type": "string",
+              "pattern": "^[A-Z]{2}$"
+            },
+            "housing_units": {
+              "$ref": "#/$defs/count"
+            },
+            "customers": {
+              "description": "EAGLE-I modeled customers (MCC.csv); null when it has no count.",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "counties": {
+      "description": "<storm>/counties.geojson: county outlines simplified at 0.005 degrees.",
+      "type": "object",
+      "required": [
+        "type",
+        "features"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "FeatureCollection"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/countyFeature"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "stateFeature": {
+      "type": "object",
+      "required": [
+        "type",
+        "geometry",
+        "properties"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "Feature"
+        },
+        "geometry": {
+          "$ref": "#/$defs/geometry"
+        },
+        "properties": {
+          "type": "object",
+          "required": [
+            "state"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "state": {
+              "type": "string",
+              "pattern": "^[A-Z]{2}$"
+            }
+          }
+        }
+      }
+    },
+    "states": {
+      "description": "<storm>/states.geojson: state outlines dissolved from the counties.",
+      "type": "object",
+      "required": [
+        "type",
+        "features"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "FeatureCollection"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/stateFeature"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "nightEntry": {
+      "description": "One county on one night. est, lo and hi are null unless status is ok (and may be null then, when the fit gave no estimate); official is EAGLE-I % out at the pass, null when unknown.",
+      "type": "object",
+      "required": [
+        "night",
+        "status",
+        "est",
+        "lo",
+        "hi",
+        "official"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "night": {
+          "$ref": "#/$defs/date"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "est": {
+          "$ref": "#/$defs/fractionOrNull"
+        },
+        "lo": {
+          "$ref": "#/$defs/fractionOrNull"
+        },
+        "hi": {
+          "$ref": "#/$defs/fractionOrNull"
+        },
+        "official": {
+          "$ref": "#/$defs/fractionOrNull"
+        }
+      },
+      "if": {
+        "required": [
+          "status"
+        ],
+        "properties": {
+          "status": {
+            "const": "ok"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "est": {
+            "type": "null"
+          },
+          "lo": {
+            "type": "null"
+          },
+          "hi": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    "nights": {
+      "description": "<storm>/nights.json: fips -> one entry per night in meta.nights, in that order.",
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/fips"
+      },
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/nightEntry"
+        }
+      }
+    },
+    "restorationEntry": {
+      "description": "Estimated restoration (back to 10% out or less) between est_lo and est_hi days after landfall (est_hi null: not back within the window), and the official restore day.",
+      "type": "object",
+      "required": [
+        "est_lo",
+        "est_hi",
+        "official_day"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "est_lo": {
+          "$ref": "#/$defs/daysOrNull"
+        },
+        "est_hi": {
+          "$ref": "#/$defs/daysOrNull"
+        },
+        "official_day": {
+          "$ref": "#/$defs/daysOrNull"
+        }
+      }
+    },
+    "restoration": {
+      "description": "<storm>/restoration.json: fips -> restoration entry.",
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/fips"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/restorationEntry"
+      }
+    },
+    "exposureEntry": {
+      "description": "The synthetic book in one county and its estimated fraction out at each waiting period.",
+      "type": "object",
+      "required": [
+        "home",
+        "business",
+        "at"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "home": {
+          "$ref": "#/$defs/count"
+        },
+        "business": {
+          "$ref": "#/$defs/count"
+        },
+        "at": {
+          "type": "object",
+          "required": [
+            "24",
+            "48",
+            "72"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "24": {
+              "$ref": "#/$defs/bracketOrNull"
+            },
+            "48": {
+              "$ref": "#/$defs/bracketOrNull"
+            },
+            "72": {
+              "$ref": "#/$defs/bracketOrNull"
+            }
+          }
+        }
+      }
+    },
+    "exposure": {
+      "description": "<storm>/exposure.json: fips -> exposure entry.",
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/fips"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/exposureEntry"
+      }
+    },
+    "claim": {
+      "type": "object",
+      "required": [
+        "claim_id",
+        "policy_id",
+        "fips",
+        "claimed_days_out"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "claim_id": {
+          "description": "Opaque id (the pipeline writes C0001...); the app only displays and flags it.",
+          "type": "string",
+          "minLength": 1
+        },
+        "policy_id": {
+          "description": "Opaque id (the pipeline writes P000001...).",
+          "type": "string",
+          "minLength": 1
+        },
+        "fips": {
+          "$ref": "#/$defs/fips"
+        },
+        "claimed_days_out": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "claims": {
+      "description": "<storm>/claims.json: synthetic claims.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "metrics": {
+      "description": "One method's score on this storm (docs/plan.md, Task 7); null when not scored or not computable.",
+      "type": "object",
+      "required": [
+        "mae_pp",
+        "peak_total_est",
+        "peak_total_official",
+        "catch_rate_50",
+        "false_alarm_50",
+        "restore_day_err",
+        "measurable_share"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "mae_pp": {
+          "description": "Mean county error, percentage points.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "peak_total_est": {
+          "description": "Customers out at the peak, estimated.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "peak_total_official": {
+          "description": "Customers out at the peak, official.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "catch_rate_50": {
+          "$ref": "#/$defs/fractionOrNull"
+        },
+        "false_alarm_50": {
+          "$ref": "#/$defs/fractionOrNull"
+        },
+        "restore_day_err": {
+          "description": "Restoration-day error, days.",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "measurable_share": {
+          "$ref": "#/$defs/fractionOrNull"
+        }
+      }
+    },
+    "scorecard": {
+      "description": "<storm>/scorecard.json: the pre-registered curve and its two simple guesses (required), plus the hybrid and its no-satellite twin when scored.",
+      "type": "object",
+      "required": [
+        "storm_id",
+        "window",
+        "methods",
+        "note"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "storm_id": {
+          "$ref": "#/$defs/stormId"
+        },
+        "window": {
+          "description": "EAGLE-I window around the pass, minutes.",
+          "enum": [
+            30,
+            60,
+            90
+          ]
+        },
+        "methods": {
+          "type": "object",
+          "required": [
+            "isotonic",
+            "wind_only",
+            "nothing"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "isotonic": {
+              "$ref": "#/$defs/metrics"
+            },
+            "wind_only": {
+              "$ref": "#/$defs/metrics"
+            },
+            "nothing": {
+              "$ref": "#/$defs/metrics"
+            },
+            "hybrid": {
+              "$ref": "#/$defs/metrics"
+            },
+            "wind_timing": {
+              "$ref": "#/$defs/metrics"
+            }
+          }
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

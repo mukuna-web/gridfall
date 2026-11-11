@@ -1,0 +1,5 @@
+{
+  "storms": [
+    { "id": "milton2024", "name": "Milton", "landfall": "2024-10-09", "role": "lockbox", "satellite": "VNP46A2" }
+  ]
+}

@@ -1,0 +1,4222 @@
+{
+ "about": "EAGLE-I dip census behind the 2026-11-08 decision-log entry (dropout rule). Written by a Claude agent (workflow wf_9cf7f578-efe, 'dropout census') from the Ian, Ida and Uri extracts in data/interim. Event 'kind' labels are the agent's judgement; utility names are inferred, not data.",
+ "evaluation_windows_utc": {
+  "ian_ramp": [
+   "2022-09-28 18:00",
+   "2022-09-29 06:00"
+  ],
+  "ian_restoration": [
+   "2022-09-30 00:00",
+   "2022-10-10 23:45"
+  ],
+  "ida_louisiana_and_mississippi": [
+   "2021-08-29 10:00",
+   "2021-08-31 23:45"
+  ],
+  "uri_rotating_outages": [
+   "2021-02-15 07:25",
+   "2021-02-19 12:00"
+  ]
+ },
+ "n_events_total": 883,
+ "truncated_note": "The events list holds 100 curated events: every large Ian-window event, the big Ida and Uri ones, 8 quiet-time Florida state-total V's, and long dropouts found by residual tracking. The full machine census has 741 V-dip events (FL 303, LA 166, MS 39, TX 233; automatic draft labels give 158 artifact and 583 unclear). Most of the rest are quiet-time state-total jitter of 1,000-5,000 customers, or chains of overlapping county dips during Uri's rotation; there, merging makes 'events' up to 82 runs long, so read them as oscillation, not single dips. There are also 139 long down-then-up candidates over 12 runs (FL 47, LA 19, MS 4, TX 69). Many are quiet-time records that vanish and reappear (Osceola 1,202 to 0 to 1,204 over 105 runs; Duval 5,396 to 0 to 5,595 over 90 runs; Jackson TX 2,496 to 4 to 2,496 over 57 runs). Inside Uri, some may be real block switching. 3 more long stretches were found only by residual tracking: TECO 2022-09-29 15:15-21:45, and DEMCO-like 2021-08-30 02:15-11:30 and 2021-08-31 17:15 to 09-01 22:15. n_events_total = 741 + 139 + 3 = 883. The lists overlap a little; for example Lee 10-03 and the Sep 30 PRECO-like stretch appear in more than one. The full machine census (dip_event_census.csv and four related files) was a set of working files and is not in the repo. Only the 100 curated events are kept here.",
+ "utility_attribution": "The utility names are an inference, not data. EAGLE-I county rows carry no utility field, and the names come from public knowledge of service territories, which I did not check against any source. What the data does show: which counties dip together in the same runs, and frozen residuals that come back in separate runs. FPL: 9 stretches between 09-27 and 10-08 (two small ones on 09-27 at 06:30-09:45 and 11:45-12:45; a partial one on 09-28 at 21:00; 09-29 09:15-10:45; 10-01 13:45-14:00; 10-04 07:45; 10-07 17:15; 10-07 19:00; 10-08 00:30). At 09-29 09:15, 12 counties go to 0-4 (Sarasota, Manatee, Brevard, Indian River, Okeechobee, DeSoto, Palm Beach, Martin, Miami-Dade, Glades, Broward, St. Johns). Lee, Collier, Charlotte, St. Lucie, Volusia, Flagler, Hendry, Seminole and Putnam keep residuals. That is FPL's east-coast and southwest footprint, so the Brief's Sep 29 09:15-10:45 dip is an FPL dropout, with a PRECO-like feed also missing at 09:15. TECO (Tampa Electric): Hillsborough collapses while Polk and Pasco drop partly, in 26 stretches and 60 runs from 2022-09-28 18:30 to 10-02 16:15, including 27 runs on 09-29 at 15:15-21:45. The Brief's 09-29 11:30 dip is one of them. Hillsborough 216,947 to 1,214 to 213,839, Polk -71,674 and Pasco -7,386 account for 294,793 of a 270,136 net drop, so it is an artifact. Duke Energy Florida: Pinellas reads explicit 0 in 3 stretches (9 runs, 09-29 19:45 to 23:00), with Highlands at 688 and Orange, Seminole, Volusia, Lake, Osceola, Polk and Pasco dropping partly. LCEC (Lee County Electric Cooperative; Lee, Collier, Charlotte, Hendry): 4 stretches (09-30 07:00-07:15, 09-30 13:45, 10-01 20:45-21:30, 10-03 20:15-23:30), plus maybe the Lee-only dips on 10-07, 10-16 and 10-21. In the Brief's Sep 30 07:00-07:15 dip, the counties that dipped and came back are exactly Lee (-171,345), Collier (-37,914, 24,514 back), Charlotte (-2,658) and Hendry (-250, exact). Lee's drop is close to its non-FPL residual the day before (175,437 at 09-29 09:15), so the missing feed is the non-FPL one: LCEC-like. PRECO-like (Peace River Electric Cooperative?): Hardee goes to 0, 20 or 30, Manatee -24k to -34k and DeSoto -1,028, in 5 stretches (09-29 01:00-09:15, 09-30 05:45, 07:45, 08:45-13:15, 13:45). SECO-like small dips: Lake, Marion, Sumter, Citrus (09-30 03:30, 08:30). Louisiana, DEMCO-like (Dixie EMC: Livingston, East Baton Rouge, Ascension, St. Helena, East and West Feliciana): St. Helena residual of 1,684-1,705, later 1,694 or 1,120, in 8 stretches from 08-30 02:15 to 09-06 07:15, two of them long (38 and 117 runs). The St. Tammany and Washington dip on 09-02 00:00 may be a single co-op. Entergy-like NULL runs: Jefferson, Orleans, Lafourche, Plaquemines, St. Bernard, Assumption, Iberville, St. Charles, St. James (LA 08-30 17:30, 18:30, 09-07 22:00), and Hinds, Madison, Pike, Warren in Mississippi 15 min later (08-30 17:45, 18:45). Coast Electric-like: Pearl River and Hancock (MS 08-31 00:45-01:30). Texas, CenterPoint-like: Harris at 3,000 or less with 100,000 or more on both sides in 8 stretches (16 runs, 02-16 06:00 to 02-17 21:30). Its residual is 2,908-2,915, Fort Bend is NULL or absent, and Brazoria, Galveston, Chambers and Waller drop partly. Central Texas EC-like: Gillespie, Kerr, Mason, Kendall and Llano together in 6 stretches (02-11 22:30 to 02-20 00:00).",
+ "missing_state_runs": "Runs with no rows at all for the state. FL 2022 extract: 6,429 of 6,432 slots present. The only empty runs are 2022-10-18 23:15, 2022-10-19 00:15 and 2022-10-19 00:30, exactly the 3 runs missing nationally in eaglei_2022_runs (35,037 of 35,040). No run is missing for Florida alone. Ida extract: 5,854 of 5,856 slots; 2021-08-19 00:30 and 2021-08-29 23:00 have no rows for Louisiana or Mississippi, and no run is missing for only one of them. Uri extract: 4,796 of 4,800; no Texas rows at 2021-01-23 14:00, 2021-01-29 17:00, 2021-02-18 15:15 and 2021-02-23 18:30. Whether these are national gaps is unknown, because there is no 2021 run file on disk. Cases the state-missing rule cannot see: (1) 2021 NULL runs. At 2021-08-19 14:45, 50 of 62 Louisiana rows are NULL (known total 3,363 to 155 to 3,456) and 13 of 46 Mississippi rows are NULL (2,062 to 1,445 to 2,164). (2) The 2021 extracts have no explicit 0 rows at all (smallest present value 1), and they hold 2,270 NULL rows (Ida) and 8,325 (Uri). Most NULLs sit between zero or absent neighbours (LA 39%, MS 70%, TX 55% have 0 on both sides), so NULL often stands for 0. But 80 NULL cells have 1,000 or more on both sides. (3) Partial feed dropouts leave the state live while one utility's counties read 0, a frozen residual, or NULL; see the events list.",
+ "absent_county_findings": "Lee (12071) has no row in 107 live Florida runs, all between 2022-08-23 11:30 and 2022-09-25 02:30, in 18 stretches of 2 to 18 runs. The Lee rows on either side read 0 to 93. None of these runs falls between 2022-09-28 and 2022-10-15 (0 runs). Lee has 10 explicit 0 rows, the latest at 2022-09-27 12:00. Counties absent while the nearest known rows on both sides are 1,000 or more: FL 23 cells (Osceola 2022-09-27 17:30 with 2,154; Duval 2022-10-17 07:15 and 08:00-12:15, 19 cells with 2,858-2,882; Hillsborough 2022-10-25 06:45-07:00 with 1,145; Duval 2022-10-25 14:30 with 4,983); LA 0; MS 0; TX 77 cells (for example Fort Bend 2021-02-16 00:45-01:00 with 31,229; Fort Bend and Chambers at 2021-02-17 21:30, together 157,137; Rains, Lee and Washington on 2021-02-17; Guadalupe, Bandera and Denton on Feb 23-26; Wilbarger 2021-03-01 22:00-23:00). NULL rows with 1,000 or more on both sides: LA 43 (13 at 2021-08-30 17:30, 19 at 18:30, 10 at 2021-09-07 22:00, Ouachita at 2021-08-19 14:45); MS 4 (Madison and Pike at 2021-08-30 17:45 and 18:45); TX 33 (Harris NULL at 06:00 on 6 days, all 6 of its NULL rows; Fort Bend NULL in 18 runs on 2021-02-16 with neighbours up to 71,616; Rains, San Jacinto, Marion, Upshur). The bigger problem is not absence. During dropouts, counties usually stay PRESENT with an explicit 0 or a frozen residual. At 2022-09-29 09:15, Sarasota, Manatee, Palm Beach, Martin, Miami-Dade, Okeechobee, Indian River, Glades and DeSoto are explicit 0, and Florida's zero rows per run go from 9 to 18. Pinellas is explicit 0 for 7 runs at 2022-09-29 19:45-21:15 and again at 21:45 and 23:00. Hillsborough is explicit 0 at 2022-09-30 12:15. Residuals: Hillsborough 1,214 or 1,210, Harris 2,908-2,915, St. Helena 1,694. Present rows at 1% or less of neighbours that are 1,000 or more on both sides: FL 40 (14 of them explicit 0), LA 1, MS 4, TX 29. So 'explicit 0 rows mean 0' is false during feed dropouts.",
+ "real_hard_cases": [
+  {
+   "id": "RH-FL-IAN-RAMP",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-28 18:00",
+   "end": "2022-09-29 06:00",
+   "description": "Real surge with artifacts woven through it. State 842,719 at 18:00 to 2,189,848 at 06:00. Lee 269,292 to its peak of 456,573 at 00:00, then 425,713. Collier 131,356 to 212,513. Charlotte 60,257 to 125,744 at 20:00, then frozen at 125,478 from 23:00 to 06:45 (32 runs: stale, not a dip). Largest real one-run rises: Lee +30,119 at 19:15 (343,637 to 373,756), Charlotte +12,696 at 18:15, Collier +12,411 at 18:30. But 16 of the 49 runs hold a dropout (15 TECO runs plus the FPL partial at 21:00). At 22:30, 7 of the 9 runs in Hillsborough's ±60-min window are TECO runs, so its median is 1,214. Manatee's -34,315 step at 01:00 looks like restoration but is a lost feed (FL-0929-0100). A V-rule leaves the monotone rise alone, but window medians here are often contaminated."
+  },
+  {
+   "id": "RH-FL-RESTORE",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-30 00:00",
+   "end": "2022-10-10 23:45",
+   "description": "Real restoration steps (the new level holds for 2 h and there is no rebound of 80% or more within 24 h). Lee: -29,149 at 10-07 23:15 (94,793 to 65,644), -14,749 at 10-02 02:00 (335,970 to 321,221), -14,598 at 10-05 10:00 (195,476 to 180,878), -13,555 at 10-10 02:45 (44,030 to 30,475), -11,067 at 10-06 00:45 (164,968 to 153,901), -10,653 at 10-09 13:30 (54,683 to 44,030). Charlotte: -10,690 at 10-02 01:00 (92,405 to 81,715), -6,760 at 10-04 22:00. Collier: -6,209 at 10-02 01:00 (95,058 to 88,849), -3,780 at 10-02 04:00. Every bigger one-run drop in these three counties in this window reverses within hours, so they are dropout edges (for example Lee -182,673 at 10-01 20:45, Charlotte -98,520 at 10-01 13:45, Collier -81,847 at 10-01 13:45). A rule that compares only with the hour before would flag the real steps."
+  },
+  {
+   "id": "RH-LA-IDA-SURGE",
+   "extract": "eaglei_2021_ida_LA_MS (Louisiana)",
+   "start": "2021-08-29 10:00",
+   "end": "2021-08-31 23:45",
+   "description": "Real surge: Louisiana total 429 at 10:00 on 08-29, 518,137 at 22:00, 700,224 at 00:00 on 08-30, 905,071 at 02:00 and 1,042,719 at 16:00. Orleans climbs from 478 at 12:00 to 175,435 at 23:45 in steady steps of up to +12,608 per run. Jefferson rises +18,960 at 18:15 and +18,889 at 18:45. All of these hold. The 23:00 run on 08-29 is missing for both states. Jumps that are not real: the total reads 940,376 at 11:00 and 1,012,354 at 11:45 on 08-30 (end of the 38-run DEMCO-like dropout); swings of about ±85k at 19:45-22:45 on 08-30 (DEMCO-like dips); -92,935 at 17:15 on 08-31 and +83,349 at 22:30 on 09-01 (the 117-run dropout); and the NULL runs at 17:30 and 18:30 on 08-30 (-818,381 and -891,276 against the run before)."
+  },
+  {
+   "id": "RH-TX-URI-ROLLING",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-02-15 07:25",
+   "end": "2021-02-19 12:00",
+   "description": "Real rotating outages that oscillate. Texas total 135,659 at 07:00 on Feb 15, 1,346,195 at 08:45, 2,754,115 at 18:00, 3,414,788 at 03:00 on Feb 16. The 4,257,873 peak at 19:00 on Feb 16 is inflated by Brazoria 304,535 (MCC 144,164), Fort Bend 163,337 and Galveston 150,151. Then 2,731,069 at 21:00 on Feb 17, 907,414 at 09:00 on Feb 18 and 183,463 at 12:00 on Feb 19. Between 07:30 Feb 15 and 12:00 Feb 19, 48 of 400 state run-to-run changes are 5% or more and 25 are 10% or more. County V-dips (a fall of at least max(1,000, 10%) that is back to 90% within 3 h): Harris 36 (5 of them within 2%), Denton 27, Williamson 18, Fort Bend 18, Collin 16, Bexar 14, Hidalgo 5, Dallas 3, Tarrant 3, Travis 3. Fort Bend reads 43,033 at 08:45, 10,539 at 09:00-09:15 and 43,321 at 09:30 on Feb 16, between non-dropout runs. Rotation is real, but some dips are CenterPoint dropouts. Only a frozen residual (Harris 2,908-2,915) or a NULL or absent row marks them. The 69 long down-then-up pairs in Texas may be real block switching here."
+  },
+  {
+   "id": "RH-QUIET-NOISE",
+   "extract": "all three extracts (quiet periods)",
+   "start": "2022-08-20 00:00",
+   "end": "2022-09-20 23:45",
+   "description": "Quiet-time county noise: single-run V's where a run sits below both neighbours. Florida 2022-08-20 to 09-20, among county-runs whose smaller neighbour is 1-9: 2,202 V's out of 49,175; 1,620 (3.29%) fall below 75% of both neighbours; 661 return to exactly the same value (e.g. Columbia 2 to 1 to 2 at 2022-08-20 01:00); 739 dip to 0, 601 of them as absent rows. Below 75% at the other levels: 10-99, 668 of 32,811 (2.04%); 100-999, 235 of 13,540 (1.74%); 1,000 or more, 33 of 894 (3.69%). The same rates by level for the other extracts: Louisiana 2021-08-01 to 08-25, 1.83%, 1.13%, 1.29%, 1.28%; Mississippi, 1.69%, 0.87%, 0.67%, 0.88%; Texas 2021-01-20 to 02-09, 1.87%, 1.21%, 0.75%, 0.23%. Exact-return V's (a to b to a) by level: FL 661/360/120/5, LA 273/122/55/2, MS 154/52/23/1, TX 525/167/40/29. With no level floor, a 75% rule flags 1-3% of quiet county-runs."
+  },
+  {
+   "id": "RH-FL-QUIET-STATE-V",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-08-23 23:00",
+   "end": "2022-09-18 08:45",
+   "description": "State-total V's of 5% or more that come from unrelated real county changes (events FL-0823-2300, FL-0908-1930, FL-0915-1415, FL-0917-1345, FL-0917-2200, FL-0918-0115, FL-0918-0600). Example: Palm Beach is restored 6,750 to 14 while Broward later rises 119 to 10,335. Florida's quiet-time total runs from 78 to 30,598, so a 'state dips' condition is weak. The state condition alone (below 95% of both hour medians) holds in 620 runs on 2022-08-20..09-20 and in 81 runs on 2022-09-26..10-15."
+  },
+  {
+   "id": "RH-STALE-AND-OVERCOUNT",
+   "extract": "FL 2022 / LA 2021 / TX 2021",
+   "start": "2021-02-16 19:00",
+   "end": "2022-09-29 06:45",
+   "description": "Not dips, but traps for change-based or %-out rules. Frozen values: Charlotte 125,478 for 32 runs (2022-09-28 23:00 to 09-29 06:45). Hillsborough reads exactly 1,214 in 29 runs and 1,210 in 10 runs between 09-28 and 10-02, all in TECO dropouts. St. Helena reads 1,694 for 117 runs. Counts above the county's MCC: Brazoria 304,535 against 144,164 (2021-02-16 19:00); St. Helena 8,619 against 4,162 and Livingston 62,364 against 56,101 (2021-09-01 22:30)."
+  }
+ ],
+ "events": [
+  {
+   "id": "FL-0823-2300",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-08-23 23:00",
+   "end": "2022-08-24 00:30",
+   "n_runs": 7,
+   "kind": "real",
+   "evidence": "Quiet-time churn: Polk 1,407 restores to 36 (55 after) while Duval rises 417 to 7,522 after the dip; no county returns to its old level.",
+   "state_before": 9340,
+   "state_during_min": 2674,
+   "state_after": 9708,
+   "counties": [
+    {
+     "fips": "12031",
+     "county": "Duval",
+     "before": 417,
+     "during_min": 9,
+     "after": 7522
+    }
+   ]
+  },
+  {
+   "id": "FL-0908-1930",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-08 19:30",
+   "end": "2022-09-08 22:00",
+   "n_runs": 11,
+   "kind": "real",
+   "evidence": "Quiet-time churn: Pinellas restores 2,661 to 100 (244 after) while Miami-Dade and Lee rise afterwards; no matched return.",
+   "state_before": 18799,
+   "state_during_min": 6162,
+   "state_after": 12712,
+   "counties": [
+    {
+     "fips": "12086",
+     "county": "Miami-Dade",
+     "before": 1880,
+     "during_min": 1044,
+     "after": 4472
+    },
+    {
+     "fips": "12081",
+     "county": "Manatee",
+     "before": 188,
+     "during_min": 20,
+     "after": 354
+    },
+    {
+     "fips": "12103",
+     "county": "Pinellas",
+     "before": 2661,
+     "during_min": 100,
+     "after": 244
+    },
+    {
+     "fips": "12099",
+     "county": "Palm Beach",
+     "before": 165,
+     "during_min": 45,
+     "after": 362
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 135,
+     "during_min": 22,
+     "after": 162
+    }
+   ]
+  },
+  {
+   "id": "FL-0912-1700",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-12 17:00",
+   "end": "2022-09-12 18:45",
+   "n_runs": 8,
+   "kind": "unclear",
+   "evidence": "Miami-Dade 6,234 to 261 for 8 runs, then 1,910; Broward 98 to 3,142 after. Restoration plus new outages, or an FPL partial feed; cannot tell.",
+   "state_before": 8128,
+   "state_during_min": 1627,
+   "state_after": 7430,
+   "counties": [
+    {
+     "fips": "12086",
+     "county": "Miami-Dade",
+     "before": 6234,
+     "during_min": 261,
+     "after": 1910
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 111,
+     "during_min": 0,
+     "after": 105
+    }
+   ]
+  },
+  {
+   "id": "FL-0915-1415",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-15 14:15",
+   "end": "2022-09-15 16:45",
+   "n_runs": 11,
+   "kind": "real",
+   "evidence": "Thunderstorm churn: Palm Beach 282 to 111 then 2,855 and Broward 251 to 1,579 after the dip; no county returns to its old level.",
+   "state_before": 6623,
+   "state_during_min": 1504,
+   "state_after": 6660,
+   "counties": [
+    {
+     "fips": "12099",
+     "county": "Palm Beach",
+     "before": 282,
+     "during_min": 111,
+     "after": 2855
+    }
+   ]
+  },
+  {
+   "id": "FL-0917-1345",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-17 13:45",
+   "end": "2022-09-17 16:00",
+   "n_runs": 10,
+   "kind": "real",
+   "evidence": "Two unrelated real changes: Palm Beach 6,750 restored to 14 (stays 22) and a new Broward outage (119 to 10,335 at 16:15).",
+   "state_before": 7744,
+   "state_during_min": 1648,
+   "state_after": 11557,
+   "counties": [
+    {
+     "fips": "12011",
+     "county": "Broward",
+     "before": 119,
+     "during_min": 26,
+     "after": 10335
+    },
+    {
+     "fips": "12099",
+     "county": "Palm Beach",
+     "before": 6750,
+     "during_min": 14,
+     "after": 22
+    },
+    {
+     "fips": "12095",
+     "county": "Orange",
+     "before": 54,
+     "during_min": 65,
+     "after": 276
+    }
+   ]
+  },
+  {
+   "id": "FL-0917-2200",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-17 22:00",
+   "end": "2022-09-18 00:30",
+   "n_runs": 11,
+   "kind": "real",
+   "evidence": "Highlands 2,821 restored to 68 (377 after) and a new Orange outage (54 to 5,775) after the dip.",
+   "state_before": 12087,
+   "state_during_min": 6177,
+   "state_after": 12106,
+   "counties": [
+    {
+     "fips": "12055",
+     "county": "Highlands",
+     "before": 2821,
+     "during_min": 68,
+     "after": 377
+    }
+   ]
+  },
+  {
+   "id": "FL-0918-0115",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-18 01:15",
+   "end": "2022-09-18 04:15",
+   "n_runs": 13,
+   "kind": "real",
+   "evidence": "Hillsborough 4,205 restored to 6 (39 after); Highlands and Broward (47 to 4,470) rise after. [absent rows: Orange]",
+   "state_before": 11918,
+   "state_during_min": 1914,
+   "state_after": 8392,
+   "counties": [
+    {
+     "fips": "12055",
+     "county": "Highlands",
+     "before": 375,
+     "during_min": 2,
+     "after": 2042
+    }
+   ]
+  },
+  {
+   "id": "FL-0918-0600",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-18 06:00",
+   "end": "2022-09-18 08:45",
+   "n_runs": 12,
+   "kind": "real",
+   "evidence": "Broward 5,991 to 1,166 and stays 1,287 (restoration); the state recovers through other counties.",
+   "state_before": 8911,
+   "state_during_min": 3618,
+   "state_after": 13592,
+   "counties": [
+    {
+     "fips": "12011",
+     "county": "Broward",
+     "before": 5991,
+     "during_min": 1166,
+     "after": 1287
+    }
+   ]
+  },
+  {
+   "id": "FL-0927-0630",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-27 06:30",
+   "end": "2022-09-27 09:45",
+   "n_runs": 14,
+   "kind": "artifact",
+   "evidence": "FPL pattern at quiet-time scale: Miami-Dade, Lee, Broward and Palm Beach read explicit 0 rows, then return (Miami-Dade 1,324 to 0 to 1,820). [explicit-0 rows: Miami-Dade]",
+   "state_before": 2038,
+   "state_during_min": 322,
+   "state_after": 2266,
+   "counties": [
+    {
+     "fips": "12086",
+     "county": "Miami-Dade",
+     "before": 1324,
+     "during_min": 0,
+     "after": 1820
+    },
+    {
+     "fips": "12071",
+     "county": "Lee",
+     "before": 114,
+     "during_min": 0,
+     "after": 130
+    }
+   ]
+  },
+  {
+   "id": "FL-0927-1145",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-27 11:45",
+   "end": "2022-09-27 12:45",
+   "n_runs": 5,
+   "kind": "artifact",
+   "evidence": "FPL pattern: Miami-Dade 1,869 to 0 to 1,690, Volusia 122 to 0 to 123, Broward 104 to 0 to 96 (explicit 0 rows). [explicit-0 rows: Miami-Dade]",
+   "state_before": 2297,
+   "state_during_min": 1405,
+   "state_after": 3576,
+   "counties": [
+    {
+     "fips": "12086",
+     "county": "Miami-Dade",
+     "before": 1869,
+     "during_min": 0,
+     "after": 1690
+    },
+    {
+     "fips": "12127",
+     "county": "Volusia",
+     "before": 122,
+     "during_min": 0,
+     "after": 123
+    }
+   ]
+  },
+  {
+   "id": "FL-0928-1830",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-28 18:30",
+   "end": "2022-09-28 18:45",
+   "n_runs": 2,
+   "kind": "artifact",
+   "evidence": "TECO pattern in the ramp-up: Hillsborough 35,327 to 996 and 4, back to 43,186; Polk and Pasco dip in the same runs. Lake 1,000 to 36 at 18:30 and Manatee 55,233 to 43,926 at 18:45 dip too.",
+   "state_before": 893341,
+   "state_during_min": 917995,
+   "state_after": 1081848,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 35327,
+     "during_min": 4,
+     "after": 43186
+    },
+    {
+     "fips": "12081",
+     "county": "Manatee",
+     "before": 55233,
+     "during_min": 43926,
+     "after": 74197
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 2334,
+     "during_min": 229,
+     "after": 2501
+    }
+   ]
+  },
+  {
+   "id": "FL-0928-2015",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-28 20:15",
+   "end": "2022-09-28 20:15",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "TECO pattern: Hillsborough 64,489 to 1,004 to 77,902; Pasco 5,486 to 1,094 to 9,886.",
+   "state_before": 1281274,
+   "state_during_min": 1248851,
+   "state_after": 1384238,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 64489,
+     "during_min": 1004,
+     "after": 77902
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 5486,
+     "during_min": 1094,
+     "after": 9886
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 6079,
+     "during_min": 5030,
+     "after": 7551
+    }
+   ]
+  },
+  {
+   "id": "FL-0928-2100",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-28 21:00",
+   "end": "2022-09-28 21:00",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "FPL partial dropout: Lee, Charlotte, Sarasota, Collier, Manatee, DeSoto and Hendry all dip in this one run and are back at 21:15 (Collier 180,985 to 154,136 to 179,797).",
+   "state_before": 1426423,
+   "state_during_min": 1184321,
+   "state_after": 1275766,
+   "counties": [
+    {
+     "fips": "12071",
+     "county": "Lee",
+     "before": 414811,
+     "during_min": 343844,
+     "after": 402780
+    },
+    {
+     "fips": "12015",
+     "county": "Charlotte",
+     "before": 125744,
+     "during_min": 82708,
+     "after": 123178
+    },
+    {
+     "fips": "12115",
+     "county": "Sarasota",
+     "before": 240838,
+     "during_min": 182550,
+     "after": 214600
+    },
+    {
+     "fips": "12021",
+     "county": "Collier",
+     "before": 180985,
+     "during_min": 154136,
+     "after": 179797
+    },
+    {
+     "fips": "12081",
+     "county": "Manatee",
+     "before": 121374,
+     "during_min": 71506,
+     "after": 96557
+    },
+    {
+     "fips": "12027",
+     "county": "DeSoto",
+     "before": 15590,
+     "during_min": 2836,
+     "after": 5206
+    }
+   ]
+  },
+  {
+   "id": "FL-0928-2115",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-28 21:15",
+   "end": "2022-09-28 22:00",
+   "n_runs": 4,
+   "kind": "artifact",
+   "evidence": "TECO 4-run block: Hillsborough reads 1,066 to 1,214 between 87,221 and 147,620. The run before (21:00) is itself the FPL dip; 20:45 read 1,426,423.",
+   "state_before": 1184321,
+   "state_during_min": 1275766,
+   "state_after": 1623034,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 87221,
+     "during_min": 1066,
+     "after": 147620
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 8654,
+     "during_min": 4173,
+     "after": 9454
+    },
+    {
+     "fips": "12086",
+     "county": "Miami-Dade",
+     "before": 31000,
+     "during_min": 27520,
+     "after": 32270
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 26979,
+     "during_min": 23980,
+     "after": 65286
+    },
+    {
+     "fips": "12011",
+     "county": "Broward",
+     "before": 16542,
+     "during_min": 9062,
+     "after": 11982
+    },
+    {
+     "fips": "12127",
+     "county": "Volusia",
+     "before": 5114,
+     "during_min": 2699,
+     "after": 8481
+    }
+   ]
+  },
+  {
+   "id": "FL-0928-2230",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-28 22:30",
+   "end": "2022-09-28 22:30",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "TECO pattern: Hillsborough 147,620 to 1,214 to 158,462 with Polk and Pasco.",
+   "state_before": 1623034,
+   "state_during_min": 1459673,
+   "state_after": 1671946,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 147620,
+     "during_min": 1214,
+     "after": 158462
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 65286,
+     "during_min": 41291,
+     "after": 71025
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 9454,
+     "during_min": 5291,
+     "after": 12191
+    }
+   ]
+  },
+  {
+   "id": "FL-0928-2300",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-28 23:00",
+   "end": "2022-09-28 23:30",
+   "n_runs": 3,
+   "kind": "artifact",
+   "evidence": "TECO 3-run block: Hillsborough frozen at 1,214 between 158,462 and 177,912.",
+   "state_before": 1671946,
+   "state_during_min": 1542744,
+   "state_after": 1810971,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 158462,
+     "during_min": 1214,
+     "after": 177912
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 71025,
+     "during_min": 44959,
+     "after": 100460
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 12191,
+     "during_min": 7724,
+     "after": 16577
+    }
+   ]
+  },
+  {
+   "id": "FL-0929-0015",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-29 00:15",
+   "end": "2022-09-29 00:30",
+   "n_runs": 2,
+   "kind": "artifact",
+   "evidence": "TECO 2-run block: Hillsborough 189,997 to 1,214 to 197,967.",
+   "state_before": 1839347,
+   "state_during_min": 1603257,
+   "state_after": 1878937,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 189997,
+     "during_min": 1214,
+     "after": 197967
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 106623,
+     "during_min": 60094,
+     "after": 117928
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 16802,
+     "during_min": 12998,
+     "after": 17747
+    }
+   ]
+  },
+  {
+   "id": "FL-0929-0100",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-29 01:00",
+   "end": "2022-09-29 09:00",
+   "n_runs": 33,
+   "kind": "artifact",
+   "evidence": "Long partial dropout (33 runs) that looks like restoration: at 01:00 Manatee falls by exactly 34,315 (160,255 to 125,940), Hardee 8,707 to 30, DeSoto 18,738 to 17,710; the same parts reappear as Manatee 34,315, Hardee 9,474 and DeSoto 1,028 at 09:30. PRECO-like. Not a V, and the state minimum here comes from TECO runs inside it. State 'after' is 11:00 (after the FPL dropout); 'lowest' 1,623,177 is the TECO run at 01:15, and without TECO runs the state low is 1,841,056 at 01:00; county 'after' values are at 11:00.",
+   "state_before": 1878937,
+   "state_during_min": 1623177,
+   "state_after": 2443232,
+   "counties": [
+    {
+     "fips": "12081",
+     "county": "Manatee",
+     "before": 160255,
+     "during_min": 125940,
+     "after": 159765
+    },
+    {
+     "fips": "12049",
+     "county": "Hardee",
+     "before": 8707,
+     "during_min": 30,
+     "after": 9504
+    },
+    {
+     "fips": "12027",
+     "county": "DeSoto",
+     "before": 18738,
+     "during_min": 16060,
+     "after": 17198
+    }
+   ]
+  },
+  {
+   "id": "FL-0929-0115",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-29 01:15",
+   "end": "2022-09-29 01:15",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "TECO pattern: Hillsborough 198,313 to 4 to 198,874; Polk and Pasco back within 2-6%.",
+   "state_before": 1841056,
+   "state_during_min": 1623177,
+   "state_after": 1879864,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 198313,
+     "during_min": 4,
+     "after": 198874
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 116354,
+     "during_min": 69490,
+     "after": 118332
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 18808,
+     "during_min": 14384,
+     "after": 19855
+    }
+   ]
+  },
+  {
+   "id": "FL-0929-0330",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-29 03:30",
+   "end": "2022-09-29 03:30",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "TECO pattern: Hillsborough 202,879 to 4 to 203,056.",
+   "state_before": 2007047,
+   "state_during_min": 1751184,
+   "state_after": 2023273,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 202879,
+     "during_min": 4,
+     "after": 203056
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 140769,
+     "during_min": 85068,
+     "after": 144514
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 21883,
+     "during_min": 16561,
+     "after": 22283
+    }
+   ]
+  },
+  {
+   "id": "FL-0929-0715",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-29 07:15",
+   "end": "2022-09-29 07:15",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "TECO pattern: Hillsborough 211,504 to 5 to 211,982; Polk 188,190 to 123,127 to 188,442.",
+   "state_before": 2305193,
+   "state_during_min": 2033033,
+   "state_after": 2319350,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 211504,
+     "during_min": 5,
+     "after": 211982
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 188190,
+     "during_min": 123127,
+     "after": 188442
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 29458,
+     "during_min": 24469,
+     "after": 31811
+    }
+   ]
+  },
+  {
+   "id": "FL-0929-0915",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-29 09:15",
+   "end": "2022-09-29 10:45",
+   "n_runs": 7,
+   "kind": "artifact",
+   "evidence": "Brief dropout 1 (FPL feed, with the PRECO-like feed also missing at 09:15): 12 FPL counties read 0 to 4, often as explicit 0 rows (zero rows per run go from 9 to 18). Lee, Collier and Charlotte keep frozen residuals (175,437, 26,707 and 808). Everything is back at 11:00 (Lee 421,289 against 421,246 before). [explicit-0 rows: DeSoto, Glades, Indian River, Manatee, Martin, Miami-Dade, Okeechobee, Palm Beach]",
+   "state_before": 2357609,
+   "state_during_min": 1155658,
+   "state_after": 2443232,
+   "counties": [
+    {
+     "fips": "12071",
+     "county": "Lee",
+     "before": 421246,
+     "during_min": 175437,
+     "after": 421289
+    },
+    {
+     "fips": "12115",
+     "county": "Sarasota",
+     "before": 226230,
+     "during_min": 0,
+     "after": 225500
+    },
+    {
+     "fips": "12021",
+     "county": "Collier",
+     "before": 202817,
+     "during_min": 26705,
+     "after": 202856
+    },
+    {
+     "fips": "12081",
+     "county": "Manatee",
+     "before": 137760,
+     "during_min": 0,
+     "after": 159765
+    },
+    {
+     "fips": "12015",
+     "county": "Charlotte",
+     "before": 117128,
+     "during_min": 808,
+     "after": 116828
+    },
+    {
+     "fips": "12009",
+     "county": "Brevard",
+     "before": 75521,
+     "during_min": 1,
+     "after": 70451
+    }
+   ]
+  },
+  {
+   "id": "FL-0929-1130",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-29 11:30",
+   "end": "2022-09-29 11:30",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "Brief's 11:30 dip, TECO pattern: Hillsborough 216,947 to 1,214 to 213,839, Polk -71,674, Pasco -7,386. These three lose 294,793 while other counties gain 24,924 (net -270,136).",
+   "state_before": 2448615,
+   "state_during_min": 2178479,
+   "state_after": 2478862,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 216947,
+     "during_min": 1214,
+     "after": 213839
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 201922,
+     "during_min": 130248,
+     "after": 201837
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 27256,
+     "during_min": 19870,
+     "after": 29464
+    }
+   ]
+  },
+  {
+   "id": "FL-0929-1515",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-29 15:15",
+   "end": "2022-09-29 21:45",
+   "n_runs": 27,
+   "kind": "artifact",
+   "evidence": "Long TECO dropout (27 runs): Hillsborough reads 1,214 or 1,210 from 15:15 to 21:45 (201,756 at 15:00, 159,284 at 22:00). Polk and Pasco keep only their non-TECO parts. The state falls 2,488,636 to 2,209,059 at 15:15. It overlaps the Duke dropouts. [explicit-0 rows: Pinellas] Polk 195,437 to 123,993 at 15:15 (100,075 at 21:30, TECO still out) to 150,999 at 22:00; Pasco 24,159 to 15,863 to 16,380. The state low of 1,606,070 is in a Duke run; without the 8 Duke runs it is 2,209,059 at 15:15.",
+   "state_before": 2488636,
+   "state_during_min": 1606070,
+   "state_after": 2500687,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 201756,
+     "during_min": 1210,
+     "after": 159284
+    }
+   ]
+  },
+  {
+   "id": "FL-0929-1945",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-29 19:45",
+   "end": "2022-09-29 21:15",
+   "n_runs": 7,
+   "kind": "artifact",
+   "evidence": "Duke pattern: Pinellas explicit 0 for 7 runs (182,728 before and after) and Highlands at 688 (49,407 before and after); Orange, Seminole, Volusia, Lake, Osceola and Polk drop together. TECO is also missing. [explicit-0 rows: Pinellas]",
+   "state_before": 2297076,
+   "state_during_min": 1606070,
+   "state_after": 2289391,
+   "counties": [
+    {
+     "fips": "12103",
+     "county": "Pinellas",
+     "before": 182728,
+     "during_min": 0,
+     "after": 182728
+    },
+    {
+     "fips": "12095",
+     "county": "Orange",
+     "before": 219123,
+     "during_min": 50736,
+     "after": 209281
+    },
+    {
+     "fips": "12117",
+     "county": "Seminole",
+     "before": 136129,
+     "during_min": 31330,
+     "after": 131739
+    },
+    {
+     "fips": "12127",
+     "county": "Volusia",
+     "before": 224435,
+     "during_min": 149236,
+     "after": 222955
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 110053,
+     "during_min": 35158,
+     "after": 100075
+    },
+    {
+     "fips": "12055",
+     "county": "Highlands",
+     "before": 49407,
+     "during_min": 688,
+     "after": 49407
+    }
+   ]
+  },
+  {
+   "id": "FL-0929-2145",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-29 21:45",
+   "end": "2022-09-29 21:45",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "Duke pattern repeats for one run: Pinellas 0, Orange, Seminole and Volusia back within 0.1% at 22:00. [explicit-0 rows: Pinellas]",
+   "state_before": 2289391,
+   "state_during_min": 1606788,
+   "state_after": 2500687,
+   "counties": [
+    {
+     "fips": "12103",
+     "county": "Pinellas",
+     "before": 182728,
+     "during_min": 0,
+     "after": 183019
+    },
+    {
+     "fips": "12095",
+     "county": "Orange",
+     "before": 209281,
+     "during_min": 51397,
+     "after": 209300
+    },
+    {
+     "fips": "12117",
+     "county": "Seminole",
+     "before": 131739,
+     "during_min": 31330,
+     "after": 131739
+    },
+    {
+     "fips": "12127",
+     "county": "Volusia",
+     "before": 222955,
+     "during_min": 149696,
+     "after": 222955
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 100075,
+     "during_min": 33320,
+     "after": 150999
+    },
+    {
+     "fips": "12055",
+     "county": "Highlands",
+     "before": 49407,
+     "during_min": 688,
+     "after": 49407
+    }
+   ]
+  },
+  {
+   "id": "FL-0929-2230",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-29 22:30",
+   "end": "2022-09-29 22:30",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "TECO pattern: Hillsborough 158,674 to 1,214 to 154,875; Polk 150,765 to 96,573 to 150,802.",
+   "state_before": 2488240,
+   "state_during_min": 2267919,
+   "state_after": 2479998,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 158674,
+     "during_min": 1214,
+     "after": 154875
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 150765,
+     "during_min": 96573,
+     "after": 150802
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 16235,
+     "during_min": 10813,
+     "after": 15726
+    }
+   ]
+  },
+  {
+   "id": "FL-0929-2300",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-29 23:00",
+   "end": "2022-09-29 23:00",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "TECO and Duke patterns in the same run: Hillsborough 1,210, Pinellas explicit 0 (183,021 to 143,228), Orange, Seminole and Volusia drop. [explicit-0 rows: Pinellas]",
+   "state_before": 2479998,
+   "state_during_min": 1564155,
+   "state_after": 2343166,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 154875,
+     "during_min": 1210,
+     "after": 148938
+    },
+    {
+     "fips": "12103",
+     "county": "Pinellas",
+     "before": 183021,
+     "during_min": 0,
+     "after": 143228
+    },
+    {
+     "fips": "12095",
+     "county": "Orange",
+     "before": 206359,
+     "during_min": 48145,
+     "after": 181390
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 150802,
+     "during_min": 31875,
+     "after": 146855
+    },
+    {
+     "fips": "12117",
+     "county": "Seminole",
+     "before": 131549,
+     "during_min": 30830,
+     "after": 114698
+    },
+    {
+     "fips": "12127",
+     "county": "Volusia",
+     "before": 220265,
+     "during_min": 143426,
+     "after": 215167
+    }
+   ]
+  },
+  {
+   "id": "FL-0930-0000",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-30 00:00",
+   "end": "2022-09-30 00:00",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "TECO pattern: Hillsborough 142,584 to 1,210 to 142,837.",
+   "state_before": 2327406,
+   "state_during_min": 2117365,
+   "state_after": 2303723,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 142584,
+     "during_min": 1210,
+     "after": 142837
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 139391,
+     "during_min": 84106,
+     "after": 139024
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 10782,
+     "during_min": 5052,
+     "after": 10128
+    }
+   ]
+  },
+  {
+   "id": "FL-0930-0230",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-30 02:30",
+   "end": "2022-09-30 02:30",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "TECO pattern: Hillsborough 137,870 to 405 to 136,276.",
+   "state_before": 2174664,
+   "state_during_min": 1976216,
+   "state_after": 2170513,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 137870,
+     "during_min": 405,
+     "after": 136276
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 142421,
+     "during_min": 87736,
+     "after": 141179
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 8689,
+     "during_min": 4790,
+     "after": 8489
+    }
+   ]
+  },
+  {
+   "id": "FL-0930-0300",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-30 03:00",
+   "end": "2022-09-30 03:00",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "TECO pattern: Hillsborough 136,276 to 408 to 136,195.",
+   "state_before": 2170513,
+   "state_during_min": 1947702,
+   "state_after": 2141870,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 136276,
+     "during_min": 408,
+     "after": 136195
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 141179,
+     "during_min": 87843,
+     "after": 141238
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 8489,
+     "during_min": 4678,
+     "after": 8466
+    }
+   ]
+  },
+  {
+   "id": "FL-0930-0545",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-30 05:45",
+   "end": "2022-09-30 05:45",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "PRECO-like pattern: Hardee 9,474 to explicit 0 to 9,474, Manatee -24,269, DeSoto -1,028 (the same 1,028 seen at 09:30 on Sep 29). [explicit-0 rows: Hardee]",
+   "state_before": 2202649,
+   "state_during_min": 2152062,
+   "state_after": 2193117,
+   "counties": [
+    {
+     "fips": "12081",
+     "county": "Manatee",
+     "before": 111319,
+     "during_min": 87050,
+     "after": 111099
+    },
+    {
+     "fips": "12049",
+     "county": "Hardee",
+     "before": 9474,
+     "during_min": 0,
+     "after": 9474
+    },
+    {
+     "fips": "12069",
+     "county": "Lake",
+     "before": 25081,
+     "during_min": 22810,
+     "after": 25073
+    },
+    {
+     "fips": "12107",
+     "county": "Putnam",
+     "before": 4776,
+     "during_min": 2460,
+     "after": 4666
+    },
+    {
+     "fips": "12127",
+     "county": "Volusia",
+     "before": 202731,
+     "during_min": 200576,
+     "after": 206094
+    },
+    {
+     "fips": "12083",
+     "county": "Marion",
+     "before": 2986,
+     "during_min": 1265,
+     "after": 2978
+    }
+   ]
+  },
+  {
+   "id": "FL-0930-0700",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-30 07:00",
+   "end": "2022-09-30 07:15",
+   "n_runs": 2,
+   "kind": "artifact",
+   "evidence": "Brief dropout 2, LCEC-like: Lee 411,615 to 240,270 to 411,676, Collier 179,934 to 142,020 to 166,534 (24,514 of 37,914 comes back), Hendry 6,210 to 5,960 to 6,210, Charlotte -2,658. About 40k of decreases in Sarasota (-12,220), Volusia (-8,969), Seminole, Hillsborough, Brevard and others were still down at 07:30: real restoration in the same run.",
+   "state_before": 2159896,
+   "state_during_min": 1899733,
+   "state_after": 2084968,
+   "counties": [
+    {
+     "fips": "12071",
+     "county": "Lee",
+     "before": 411615,
+     "during_min": 240270,
+     "after": 411676
+    },
+    {
+     "fips": "12021",
+     "county": "Collier",
+     "before": 179934,
+     "during_min": 142020,
+     "after": 166534
+    }
+   ]
+  },
+  {
+   "id": "FL-0930-0745",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-30 07:45",
+   "end": "2022-09-30 07:45",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "PRECO-like pattern: Hardee 9,474 to 0 to 9,494, Manatee 111,110 to 86,830 to 110,770. [explicit-0 rows: Hardee]",
+   "state_before": 2084968,
+   "state_during_min": 2044425,
+   "state_after": 2038512,
+   "counties": [
+    {
+     "fips": "12081",
+     "county": "Manatee",
+     "before": 111110,
+     "during_min": 86830,
+     "after": 110770
+    },
+    {
+     "fips": "12049",
+     "county": "Hardee",
+     "before": 9474,
+     "during_min": 0,
+     "after": 9494
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 144563,
+     "during_min": 143074,
+     "after": 144731
+    },
+    {
+     "fips": "12095",
+     "county": "Orange",
+     "before": 154336,
+     "during_min": 152875,
+     "after": 157501
+    },
+    {
+     "fips": "12027",
+     "county": "DeSoto",
+     "before": 13218,
+     "during_min": 12190,
+     "after": 15008
+    },
+    {
+     "fips": "12055",
+     "county": "Highlands",
+     "before": 50681,
+     "during_min": 50363,
+     "after": 50677
+    }
+   ]
+  },
+  {
+   "id": "FL-0930-0845",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-30 08:45",
+   "end": "2022-09-30 13:15",
+   "n_runs": 19,
+   "kind": "artifact",
+   "evidence": "Long PRECO-like dropout (19 runs): Hardee reads 20 between 9,494 and 9,494, and Manatee is about 24k low (110,773 to 85,580 to 109,053). [explicit-0 rows: Hillsborough] DeSoto is again 1,028 low (15,008 to 13,980). The state low of 1,745,512 is the TECO run at 12:15; without it the low is 1,914,776 at 13:15.",
+   "state_before": 2031674,
+   "state_during_min": 1745512,
+   "state_after": 1952199,
+   "counties": [
+    {
+     "fips": "12081",
+     "county": "Manatee",
+     "before": 110773,
+     "during_min": 85580,
+     "after": 109053
+    },
+    {
+     "fips": "12049",
+     "county": "Hardee",
+     "before": 9494,
+     "during_min": 20,
+     "after": 9494
+    },
+    {
+     "fips": "12027",
+     "county": "DeSoto",
+     "before": 15008,
+     "during_min": 13980,
+     "after": 15048
+    }
+   ]
+  },
+  {
+   "id": "FL-0930-1215",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-30 12:15",
+   "end": "2022-09-30 12:15",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "TECO pattern: Hillsborough 127,613 to explicit 0 to 130,017. [explicit-0 rows: Hillsborough]",
+   "state_before": 1937378,
+   "state_during_min": 1745512,
+   "state_after": 1928125,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 127613,
+     "during_min": 0,
+     "after": 130017
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 142251,
+     "during_min": 83822,
+     "after": 141148
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 6699,
+     "during_min": 3054,
+     "after": 6411
+    }
+   ]
+  },
+  {
+   "id": "FL-0930-1345",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-30 13:45",
+   "end": "2022-09-30 13:45",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "LCEC-like and PRECO-like in one run: Lee 400,547 to 228,410 to 402,335, Collier 146,178 to 121,970 to 145,930, Hardee 9,494 to 20 to 9,494.",
+   "state_before": 1952199,
+   "state_during_min": 1708846,
+   "state_after": 1734753,
+   "counties": [
+    {
+     "fips": "12071",
+     "county": "Lee",
+     "before": 400547,
+     "during_min": 228410,
+     "after": 402335
+    },
+    {
+     "fips": "12021",
+     "county": "Collier",
+     "before": 146178,
+     "during_min": 121970,
+     "after": 145930
+    },
+    {
+     "fips": "12081",
+     "county": "Manatee",
+     "before": 109053,
+     "during_min": 85580,
+     "after": 105210
+    },
+    {
+     "fips": "12049",
+     "county": "Hardee",
+     "before": 9494,
+     "during_min": 20,
+     "after": 9494
+    }
+   ]
+  },
+  {
+   "id": "FL-0930-1400",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-30 14:00",
+   "end": "2022-09-30 14:15",
+   "n_runs": 2,
+   "kind": "artifact",
+   "evidence": "TECO 2-run block: Hillsborough 134,568 to 427-431 to 134,672.",
+   "state_before": 1708846,
+   "state_during_min": 1732455,
+   "state_after": 1924255,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 134568,
+     "during_min": 427,
+     "after": 134672
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 139122,
+     "during_min": 79335,
+     "after": 137024
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 4828,
+     "during_min": 2664,
+     "after": 4751
+    },
+    {
+     "fips": "12095",
+     "county": "Orange",
+     "before": 139381,
+     "during_min": 137668,
+     "after": 139058
+    }
+   ]
+  },
+  {
+   "id": "FL-0930-1845",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-30 18:45",
+   "end": "2022-09-30 18:45",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "TECO pattern: Hillsborough 108,260 to 867 to 106,897.",
+   "state_before": 1801676,
+   "state_during_min": 1635650,
+   "state_after": 1772068,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 108260,
+     "during_min": 867,
+     "after": 106897
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 126598,
+     "during_min": 74152,
+     "after": 126468
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 2658,
+     "during_min": 615,
+     "after": 2830
+    }
+   ]
+  },
+  {
+   "id": "FL-0930-2045",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-30 20:45",
+   "end": "2022-09-30 20:45",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "TECO pattern: Hillsborough 99,743 to 895 to 92,225.",
+   "state_before": 1701248,
+   "state_during_min": 1541094,
+   "state_after": 1654791,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 99743,
+     "during_min": 895,
+     "after": 92225
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 116436,
+     "during_min": 66976,
+     "after": 109289
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 2342,
+     "during_min": 611,
+     "after": 1960
+    }
+   ]
+  },
+  {
+   "id": "FL-0930-2300",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-09-30 23:00",
+   "end": "2022-09-30 23:00",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "TECO pattern: Hillsborough 84,216 to 537 to 82,914.",
+   "state_before": 1551270,
+   "state_during_min": 1418373,
+   "state_after": 1537548,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 84216,
+     "during_min": 537,
+     "after": 82914
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 99065,
+     "during_min": 56104,
+     "after": 97452
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 1748,
+     "during_min": 189,
+     "after": 1591
+    }
+   ]
+  },
+  {
+   "id": "FL-1001-1030",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-10-01 10:30",
+   "end": "2022-10-01 10:30",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "TECO pattern: Hillsborough 41,241 to 333 to 41,561.",
+   "state_before": 1289804,
+   "state_during_min": 1218284,
+   "state_after": 1285923,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 41241,
+     "during_min": 333,
+     "after": 41561
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 77933,
+     "during_min": 50785,
+     "after": 76397
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 844,
+     "during_min": 8,
+     "after": 700
+    }
+   ]
+  },
+  {
+   "id": "FL-1001-1345",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-10-01 13:45",
+   "end": "2022-10-01 14:00",
+   "n_runs": 2,
+   "kind": "artifact",
+   "evidence": "FPL pattern: Sarasota 40, Charlotte 494, Brevard 1, Flagler and Okeechobee explicit 0; Lee keeps 166,171 of 346,165. The state halves: 1,233,907 to 523,668 to 1,217,817. [explicit-0 rows: Flagler, Okeechobee]",
+   "state_before": 1233907,
+   "state_during_min": 523668,
+   "state_after": 1217817,
+   "counties": [
+    {
+     "fips": "12071",
+     "county": "Lee",
+     "before": 346165,
+     "during_min": 166171,
+     "after": 346403
+    },
+    {
+     "fips": "12115",
+     "county": "Sarasota",
+     "before": 124090,
+     "during_min": 40,
+     "after": 125460
+    },
+    {
+     "fips": "12015",
+     "county": "Charlotte",
+     "before": 99014,
+     "during_min": 494,
+     "after": 99584
+    },
+    {
+     "fips": "12021",
+     "county": "Collier",
+     "before": 98740,
+     "during_min": 13717,
+     "after": 95303
+    },
+    {
+     "fips": "12127",
+     "county": "Volusia",
+     "before": 111059,
+     "during_min": 37699,
+     "after": 110418
+    },
+    {
+     "fips": "12081",
+     "county": "Manatee",
+     "before": 75486,
+     "during_min": 2974,
+     "after": 71216
+    }
+   ]
+  },
+  {
+   "id": "FL-1001-1830",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-10-01 18:30",
+   "end": "2022-10-01 18:30",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "TECO pattern: Hillsborough 41,595 to 333 to 39,926.",
+   "state_before": 1174258,
+   "state_during_min": 1106397,
+   "state_after": 1168062,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 41595,
+     "during_min": 333,
+     "after": 39926
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 61413,
+     "during_min": 39324,
+     "after": 60751
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 732,
+     "during_min": 27,
+     "after": 731
+    }
+   ]
+  },
+  {
+   "id": "FL-1001-2045",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-10-01 20:45",
+   "end": "2022-10-01 21:30",
+   "n_runs": 4,
+   "kind": "artifact",
+   "evidence": "LCEC-like 4-run dropout: Lee 352,223 to 166,000 to 349,052, Collier -17k, Hendry 2,909 to 2,610 to 2,909.",
+   "state_before": 1112459,
+   "state_during_min": 875301,
+   "state_after": 1076240,
+   "counties": [
+    {
+     "fips": "12071",
+     "county": "Lee",
+     "before": 352223,
+     "during_min": 166000,
+     "after": 349052
+    },
+    {
+     "fips": "12021",
+     "county": "Collier",
+     "before": 92834,
+     "during_min": 75720,
+     "after": 95498
+    }
+   ]
+  },
+  {
+   "id": "FL-1002-0030",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-10-02 00:30",
+   "end": "2022-10-02 00:30",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "TECO pattern: Hillsborough 69,787 to 294 to 62,520.",
+   "state_before": 1060353,
+   "state_during_min": 962458,
+   "state_after": 1049723,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 69787,
+     "during_min": 294,
+     "after": 62520
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 49334,
+     "during_min": 24864,
+     "after": 49463
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 848,
+     "during_min": 4,
+     "after": 847
+    }
+   ]
+  },
+  {
+   "id": "FL-1002-0115",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-10-02 01:15",
+   "end": "2022-10-02 01:15",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "TECO pattern: Hillsborough 60,811 to 292 to 57,852.",
+   "state_before": 1000665,
+   "state_during_min": 914420,
+   "state_after": 994424,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 60811,
+     "during_min": 292,
+     "after": 57852
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 47959,
+     "during_min": 23949,
+     "after": 47070
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 778,
+     "during_min": 4,
+     "after": 707
+    }
+   ]
+  },
+  {
+   "id": "FL-1002-1615",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-10-02 16:15",
+   "end": "2022-10-02 16:15",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "TECO pattern: Hillsborough 14,708 to 256 to 14,771, Pasco 235 to 5 to 232.",
+   "state_before": 817663,
+   "state_during_min": 792689,
+   "state_after": 811407,
+   "counties": [
+    {
+     "fips": "12057",
+     "county": "Hillsborough",
+     "before": 14708,
+     "during_min": 256,
+     "after": 14771
+    },
+    {
+     "fips": "12105",
+     "county": "Polk",
+     "before": 24215,
+     "during_min": 18592,
+     "after": 23339
+    },
+    {
+     "fips": "12101",
+     "county": "Pasco",
+     "before": 235,
+     "during_min": 5,
+     "after": 232
+    }
+   ]
+  },
+  {
+   "id": "FL-1003-2015",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-10-03 20:15",
+   "end": "2022-10-03 23:30",
+   "n_runs": 14,
+   "kind": "artifact",
+   "evidence": "LCEC-like 14-run dropout: Lee drops 173,625 and gets 173,397 back (274,915 to 85,110-101,290 to 258,507); Collier and Hendry move with it.",
+   "state_before": 558584,
+   "state_during_min": 341122,
+   "state_after": 521026,
+   "counties": [
+    {
+     "fips": "12071",
+     "county": "Lee",
+     "before": 274915,
+     "during_min": 85110,
+     "after": 258507
+    },
+    {
+     "fips": "12021",
+     "county": "Collier",
+     "before": 33923,
+     "during_min": 28720,
+     "after": 34898
+    }
+   ]
+  },
+  {
+   "id": "FL-1004-0745",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-10-04 07:45",
+   "end": "2022-10-04 07:45",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "FPL pattern: Charlotte 69,973 to 633 to 69,973 and Sarasota 67,370 to 0 to 67,370, both exact returns. The state drops to 38%. [explicit-0 rows: Miami-Dade, Sarasota]",
+   "state_before": 424647,
+   "state_during_min": 162906,
+   "state_after": 425082,
+   "counties": [
+    {
+     "fips": "12015",
+     "county": "Charlotte",
+     "before": 69973,
+     "during_min": 633,
+     "after": 69973
+    },
+    {
+     "fips": "12115",
+     "county": "Sarasota",
+     "before": 67370,
+     "during_min": 0,
+     "after": 67370
+    },
+    {
+     "fips": "12071",
+     "county": "Lee",
+     "before": 217866,
+     "during_min": 151316,
+     "after": 217866
+    },
+    {
+     "fips": "12081",
+     "county": "Manatee",
+     "before": 22842,
+     "during_min": 741,
+     "after": 22831
+    },
+    {
+     "fips": "12021",
+     "county": "Collier",
+     "before": 22833,
+     "during_min": 3303,
+     "after": 22833
+    },
+    {
+     "fips": "12027",
+     "county": "DeSoto",
+     "before": 9306,
+     "during_min": 146,
+     "after": 9306
+    }
+   ]
+  },
+  {
+   "id": "FL-1007-0930",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-10-07 09:30",
+   "end": "2022-10-07 09:30",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "Lee 112,144 to 8,000 to 79,719 in one run (both Lee feeds missing); Collier 6,948 to 4,908.",
+   "state_before": 155709,
+   "state_during_min": 48818,
+   "state_after": 123112,
+   "counties": [
+    {
+     "fips": "12071",
+     "county": "Lee",
+     "before": 112144,
+     "during_min": 8000,
+     "after": 79719
+    },
+    {
+     "fips": "12021",
+     "county": "Collier",
+     "before": 6948,
+     "during_min": 4908,
+     "after": 6862
+    }
+   ]
+  },
+  {
+   "id": "FL-1007-0945",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-10-07 09:45",
+   "end": "2022-10-07 13:30",
+   "n_runs": 16,
+   "kind": "unclear",
+   "evidence": "16-run partial plateau, probably a dropout: Lee frozen at 79,719 or 79,669, then +18,344 to 98,013 at 13:45 with no storm. Charlotte is frozen at 22,759 too. 'before' is 09:15, because 09:30 is the deep one-run dip.",
+   "state_before": 155709,
+   "state_during_min": 122210,
+   "state_after": 140978,
+   "counties": [
+    {
+     "fips": "12071",
+     "county": "Lee",
+     "before": 112144,
+     "during_min": 79669,
+     "after": 98013
+    }
+   ]
+  },
+  {
+   "id": "FL-1007-1715",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-10-07 17:15",
+   "end": "2022-10-07 17:15",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "FPL pattern: Charlotte 20,859 to 529 to 20,859 and Sarasota 6,811 to 21 to 6,811, exact returns.",
+   "state_before": 135293,
+   "state_during_min": 93359,
+   "state_after": 135917,
+   "counties": [
+    {
+     "fips": "12015",
+     "county": "Charlotte",
+     "before": 20859,
+     "during_min": 529,
+     "after": 20859
+    },
+    {
+     "fips": "12071",
+     "county": "Lee",
+     "before": 97043,
+     "during_min": 90063,
+     "after": 97043
+    },
+    {
+     "fips": "12115",
+     "county": "Sarasota",
+     "before": 6811,
+     "during_min": 21,
+     "after": 6811
+    },
+    {
+     "fips": "12021",
+     "county": "Collier",
+     "before": 6656,
+     "during_min": 1953,
+     "after": 7031
+    },
+    {
+     "fips": "12027",
+     "county": "DeSoto",
+     "before": 1168,
+     "during_min": 69,
+     "after": 1171
+    },
+    {
+     "fips": "12081",
+     "county": "Manatee",
+     "before": 627,
+     "during_min": 22,
+     "after": 619
+    }
+   ]
+  },
+  {
+   "id": "FL-1007-1900",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-10-07 19:00",
+   "end": "2022-10-07 19:00",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "FPL pattern: Charlotte 20,399 to 529, Sarasota 6,181 to 21; the same residuals as at 17:15.",
+   "state_before": 135066,
+   "state_during_min": 93706,
+   "state_after": 132651,
+   "counties": [
+    {
+     "fips": "12015",
+     "county": "Charlotte",
+     "before": 20399,
+     "during_min": 529,
+     "after": 19709
+    },
+    {
+     "fips": "12071",
+     "county": "Lee",
+     "before": 96773,
+     "during_min": 90063,
+     "after": 96443
+    },
+    {
+     "fips": "12115",
+     "county": "Sarasota",
+     "before": 6181,
+     "during_min": 21,
+     "after": 5321
+    },
+    {
+     "fips": "12021",
+     "county": "Collier",
+     "before": 6975,
+     "during_min": 1953,
+     "after": 6894
+    },
+    {
+     "fips": "12027",
+     "county": "DeSoto",
+     "before": 1120,
+     "during_min": 81,
+     "after": 1008
+    },
+    {
+     "fips": "12081",
+     "county": "Manatee",
+     "before": 625,
+     "during_min": 19,
+     "after": 662
+    }
+   ]
+  },
+  {
+   "id": "FL-1008-0030",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-10-08 00:30",
+   "end": "2022-10-08 00:30",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "FPL pattern: Charlotte 11,942 to 482 to 11,942, Sarasota 1,740 to 0 to 1,740. [explicit-0 rows: Sarasota]",
+   "state_before": 87347,
+   "state_during_min": 64303,
+   "state_after": 86613,
+   "counties": [
+    {
+     "fips": "12015",
+     "county": "Charlotte",
+     "before": 11942,
+     "during_min": 482,
+     "after": 11942
+    },
+    {
+     "fips": "12071",
+     "county": "Lee",
+     "before": 64914,
+     "during_min": 60914,
+     "after": 64914
+    },
+    {
+     "fips": "12021",
+     "county": "Collier",
+     "before": 5951,
+     "during_min": 2115,
+     "after": 5368
+    },
+    {
+     "fips": "12115",
+     "county": "Sarasota",
+     "before": 1740,
+     "during_min": 0,
+     "after": 1740
+    },
+    {
+     "fips": "12081",
+     "county": "Manatee",
+     "before": 790,
+     "during_min": 11,
+     "after": 759
+    },
+    {
+     "fips": "12027",
+     "county": "DeSoto",
+     "before": 378,
+     "during_min": 48,
+     "after": 378
+    }
+   ]
+  },
+  {
+   "id": "FL-1011-2000",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-10-11 20:00",
+   "end": "2022-10-11 21:45",
+   "n_runs": 8,
+   "kind": "artifact",
+   "evidence": "Duval (absent 3 runs, 2,908 to 3,378) and Clay (absent 8 runs) drop out; Palm Beach 3,482 to 148 to 155 is real restoration at the same time. [absent rows: Duval]",
+   "state_before": 28501,
+   "state_during_min": 21467,
+   "state_after": 28323,
+   "counties": [
+    {
+     "fips": "12031",
+     "county": "Duval",
+     "before": 2908,
+     "during_min": 0,
+     "after": 3378
+    },
+    {
+     "fips": "12019",
+     "county": "Clay",
+     "before": 295,
+     "during_min": 0,
+     "after": 558
+    },
+    {
+     "fips": "12086",
+     "county": "Miami-Dade",
+     "before": 1180,
+     "during_min": 992,
+     "after": 1126
+    }
+   ]
+  },
+  {
+   "id": "FL-1016-0345",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-10-16 03:45",
+   "end": "2022-10-16 03:45",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "Lee 15,292 to 255 to 15,303 in one run; no other county moves.",
+   "state_before": 18462,
+   "state_during_min": 3418,
+   "state_after": 18470,
+   "counties": [
+    {
+     "fips": "12071",
+     "county": "Lee",
+     "before": 15292,
+     "during_min": 255,
+     "after": 15303
+    }
+   ]
+  },
+  {
+   "id": "FL-1017-0715",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-10-17 07:15",
+   "end": "2022-10-17 12:15",
+   "n_runs": 21,
+   "kind": "artifact",
+   "evidence": "Duval row absent at 07:15 and 08:00-12:15 (19 of 21 runs) with 2,858-2,882 on both sides, so it reads 0. [absent rows: Duval]",
+   "state_before": 14909,
+   "state_during_min": 11743,
+   "state_after": 14714,
+   "counties": [
+    {
+     "fips": "12031",
+     "county": "Duval",
+     "before": 2858,
+     "during_min": 0,
+     "after": 2882
+    }
+   ]
+  },
+  {
+   "id": "FL-1021-1430",
+   "extract": "eaglei_fl_2022 (Florida)",
+   "start": "2022-10-21 14:30",
+   "end": "2022-10-21 18:00",
+   "n_runs": 15,
+   "kind": "artifact",
+   "evidence": "Lee 7,206 to 106 for 15 runs, then 11,066.",
+   "state_before": 9067,
+   "state_during_min": 1386,
+   "state_after": 12244,
+   "counties": [
+    {
+     "fips": "12071",
+     "county": "Lee",
+     "before": 7206,
+     "during_min": 106,
+     "after": 11066
+    }
+   ]
+  },
+  {
+   "id": "LA-0819-1445",
+   "extract": "eaglei_2021_ida_LA_MS (Louisiana)",
+   "start": "2021-08-19 14:45",
+   "end": "2021-08-19 14:45",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "NULL-row run: 50 of 62 Louisiana rows have empty customers_out (Ouachita 1,708 on both sides), so the known total collapses. Mississippi has 13 NULL rows in the same run. [NULL rows (1 counties >=1,000 before): Ouachita]",
+   "state_before": 3363,
+   "state_during_min": 155,
+   "state_after": 3456,
+   "counties": []
+  },
+  {
+   "id": "LA-0829-1430",
+   "extract": "eaglei_2021_ida_LA_MS (Louisiana)",
+   "start": "2021-08-29 14:30",
+   "end": "2021-08-29 17:00",
+   "n_runs": 11,
+   "kind": "unclear",
+   "evidence": "Churn in the early surge: Lafourche 9,601 to 4,858 to 9,454 and St. Bernard 980 to 6 to 1,799 while Orleans and Jefferson climb.",
+   "state_before": 38419,
+   "state_during_min": 32873,
+   "state_after": 123401,
+   "counties": [
+    {
+     "fips": "22057",
+     "county": "Lafourche",
+     "before": 9601,
+     "during_min": 4858,
+     "after": 9454
+    },
+    {
+     "fips": "22087",
+     "county": "St. Bernard",
+     "before": 980,
+     "during_min": 6,
+     "after": 1799
+    },
+    {
+     "fips": "22071",
+     "county": "Orleans",
+     "before": 9271,
+     "during_min": 8458,
+     "after": 34169
+    },
+    {
+     "fips": "22051",
+     "county": "Jefferson",
+     "before": 7090,
+     "during_min": 6496,
+     "after": 37571
+    },
+    {
+     "fips": "22095",
+     "county": "St. John the Baptist",
+     "before": 269,
+     "during_min": 26,
+     "after": 5484
+    }
+   ]
+  },
+  {
+   "id": "LA-0830-0215",
+   "extract": "eaglei_2021_ida_LA_MS (Louisiana)",
+   "start": "2021-08-30 02:15",
+   "end": "2021-08-30 11:30",
+   "n_runs": 38,
+   "kind": "artifact",
+   "evidence": "Long DEMCO-like dropout (38 runs): St. Helena frozen at 1,684-1,705 (3,663 before, 3,992 after), Livingston 43,827 to 19,514 to 46,213. The state reads 940,376 at 11:00 and 1,012,354 at 11:45, when it ends: a false surge.",
+   "state_before": 905071,
+   "state_during_min": 877755,
+   "state_after": 1012354,
+   "counties": [
+    {
+     "fips": "22063",
+     "county": "Livingston",
+     "before": 43827,
+     "during_min": 19514,
+     "after": 46213
+    },
+    {
+     "fips": "22005",
+     "county": "Ascension",
+     "before": 51640,
+     "during_min": 37412,
+     "after": 54436
+    },
+    {
+     "fips": "22037",
+     "county": "East Feliciana",
+     "before": 4110,
+     "during_min": 1957,
+     "after": 5070
+    },
+    {
+     "fips": "22091",
+     "county": "St. Helena",
+     "before": 3663,
+     "during_min": 1684,
+     "after": 3992
+    },
+    {
+     "fips": "22125",
+     "county": "West Feliciana",
+     "before": 1612,
+     "during_min": 57,
+     "after": 1628
+    },
+    {
+     "fips": "22071",
+     "county": "Orleans",
+     "before": 176975,
+     "during_min": 175530,
+     "after": 176367
+    }
+   ]
+  },
+  {
+   "id": "LA-0830-1730",
+   "extract": "eaglei_2021_ida_LA_MS (Louisiana)",
+   "start": "2021-08-30 17:30",
+   "end": "2021-08-30 17:30",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "NULL-row dropout: 13 parishes that read at least 1,000 either side are NULL (Jefferson 200,679, Orleans 177,904, Lafourche 43,387 ...). East Baton Rouge 158,527 to 26,026 and Tangipahoa 68,385 to 5,955 drop partly. The known total is 21% of its neighbours. [NULL rows (13 counties >=1,000 before): Assumption, Iberville, Jefferson, Lafourche, Orleans, Plaquemines]",
+   "state_before": 1040165,
+   "state_during_min": 221784,
+   "state_after": 1041035,
+   "counties": [
+    {
+     "fips": "22033",
+     "county": "East Baton Rouge",
+     "before": 158527,
+     "during_min": 26026,
+     "after": 158793
+    },
+    {
+     "fips": "22105",
+     "county": "Tangipahoa",
+     "before": 68385,
+     "during_min": 5955,
+     "after": 68386
+    },
+    {
+     "fips": "22005",
+     "county": "Ascension",
+     "before": 52814,
+     "during_min": 14816,
+     "after": 52902
+    },
+    {
+     "fips": "22063",
+     "county": "Livingston",
+     "before": 48191,
+     "during_min": 28593,
+     "after": 48513
+    },
+    {
+     "fips": "22117",
+     "county": "Washington",
+     "before": 18841,
+     "during_min": 13007,
+     "after": 19709
+    },
+    {
+     "fips": "22103",
+     "county": "St. Tammany",
+     "before": 124603,
+     "during_min": 120424,
+     "after": 124608
+    }
+   ]
+  },
+  {
+   "id": "LA-0830-1830",
+   "extract": "eaglei_2021_ida_LA_MS (Louisiana)",
+   "start": "2021-08-30 18:30",
+   "end": "2021-08-30 18:30",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "NULL-row dropout: 19 parishes NULL, including East Baton Rouge, Livingston and Ascension. Tangipahoa 68,386 to 4,706 to 68,382. [NULL rows (19 counties >=1,000 before): Ascension, Assumption, East Baton Rouge, East Feliciana, Iberville, Jefferson]",
+   "state_before": 1036720,
+   "state_during_min": 145444,
+   "state_after": 1027728,
+   "counties": [
+    {
+     "fips": "22105",
+     "county": "Tangipahoa",
+     "before": 68386,
+     "during_min": 4706,
+     "after": 68382
+    },
+    {
+     "fips": "22117",
+     "county": "Washington",
+     "before": 18095,
+     "during_min": 13796,
+     "after": 17740
+    },
+    {
+     "fips": "22103",
+     "county": "St. Tammany",
+     "before": 124611,
+     "during_min": 120960,
+     "after": 124830
+    }
+   ]
+  },
+  {
+   "id": "LA-0830-1945",
+   "extract": "eaglei_2021_ida_LA_MS (Louisiana)",
+   "start": "2021-08-30 19:45",
+   "end": "2021-08-30 19:45",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "DEMCO-like: St. Helena reads 1,694 (4,636 to 4,639); Livingston, East Baton Rouge, Ascension and West Feliciana drop for one run.",
+   "state_before": 1024678,
+   "state_during_min": 945148,
+   "state_after": 1031530,
+   "counties": [
+    {
+     "fips": "22063",
+     "county": "Livingston",
+     "before": 49297,
+     "during_min": 19944,
+     "after": 52399
+    },
+    {
+     "fips": "22033",
+     "county": "East Baton Rouge",
+     "before": 149499,
+     "during_min": 123412,
+     "after": 147717
+    },
+    {
+     "fips": "22005",
+     "county": "Ascension",
+     "before": 50766,
+     "during_min": 35263,
+     "after": 50980
+    },
+    {
+     "fips": "22125",
+     "county": "West Feliciana",
+     "before": 3854,
+     "during_min": 398,
+     "after": 3861
+    },
+    {
+     "fips": "22091",
+     "county": "St. Helena",
+     "before": 4636,
+     "during_min": 1694,
+     "after": 4639
+    },
+    {
+     "fips": "22037",
+     "county": "East Feliciana",
+     "before": 5899,
+     "during_min": 3189,
+     "after": 5908
+    }
+   ]
+  },
+  {
+   "id": "LA-0830-2030",
+   "extract": "eaglei_2021_ida_LA_MS (Louisiana)",
+   "start": "2021-08-30 20:30",
+   "end": "2021-08-30 21:00",
+   "n_runs": 3,
+   "kind": "artifact",
+   "evidence": "DEMCO-like 3 runs: St. Helena 1,694, Livingston 52,415 to 19,946 to 53,173.",
+   "state_before": 1033310,
+   "state_during_min": 948491,
+   "state_after": 1031203,
+   "counties": [
+    {
+     "fips": "22063",
+     "county": "Livingston",
+     "before": 52415,
+     "during_min": 19946,
+     "after": 53173
+    },
+    {
+     "fips": "22033",
+     "county": "East Baton Rouge",
+     "before": 146332,
+     "during_min": 120777,
+     "after": 145450
+    },
+    {
+     "fips": "22005",
+     "county": "Ascension",
+     "before": 50990,
+     "during_min": 36246,
+     "after": 51237
+    },
+    {
+     "fips": "22125",
+     "county": "West Feliciana",
+     "before": 3867,
+     "during_min": 389,
+     "after": 3878
+    },
+    {
+     "fips": "22091",
+     "county": "St. Helena",
+     "before": 4643,
+     "during_min": 1694,
+     "after": 4864
+    },
+    {
+     "fips": "22037",
+     "county": "East Feliciana",
+     "before": 5913,
+     "during_min": 3189,
+     "after": 5926
+    }
+   ]
+  },
+  {
+   "id": "LA-0830-2145",
+   "extract": "eaglei_2021_ida_LA_MS (Louisiana)",
+   "start": "2021-08-30 21:45",
+   "end": "2021-08-30 22:30",
+   "n_runs": 4,
+   "kind": "artifact",
+   "evidence": "DEMCO-like 4 runs: St. Helena 1,694, Livingston 53,177 to 20,019 to 56,418.",
+   "state_before": 1030930,
+   "state_during_min": 940591,
+   "state_after": 1026591,
+   "counties": [
+    {
+     "fips": "22063",
+     "county": "Livingston",
+     "before": 53177,
+     "during_min": 20019,
+     "after": 56418
+    },
+    {
+     "fips": "22033",
+     "county": "East Baton Rouge",
+     "before": 145220,
+     "during_min": 116812,
+     "after": 142082
+    },
+    {
+     "fips": "22005",
+     "county": "Ascension",
+     "before": 51414,
+     "during_min": 36119,
+     "after": 51097
+    },
+    {
+     "fips": "22125",
+     "county": "West Feliciana",
+     "before": 3881,
+     "during_min": 389,
+     "after": 4099
+    },
+    {
+     "fips": "22091",
+     "county": "St. Helena",
+     "before": 4867,
+     "during_min": 1694,
+     "after": 4983
+    },
+    {
+     "fips": "22037",
+     "county": "East Feliciana",
+     "before": 6234,
+     "during_min": 3190,
+     "after": 6323
+    }
+   ]
+  },
+  {
+   "id": "LA-0831-0115",
+   "extract": "eaglei_2021_ida_LA_MS (Louisiana)",
+   "start": "2021-08-31 01:15",
+   "end": "2021-08-31 01:15",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "DEMCO-like: St. Helena 1,694, Livingston 54,486 to 21,370.",
+   "state_before": 1007772,
+   "state_during_min": 927798,
+   "state_after": 1010292,
+   "counties": [
+    {
+     "fips": "22063",
+     "county": "Livingston",
+     "before": 54486,
+     "during_min": 21370,
+     "after": 51886
+    },
+    {
+     "fips": "22033",
+     "county": "East Baton Rouge",
+     "before": 134084,
+     "during_min": 110828,
+     "after": 133569
+    },
+    {
+     "fips": "22005",
+     "county": "Ascension",
+     "before": 46805,
+     "during_min": 34539,
+     "after": 47131
+    },
+    {
+     "fips": "22125",
+     "county": "West Feliciana",
+     "before": 4107,
+     "during_min": 390,
+     "after": 4103
+    },
+    {
+     "fips": "22091",
+     "county": "St. Helena",
+     "before": 4999,
+     "during_min": 1694,
+     "after": 7488
+    },
+    {
+     "fips": "22037",
+     "county": "East Feliciana",
+     "before": 5898,
+     "during_min": 3188,
+     "after": 8597
+    }
+   ]
+  },
+  {
+   "id": "LA-0831-1415",
+   "extract": "eaglei_2021_ida_LA_MS (Louisiana)",
+   "start": "2021-08-31 14:15",
+   "end": "2021-08-31 15:00",
+   "n_runs": 4,
+   "kind": "artifact",
+   "evidence": "DEMCO-like 4 runs: St. Helena 1,694, Livingston 52,834 to 21,291 to 53,809.",
+   "state_before": 993963,
+   "state_during_min": 909510,
+   "state_after": 1000864,
+   "counties": [
+    {
+     "fips": "22063",
+     "county": "Livingston",
+     "before": 52834,
+     "during_min": 21291,
+     "after": 53809
+    },
+    {
+     "fips": "22033",
+     "county": "East Baton Rouge",
+     "before": 127252,
+     "during_min": 102906,
+     "after": 130143
+    },
+    {
+     "fips": "22005",
+     "county": "Ascension",
+     "before": 45734,
+     "during_min": 33061,
+     "after": 46974
+    },
+    {
+     "fips": "22091",
+     "county": "St. Helena",
+     "before": 7701,
+     "during_min": 1694,
+     "after": 8080
+    },
+    {
+     "fips": "22037",
+     "county": "East Feliciana",
+     "before": 8202,
+     "during_min": 2725,
+     "after": 8640
+    },
+    {
+     "fips": "22125",
+     "county": "West Feliciana",
+     "before": 2839,
+     "during_min": 133,
+     "after": 2557
+    }
+   ]
+  },
+  {
+   "id": "LA-0831-1715",
+   "extract": "eaglei_2021_ida_LA_MS (Louisiana)",
+   "start": "2021-08-31 17:15",
+   "end": "2021-09-01 22:15",
+   "n_runs": 117,
+   "kind": "artifact",
+   "evidence": "Long DEMCO-like dropout (117 runs, 29 h): St. Helena frozen at 1,694 (7,852 before, 8,619 after), Livingston 55,244 to 21,291 to 62,364. It shows as a -92,935 state 'restoration' at 17:15 and a +83,349 'jump' at 22:30 the next day.",
+   "state_before": 1002335,
+   "state_during_min": 872668,
+   "state_after": 956017,
+   "counties": [
+    {
+     "fips": "22063",
+     "county": "Livingston",
+     "before": 55244,
+     "during_min": 19481,
+     "after": 62364
+    },
+    {
+     "fips": "22033",
+     "county": "East Baton Rouge",
+     "before": 129722,
+     "during_min": 89863,
+     "after": 113390
+    },
+    {
+     "fips": "22005",
+     "county": "Ascension",
+     "before": 48378,
+     "during_min": 33179,
+     "after": 40628
+    },
+    {
+     "fips": "22091",
+     "county": "St. Helena",
+     "before": 7852,
+     "during_min": 1694,
+     "after": 8619
+    },
+    {
+     "fips": "22037",
+     "county": "East Feliciana",
+     "before": 8647,
+     "during_min": 2091,
+     "after": 6144
+    },
+    {
+     "fips": "22071",
+     "county": "Orleans",
+     "before": 181002,
+     "during_min": 169028,
+     "after": 172430
+    }
+   ]
+  },
+  {
+   "id": "LA-0902-0000",
+   "extract": "eaglei_2021_ida_LA_MS (Louisiana)",
+   "start": "2021-09-02 00:00",
+   "end": "2021-09-02 00:00",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "St. Tammany 107,855 to 83,414 to 106,474 and Washington 13,118 to 5,194 to 12,844 in one run (a single co-op feed?).",
+   "state_before": 956098,
+   "state_during_min": 921096,
+   "state_after": 957764,
+   "counties": [
+    {
+     "fips": "22103",
+     "county": "St. Tammany",
+     "before": 107855,
+     "during_min": 83414,
+     "after": 106474
+    },
+    {
+     "fips": "22117",
+     "county": "Washington",
+     "before": 13118,
+     "during_min": 5194,
+     "after": 12844
+    },
+    {
+     "fips": "22105",
+     "county": "Tangipahoa",
+     "before": 66425,
+     "during_min": 62138,
+     "after": 66427
+    }
+   ]
+  },
+  {
+   "id": "LA-0906-0715",
+   "extract": "eaglei_2021_ida_LA_MS (Louisiana)",
+   "start": "2021-09-06 07:15",
+   "end": "2021-09-06 07:15",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "DEMCO-like with exact returns: Livingston 34,294 to 9,568 to 34,294, Ascension 20,464 to 9,787 to 20,464, St. Helena 7,294 to 1,120 to 7,294.",
+   "state_before": 535591,
+   "state_during_min": 482390,
+   "state_after": 535557,
+   "counties": [
+    {
+     "fips": "22063",
+     "county": "Livingston",
+     "before": 34294,
+     "during_min": 9568,
+     "after": 34294
+    },
+    {
+     "fips": "22005",
+     "county": "Ascension",
+     "before": 20464,
+     "during_min": 9787,
+     "after": 20464
+    },
+    {
+     "fips": "22033",
+     "county": "East Baton Rouge",
+     "before": 9857,
+     "during_min": 2069,
+     "after": 9857
+    },
+    {
+     "fips": "22091",
+     "county": "St. Helena",
+     "before": 7294,
+     "during_min": 1120,
+     "after": 7294
+    },
+    {
+     "fips": "22105",
+     "county": "Tangipahoa",
+     "before": 51708,
+     "during_min": 50116,
+     "after": 51708
+    },
+    {
+     "fips": "22037",
+     "county": "East Feliciana",
+     "before": 1440,
+     "during_min": 1,
+     "after": 1440
+    }
+   ]
+  },
+  {
+   "id": "LA-0907-2200",
+   "extract": "eaglei_2021_ida_LA_MS (Louisiana)",
+   "start": "2021-09-07 22:00",
+   "end": "2021-09-07 22:00",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "NULL-row dropout: 10 parishes NULL (Jefferson, Orleans, Lafourche, Plaquemines, ...), and Tangipahoa 40,318 to 2,775 to 40,387. [NULL rows (10 counties >=1,000 before): Assumption, Iberville, Jefferson, Lafourche, Orleans, Plaquemines]",
+   "state_before": 434016,
+   "state_during_min": 67483,
+   "state_after": 436902,
+   "counties": [
+    {
+     "fips": "22105",
+     "county": "Tangipahoa",
+     "before": 40318,
+     "during_min": 2775,
+     "after": 40387
+    },
+    {
+     "fips": "22063",
+     "county": "Livingston",
+     "before": 31026,
+     "during_min": 24837,
+     "after": 32007
+    },
+    {
+     "fips": "22005",
+     "county": "Ascension",
+     "before": 14295,
+     "during_min": 10677,
+     "after": 14292
+    },
+    {
+     "fips": "22033",
+     "county": "East Baton Rouge",
+     "before": 9385,
+     "during_min": 7681,
+     "after": 9073
+    },
+    {
+     "fips": "22091",
+     "county": "St. Helena",
+     "before": 7330,
+     "during_min": 6174,
+     "after": 7330
+    },
+    {
+     "fips": "22117",
+     "county": "Washington",
+     "before": 1925,
+     "during_min": 620,
+     "after": 1753
+    }
+   ]
+  },
+  {
+   "id": "MS-0813-1600",
+   "extract": "eaglei_2021_ida_LA_MS (Mississippi)",
+   "start": "2021-08-13 16:00",
+   "end": "2021-08-13 19:30",
+   "n_runs": 15,
+   "kind": "unclear",
+   "evidence": "Quiet time: Sunflower 1,817 to 13 at 16:00 (absent from 17:15, 1 after) and a new Panola outage (absent to 1,876 at 19:45). Many small counties are absent (Lauderdale 159 to absent). Could be real churn or a partial feed. [absent rows: Sunflower]",
+   "state_before": 2766,
+   "state_during_min": 141,
+   "state_after": 2560,
+   "counties": [
+    {
+     "fips": "28107",
+     "county": "Panola",
+     "before": 0,
+     "during_min": 0,
+     "after": 1876
+    },
+    {
+     "fips": "28133",
+     "county": "Sunflower",
+     "before": 1817,
+     "during_min": 0,
+     "after": 1
+    },
+    {
+     "fips": "28035",
+     "county": "Forrest",
+     "before": 310,
+     "during_min": 0,
+     "after": 15
+    }
+   ]
+  },
+  {
+   "id": "MS-0830-0600",
+   "extract": "eaglei_2021_ida_LA_MS (Mississippi)",
+   "start": "2021-08-30 06:00",
+   "end": "2021-08-30 06:45",
+   "n_runs": 4,
+   "kind": "unclear",
+   "evidence": "Pike 10,675 to 5,262 to 6,546, Amite 5,597 to 2,058 to 2,204 during the surge; no return to old levels.",
+   "state_before": 61743,
+   "state_during_min": 50333,
+   "state_after": 56685,
+   "counties": [
+    {
+     "fips": "28113",
+     "county": "Pike",
+     "before": 10675,
+     "during_min": 5262,
+     "after": 6546
+    },
+    {
+     "fips": "28085",
+     "county": "Lincoln",
+     "before": 1354,
+     "during_min": 333,
+     "after": 811
+    },
+    {
+     "fips": "28077",
+     "county": "Lawrence",
+     "before": 609,
+     "during_min": 261,
+     "after": 554
+    },
+    {
+     "fips": "28037",
+     "county": "Franklin",
+     "before": 896,
+     "during_min": 304,
+     "after": 519
+    },
+    {
+     "fips": "28005",
+     "county": "Amite",
+     "before": 5597,
+     "during_min": 2058,
+     "after": 2204
+    }
+   ]
+  },
+  {
+   "id": "MS-0830-1745",
+   "extract": "eaglei_2021_ida_LA_MS (Mississippi)",
+   "start": "2021-08-30 17:45",
+   "end": "2021-08-30 17:45",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "15 min after Louisiana's NULL run: Hinds 6,247 to 1 to 6,140, Madison and Pike NULL, and Copiah, Rankin, Lincoln and Amite drop. Entergy-Mississippi-like. [NULL rows (3 counties >=1,000 before): Madison, Pike, Warren]",
+   "state_before": 89056,
+   "state_during_min": 50449,
+   "state_after": 87449,
+   "counties": [
+    {
+     "fips": "28049",
+     "county": "Hinds",
+     "before": 6247,
+     "during_min": 1,
+     "after": 6140
+    },
+    {
+     "fips": "28029",
+     "county": "Copiah",
+     "before": 6366,
+     "during_min": 3072,
+     "after": 6981
+    },
+    {
+     "fips": "28121",
+     "county": "Rankin",
+     "before": 4338,
+     "during_min": 1051,
+     "after": 4322
+    },
+    {
+     "fips": "28085",
+     "county": "Lincoln",
+     "before": 4031,
+     "during_min": 1375,
+     "after": 4572
+    },
+    {
+     "fips": "28005",
+     "county": "Amite",
+     "before": 2961,
+     "during_min": 306,
+     "after": 2964
+    },
+    {
+     "fips": "28157",
+     "county": "Wilkinson",
+     "before": 3084,
+     "during_min": 1659,
+     "after": 3139
+    }
+   ]
+  },
+  {
+   "id": "MS-0830-1845",
+   "extract": "eaglei_2021_ida_LA_MS (Mississippi)",
+   "start": "2021-08-30 18:45",
+   "end": "2021-08-30 18:45",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "Repeat of 17:45: Hinds 6,049 to 1 to 5,970, Madison and Pike NULL. [NULL rows (2 counties >=1,000 before): Madison, Pike]",
+   "state_before": 84329,
+   "state_during_min": 45221,
+   "state_after": 82313,
+   "counties": [
+    {
+     "fips": "28049",
+     "county": "Hinds",
+     "before": 6049,
+     "during_min": 1,
+     "after": 5970
+    },
+    {
+     "fips": "28029",
+     "county": "Copiah",
+     "before": 6927,
+     "during_min": 3180,
+     "after": 7127
+    },
+    {
+     "fips": "28085",
+     "county": "Lincoln",
+     "before": 4118,
+     "during_min": 955,
+     "after": 4200
+    },
+    {
+     "fips": "28005",
+     "county": "Amite",
+     "before": 3048,
+     "during_min": 392,
+     "after": 3048
+    },
+    {
+     "fips": "28121",
+     "county": "Rankin",
+     "before": 3311,
+     "during_min": 1052,
+     "after": 2788
+    },
+    {
+     "fips": "28157",
+     "county": "Wilkinson",
+     "before": 2739,
+     "during_min": 1246,
+     "after": 2775
+    }
+   ]
+  },
+  {
+   "id": "MS-0831-0045",
+   "extract": "eaglei_2021_ida_LA_MS (Mississippi)",
+   "start": "2021-08-31 00:45",
+   "end": "2021-08-31 01:30",
+   "n_runs": 4,
+   "kind": "artifact",
+   "evidence": "Pearl River 12,208 to 244 to 9,760 and Hancock 1,973 to 5 to 1,027 for 4 runs. Coast-Electric-like.",
+   "state_before": 55208,
+   "state_during_min": 40045,
+   "state_after": 52038,
+   "counties": [
+    {
+     "fips": "28109",
+     "county": "Pearl River",
+     "before": 12208,
+     "during_min": 244,
+     "after": 9760
+    },
+    {
+     "fips": "28045",
+     "county": "Hancock",
+     "before": 1973,
+     "during_min": 5,
+     "after": 1027
+    },
+    {
+     "fips": "28113",
+     "county": "Pike",
+     "before": 8691,
+     "during_min": 7580,
+     "after": 8254
+    },
+    {
+     "fips": "28005",
+     "county": "Amite",
+     "before": 3057,
+     "during_min": 2228,
+     "after": 2607
+    },
+    {
+     "fips": "28121",
+     "county": "Rankin",
+     "before": 1444,
+     "during_min": 1232,
+     "after": 1473
+    },
+    {
+     "fips": "28029",
+     "county": "Copiah",
+     "before": 4166,
+     "during_min": 3649,
+     "after": 3759
+    }
+   ]
+  },
+  {
+   "id": "MS-0831-0230",
+   "extract": "eaglei_2021_ida_LA_MS (Mississippi)",
+   "start": "2021-08-31 02:30",
+   "end": "2021-08-31 02:45",
+   "n_runs": 2,
+   "kind": "artifact",
+   "evidence": "Bolivar 2,535 to 60 to 2,537.",
+   "state_before": 51765,
+   "state_during_min": 47326,
+   "state_after": 49128,
+   "counties": [
+    {
+     "fips": "28011",
+     "county": "Bolivar",
+     "before": 2535,
+     "during_min": 60,
+     "after": 2537
+    }
+   ]
+  },
+  {
+   "id": "MS-0901-2330",
+   "extract": "eaglei_2021_ida_LA_MS (Mississippi)",
+   "start": "2021-09-01 23:30",
+   "end": "2021-09-02 01:45",
+   "n_runs": 10,
+   "kind": "unclear",
+   "evidence": "Pike 10,204 to 3,091 to 3,218, Franklin and Scott step down too; the state comes back only partly (37,732 to 19,451 to 28,049).",
+   "state_before": 37732,
+   "state_during_min": 19451,
+   "state_after": 28049,
+   "counties": [
+    {
+     "fips": "28101",
+     "county": "Newton",
+     "before": 1469,
+     "during_min": 580,
+     "after": 983
+    },
+    {
+     "fips": "28037",
+     "county": "Franklin",
+     "before": 2567,
+     "during_min": 779,
+     "after": 943
+    },
+    {
+     "fips": "28113",
+     "county": "Pike",
+     "before": 10204,
+     "during_min": 3091,
+     "after": 3218
+    }
+   ]
+  },
+  {
+   "id": "TX-0120-1145",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-01-20 11:45",
+   "end": "2021-01-20 12:30",
+   "n_runs": 4,
+   "kind": "unclear",
+   "evidence": "El Paso 13,014 to 7,480 to 11,197 (4 runs).",
+   "state_before": 16311,
+   "state_during_min": 10190,
+   "state_after": 15501,
+   "counties": [
+    {
+     "fips": "48141",
+     "county": "El Paso",
+     "before": 13014,
+     "during_min": 7480,
+     "after": 11197
+    }
+   ]
+  },
+  {
+   "id": "TX-0212-0115",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-02-12 01:15",
+   "end": "2021-02-12 01:15",
+   "n_runs": 1,
+   "kind": "unclear",
+   "evidence": "Travis 27,008 to 20,390 to 29,634.",
+   "state_before": 86257,
+   "state_during_min": 76465,
+   "state_after": 83775,
+   "counties": [
+    {
+     "fips": "48453",
+     "county": "Travis",
+     "before": 27008,
+     "during_min": 20390,
+     "after": 29634
+    },
+    {
+     "fips": "48251",
+     "county": "Johnson",
+     "before": 176,
+     "during_min": 2,
+     "after": 176
+    }
+   ]
+  },
+  {
+   "id": "TX-0212-1100",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-02-12 11:00",
+   "end": "2021-02-12 11:15",
+   "n_runs": 2,
+   "kind": "unclear",
+   "evidence": "Travis 18,624 to 11,500 to 19,318.",
+   "state_before": 59589,
+   "state_during_min": 51189,
+   "state_after": 58316,
+   "counties": [
+    {
+     "fips": "48453",
+     "county": "Travis",
+     "before": 18624,
+     "during_min": 11500,
+     "after": 19318
+    }
+   ]
+  },
+  {
+   "id": "TX-0214-1830",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-02-14 18:30",
+   "end": "2021-02-14 18:30",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "CTEC-like: Gillespie 5,604 to 299 to 5,620, Kerr 3,207 to 746, Mason 464 to 7 to 464, Kendall 191 to 9.",
+   "state_before": 62826,
+   "state_during_min": 53217,
+   "state_after": 60666,
+   "counties": [
+    {
+     "fips": "48171",
+     "county": "Gillespie",
+     "before": 5604,
+     "during_min": 299,
+     "after": 5620
+    },
+    {
+     "fips": "48265",
+     "county": "Kerr",
+     "before": 3207,
+     "during_min": 746,
+     "after": 3257
+    },
+    {
+     "fips": "48319",
+     "county": "Mason",
+     "before": 464,
+     "during_min": 7,
+     "after": 464
+    },
+    {
+     "fips": "48259",
+     "county": "Kendall",
+     "before": 191,
+     "during_min": 9,
+     "after": 198
+    },
+    {
+     "fips": "48431",
+     "county": "Sterling",
+     "before": 500,
+     "during_min": 356,
+     "after": 474
+    }
+   ]
+  },
+  {
+   "id": "TX-0215-0200",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-02-15 02:00",
+   "end": "2021-02-15 02:30",
+   "n_runs": 3,
+   "kind": "artifact",
+   "evidence": "CenterPoint-like: Harris 9,743 to 940, Fort Bend 4,171 to 0 (absent row). [absent rows: Fort Bend]",
+   "state_before": 125045,
+   "state_during_min": 108753,
+   "state_after": 126785,
+   "counties": [
+    {
+     "fips": "48201",
+     "county": "Harris",
+     "before": 9743,
+     "during_min": 940,
+     "after": 9218
+    },
+    {
+     "fips": "48157",
+     "county": "Fort Bend",
+     "before": 4171,
+     "during_min": 0,
+     "after": 4112
+    },
+    {
+     "fips": "48015",
+     "county": "Austin",
+     "before": 1134,
+     "during_min": 133,
+     "after": 1078
+    },
+    {
+     "fips": "48139",
+     "county": "Ellis",
+     "before": 5475,
+     "during_min": 3444,
+     "after": 4122
+    },
+    {
+     "fips": "48005",
+     "county": "Angelina",
+     "before": 1567,
+     "during_min": 707,
+     "after": 1224
+    },
+    {
+     "fips": "48085",
+     "county": "Collin",
+     "before": 1646,
+     "during_min": 1143,
+     "after": 2637
+    }
+   ]
+  },
+  {
+   "id": "TX-0215-0800",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-02-15 08:00",
+   "end": "2021-02-15 09:45",
+   "n_runs": 8,
+   "kind": "artifact",
+   "evidence": "CenterPoint-like in the first rolling-blackout hours: Harris reads 16 (11,053 at 08:15) while the Texas total climbs from 371,525 to 1,346,195. Harris stays between 16 and 62,460 all day on Feb 15.",
+   "state_before": 263493,
+   "state_during_min": 371525,
+   "state_after": 1470472,
+   "counties": [
+    {
+     "fips": "48201",
+     "county": "Harris",
+     "before": 27830,
+     "during_min": 16,
+     "after": 48717
+    },
+    {
+     "fips": "48027",
+     "county": "Bell",
+     "before": 9234,
+     "during_min": 6295,
+     "after": 14100
+    },
+    {
+     "fips": "48367",
+     "county": "Parker",
+     "before": 4639,
+     "during_min": 2876,
+     "after": 31703
+    },
+    {
+     "fips": "48485",
+     "county": "Wichita",
+     "before": 1549,
+     "during_min": 2,
+     "after": 7244
+    },
+    {
+     "fips": "48187",
+     "county": "Guadalupe",
+     "before": 2046,
+     "during_min": 550,
+     "after": 2123
+    },
+    {
+     "fips": "48257",
+     "county": "Kaufman",
+     "before": 3009,
+     "during_min": 2181,
+     "after": 5034
+    }
+   ]
+  },
+  {
+   "id": "TX-0215-1315",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-02-15 13:15",
+   "end": "2021-02-15 16:00",
+   "n_runs": 12,
+   "kind": "artifact",
+   "evidence": "CTEC-like 12-run dropout: Gillespie 7,627 to 307 to 7,640. [NULL rows (2 counties >=1,000 before): Fort Bend, Rains]",
+   "state_before": 2376634,
+   "state_during_min": 2333385,
+   "state_after": 2606389,
+   "counties": [
+    {
+     "fips": "48029",
+     "county": "Bexar",
+     "before": 194222,
+     "during_min": 154964,
+     "after": 192391
+    },
+    {
+     "fips": "48085",
+     "county": "Collin",
+     "before": 90456,
+     "during_min": 80780,
+     "after": 96089
+    },
+    {
+     "fips": "48171",
+     "county": "Gillespie",
+     "before": 7627,
+     "during_min": 307,
+     "after": 7640
+    },
+    {
+     "fips": "48091",
+     "county": "Comal",
+     "before": 26957,
+     "during_min": 20045,
+     "after": 32332
+    },
+    {
+     "fips": "48423",
+     "county": "Smith",
+     "before": 21191,
+     "during_min": 15544,
+     "after": 32846
+    },
+    {
+     "fips": "48231",
+     "county": "Hunt",
+     "before": 9052,
+     "during_min": 3830,
+     "after": 12388
+    }
+   ]
+  },
+  {
+   "id": "TX-0215-2145",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-02-15 21:45",
+   "end": "2021-02-16 00:00",
+   "n_runs": 10,
+   "kind": "unclear",
+   "evidence": "A 4.7% state dip spread over 45 counties (Tarrant 320,713 to 283,082 to 305,044, Hidalgo, Travis, Denton). It could be a change in load-shed level or partial reporting. [absent rows: Lee]",
+   "state_before": 2618623,
+   "state_during_min": 2495002,
+   "state_after": 2613145,
+   "counties": [
+    {
+     "fips": "48439",
+     "county": "Tarrant",
+     "before": 320713,
+     "during_min": 283082,
+     "after": 305044
+    },
+    {
+     "fips": "48215",
+     "county": "Hidalgo",
+     "before": 103753,
+     "during_min": 81366,
+     "after": 102628
+    },
+    {
+     "fips": "48453",
+     "county": "Travis",
+     "before": 214711,
+     "during_min": 200004,
+     "after": 251379
+    },
+    {
+     "fips": "48121",
+     "county": "Denton",
+     "before": 99884,
+     "during_min": 78844,
+     "after": 91167
+    },
+    {
+     "fips": "48491",
+     "county": "Williamson",
+     "before": 110424,
+     "during_min": 93380,
+     "after": 104838
+    },
+    {
+     "fips": "48029",
+     "county": "Bexar",
+     "before": 178095,
+     "during_min": 159511,
+     "after": 170478
+    }
+   ]
+  },
+  {
+   "id": "TX-0215-2345",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-02-15 23:45",
+   "end": "2021-02-16 02:00",
+   "n_runs": 10,
+   "kind": "unclear",
+   "evidence": "Harris under-report: 41,149 to 16,460, 4,133, 2,912, 11,466 and 36,300, then 250,844 at 02:15. Fort Bend is NULL or absent in several runs.",
+   "state_before": 2554699,
+   "state_during_min": 2533796,
+   "state_after": 3356308,
+   "counties": [
+    {
+     "fips": "48201",
+     "county": "Harris",
+     "before": 41149,
+     "during_min": 2912,
+     "after": 250844
+    },
+    {
+     "fips": "48029",
+     "county": "Bexar",
+     "before": 200082,
+     "during_min": 170478,
+     "after": 278961
+    },
+    {
+     "fips": "48215",
+     "county": "Hidalgo",
+     "before": 102571,
+     "during_min": 81366,
+     "after": 122139
+    },
+    {
+     "fips": "48039",
+     "county": "Brazoria",
+     "before": 37822,
+     "during_min": 21838,
+     "after": 47135
+    },
+    {
+     "fips": "48257",
+     "county": "Kaufman",
+     "before": 14833,
+     "during_min": 6328,
+     "after": 12809
+    },
+    {
+     "fips": "48231",
+     "county": "Hunt",
+     "before": 12115,
+     "during_min": 4484,
+     "after": 10015
+    }
+   ]
+  },
+  {
+   "id": "TX-0216-0600",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-02-16 06:00",
+   "end": "2021-02-16 06:00",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "CenterPoint-like: Harris 200,674 to 68 to 271,660, Fort Bend NULL, Brazoria and Galveston drop. [NULL rows (1 counties >=1,000 before): Fort Bend]",
+   "state_before": 3182595,
+   "state_during_min": 2891020,
+   "state_after": 3242405,
+   "counties": [
+    {
+     "fips": "48201",
+     "county": "Harris",
+     "before": 200674,
+     "during_min": 68,
+     "after": 271660
+    },
+    {
+     "fips": "48451",
+     "county": "Tom Green",
+     "before": 24524,
+     "during_min": 14670,
+     "after": 24524
+    },
+    {
+     "fips": "48039",
+     "county": "Brazoria",
+     "before": 32144,
+     "during_min": 22771,
+     "after": 33973
+    },
+    {
+     "fips": "48167",
+     "county": "Galveston",
+     "before": 63639,
+     "during_min": 47259,
+     "after": 56551
+    },
+    {
+     "fips": "48491",
+     "county": "Williamson",
+     "before": 115796,
+     "during_min": 112323,
+     "after": 116029
+    },
+    {
+     "fips": "48019",
+     "county": "Bandera",
+     "before": 10851,
+     "during_min": 4176,
+     "after": 6763
+    }
+   ]
+  },
+  {
+   "id": "TX-0216-1245",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-02-16 12:45",
+   "end": "2021-02-16 13:00",
+   "n_runs": 2,
+   "kind": "artifact",
+   "evidence": "CenterPoint-like: Harris 285,169 to 2,915 (frozen residual) to 348,034, Fort Bend NULL. [NULL rows (1 counties >=1,000 before): Fort Bend]",
+   "state_before": 3253713,
+   "state_during_min": 2835005,
+   "state_after": 3302319,
+   "counties": [
+    {
+     "fips": "48201",
+     "county": "Harris",
+     "before": 285169,
+     "during_min": 2915,
+     "after": 348034
+    },
+    {
+     "fips": "48039",
+     "county": "Brazoria",
+     "before": 62067,
+     "during_min": 22496,
+     "after": 35493
+    },
+    {
+     "fips": "48167",
+     "county": "Galveston",
+     "before": 71105,
+     "during_min": 49915,
+     "after": 61143
+    },
+    {
+     "fips": "48085",
+     "county": "Collin",
+     "before": 120820,
+     "during_min": 117232,
+     "after": 123944
+    },
+    {
+     "fips": "48021",
+     "county": "Bastrop",
+     "before": 12871,
+     "during_min": 9593,
+     "after": 13424
+    }
+   ]
+  },
+  {
+   "id": "TX-0216-1345",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-02-16 13:45",
+   "end": "2021-02-16 13:45",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "CenterPoint-like: Harris 330,672 to 2,915 to 303,006. [NULL rows (1 counties >=1,000 before): Fort Bend]",
+   "state_before": 3316492,
+   "state_during_min": 2967794,
+   "state_after": 3402791,
+   "counties": [
+    {
+     "fips": "48201",
+     "county": "Harris",
+     "before": 330672,
+     "during_min": 2915,
+     "after": 303006
+    },
+    {
+     "fips": "48039",
+     "county": "Brazoria",
+     "before": 36509,
+     "during_min": 22355,
+     "after": 35244
+    },
+    {
+     "fips": "48167",
+     "county": "Galveston",
+     "before": 63844,
+     "during_min": 50829,
+     "after": 61209
+    },
+    {
+     "fips": "48453",
+     "county": "Travis",
+     "before": 267837,
+     "during_min": 263357,
+     "after": 272451
+    },
+    {
+     "fips": "48473",
+     "county": "Waller",
+     "before": 13743,
+     "during_min": 10544,
+     "after": 13743
+    },
+    {
+     "fips": "48021",
+     "county": "Bastrop",
+     "before": 14366,
+     "during_min": 11204,
+     "after": 15409
+    }
+   ]
+  },
+  {
+   "id": "TX-0216-1445",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-02-16 14:45",
+   "end": "2021-02-16 14:45",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "CenterPoint-like: Harris 199,706 to 2,915 to 199,596 (exact), Chambers 5,314 to 1,229 to 5,315. [NULL rows (1 counties >=1,000 before): Fort Bend]",
+   "state_before": 3339401,
+   "state_during_min": 3075164,
+   "state_after": 3357027,
+   "counties": [
+    {
+     "fips": "48201",
+     "county": "Harris",
+     "before": 199706,
+     "during_min": 2915,
+     "after": 199596
+    },
+    {
+     "fips": "48039",
+     "county": "Brazoria",
+     "before": 34168,
+     "during_min": 22788,
+     "after": 34451
+    },
+    {
+     "fips": "48167",
+     "county": "Galveston",
+     "before": 65151,
+     "during_min": 51642,
+     "after": 58553
+    },
+    {
+     "fips": "48339",
+     "county": "Montgomery",
+     "before": 67034,
+     "during_min": 62704,
+     "after": 73647
+    },
+    {
+     "fips": "48071",
+     "county": "Chambers",
+     "before": 5314,
+     "during_min": 1229,
+     "after": 5315
+    },
+    {
+     "fips": "48473",
+     "county": "Waller",
+     "before": 14192,
+     "during_min": 10544,
+     "after": 14192
+    }
+   ]
+  },
+  {
+   "id": "TX-0216-1545",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-02-16 15:45",
+   "end": "2021-02-16 16:30",
+   "n_runs": 4,
+   "kind": "artifact",
+   "evidence": "CenterPoint-like 4 runs: Harris 398,053 to 2,911 to 455,986. [absent rows: Crosby; NULL rows (1 counties >=1,000 before): Fort Bend]",
+   "state_before": 3665168,
+   "state_during_min": 3150506,
+   "state_after": 3727731,
+   "counties": [
+    {
+     "fips": "48201",
+     "county": "Harris",
+     "before": 398053,
+     "during_min": 2911,
+     "after": 455986
+    },
+    {
+     "fips": "48039",
+     "county": "Brazoria",
+     "before": 58760,
+     "during_min": 24498,
+     "after": 54941
+    },
+    {
+     "fips": "48167",
+     "county": "Galveston",
+     "before": 81306,
+     "during_min": 48735,
+     "after": 69182
+    }
+   ]
+  },
+  {
+   "id": "TX-0216-1700",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-02-16 17:00",
+   "end": "2021-02-16 17:45",
+   "n_runs": 4,
+   "kind": "artifact",
+   "evidence": "CenterPoint-like 4 runs: Harris 455,986 to 2,908-2,910 to 367,804. [NULL rows (1 counties >=1,000 before): Fort Bend]",
+   "state_before": 3727731,
+   "state_during_min": 2878861,
+   "state_after": 3367806,
+   "counties": [
+    {
+     "fips": "48201",
+     "county": "Harris",
+     "before": 455986,
+     "during_min": 2908,
+     "after": 367804
+    },
+    {
+     "fips": "48167",
+     "county": "Galveston",
+     "before": 69182,
+     "during_min": 45815,
+     "after": 68824
+    },
+    {
+     "fips": "48039",
+     "county": "Brazoria",
+     "before": 54941,
+     "during_min": 19423,
+     "after": 41445
+    },
+    {
+     "fips": "48491",
+     "county": "Williamson",
+     "before": 111927,
+     "during_min": 101230,
+     "after": 123145
+    },
+    {
+     "fips": "48041",
+     "county": "Brazos",
+     "before": 36615,
+     "during_min": 25419,
+     "after": 34943
+    },
+    {
+     "fips": "48473",
+     "county": "Waller",
+     "before": 27955,
+     "during_min": 8537,
+     "after": 16840
+    }
+   ]
+  },
+  {
+   "id": "TX-0216-1830",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-02-16 18:30",
+   "end": "2021-02-16 18:45",
+   "n_runs": 2,
+   "kind": "artifact",
+   "evidence": "CenterPoint-like: Harris 364,398 to 2,908 to 355,993. In the next run Brazoria jumps to 304,535, more than its MCC of 144,164. [NULL rows (1 counties >=1,000 before): Fort Bend]",
+   "state_before": 3447472,
+   "state_during_min": 2902354,
+   "state_after": 4257873,
+   "counties": [
+    {
+     "fips": "48201",
+     "county": "Harris",
+     "before": 364398,
+     "during_min": 2908,
+     "after": 355993
+    },
+    {
+     "fips": "48039",
+     "county": "Brazoria",
+     "before": 55955,
+     "during_min": 19483,
+     "after": 304535
+    },
+    {
+     "fips": "48167",
+     "county": "Galveston",
+     "before": 68742,
+     "during_min": 44143,
+     "after": 150151
+    },
+    {
+     "fips": "48071",
+     "county": "Chambers",
+     "before": 5370,
+     "during_min": 1229,
+     "after": 39451
+    },
+    {
+     "fips": "48473",
+     "county": "Waller",
+     "before": 14972,
+     "during_min": 10932,
+     "after": 93132
+    }
+   ]
+  },
+  {
+   "id": "TX-0216-2130",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-02-16 21:30",
+   "end": "2021-02-17 00:15",
+   "n_runs": 12,
+   "kind": "unclear",
+   "evidence": "A 4.8% state dip over 41 counties during rotation. It includes a CTEC-like collapse (Gillespie 8,459 to 61 to 8,462 and Mason at 22:45) and Llano 15,268 to 2,316. [absent rows: Lee, Moore]",
+   "state_before": 3582003,
+   "state_during_min": 3410205,
+   "state_after": 3531856,
+   "counties": [
+    {
+     "fips": "48215",
+     "county": "Hidalgo",
+     "before": 106230,
+     "during_min": 84819,
+     "after": 107270
+    },
+    {
+     "fips": "48453",
+     "county": "Travis",
+     "before": 228955,
+     "during_min": 197159,
+     "after": 211711
+    },
+    {
+     "fips": "48085",
+     "county": "Collin",
+     "before": 95981,
+     "during_min": 84064,
+     "after": 92567
+    },
+    {
+     "fips": "48171",
+     "county": "Gillespie",
+     "before": 8461,
+     "during_min": 61,
+     "after": 8283
+    },
+    {
+     "fips": "48299",
+     "county": "Llano",
+     "before": 15268,
+     "during_min": 2316,
+     "after": 10224
+    },
+    {
+     "fips": "48029",
+     "county": "Bexar",
+     "before": 239702,
+     "during_min": 233621,
+     "after": 260711
+    }
+   ]
+  },
+  {
+   "id": "TX-0217-2130",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-02-17 21:30",
+   "end": "2021-02-17 21:30",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "CenterPoint-like and more: Harris 280,267 to 97 to 305,122, Fort Bend and Chambers absent, Brazoria 240,267 to 12,558, Wharton 96,095 to 1,480. The state falls to 58%. [absent rows: Chambers, Fort Bend]",
+   "state_before": 2576080,
+   "state_during_min": 1497092,
+   "state_after": 2642073,
+   "counties": [
+    {
+     "fips": "48201",
+     "county": "Harris",
+     "before": 280267,
+     "during_min": 97,
+     "after": 305122
+    },
+    {
+     "fips": "48039",
+     "county": "Brazoria",
+     "before": 240267,
+     "during_min": 12558,
+     "after": 252980
+    },
+    {
+     "fips": "48157",
+     "county": "Fort Bend",
+     "before": 129432,
+     "during_min": 0,
+     "after": 140264
+    },
+    {
+     "fips": "48481",
+     "county": "Wharton",
+     "before": 96095,
+     "during_min": 1480,
+     "after": 103047
+    },
+    {
+     "fips": "48167",
+     "county": "Galveston",
+     "before": 111581,
+     "during_min": 35676,
+     "after": 113072
+    },
+    {
+     "fips": "48473",
+     "county": "Waller",
+     "before": 63980,
+     "during_min": 1460,
+     "after": 68578
+    }
+   ]
+  },
+  {
+   "id": "TX-0219-2115",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-02-19 21:15",
+   "end": "2021-02-19 21:30",
+   "n_runs": 2,
+   "kind": "artifact",
+   "evidence": "CTEC-like: Gillespie 6,868 to 30 to 6,826.",
+   "state_before": 162298,
+   "state_during_min": 142118,
+   "state_after": 150642,
+   "counties": [
+    {
+     "fips": "48171",
+     "county": "Gillespie",
+     "before": 6868,
+     "during_min": 30,
+     "after": 6826
+    },
+    {
+     "fips": "48265",
+     "county": "Kerr",
+     "before": 2617,
+     "during_min": 165,
+     "after": 2605
+    },
+    {
+     "fips": "48259",
+     "county": "Kendall",
+     "before": 543,
+     "during_min": 45,
+     "after": 546
+    },
+    {
+     "fips": "48319",
+     "county": "Mason",
+     "before": 401,
+     "during_min": 1,
+     "after": 401
+    },
+    {
+     "fips": "48299",
+     "county": "Llano",
+     "before": 298,
+     "during_min": 8,
+     "after": 299
+    },
+    {
+     "fips": "48227",
+     "county": "Howard",
+     "before": 572,
+     "during_min": 300,
+     "after": 586
+    }
+   ]
+  },
+  {
+   "id": "TX-0220-0000",
+   "extract": "eaglei_2021_uri_TX (Texas)",
+   "start": "2021-02-20 00:00",
+   "end": "2021-02-20 00:00",
+   "n_runs": 1,
+   "kind": "artifact",
+   "evidence": "CTEC-like: Gillespie 5,677 to 48 to 5,749.",
+   "state_before": 133256,
+   "state_during_min": 123227,
+   "state_after": 130162,
+   "counties": [
+    {
+     "fips": "48171",
+     "county": "Gillespie",
+     "before": 5677,
+     "during_min": 48,
+     "after": 5749
+    },
+    {
+     "fips": "48265",
+     "county": "Kerr",
+     "before": 2488,
+     "during_min": 149,
+     "after": 2547
+    },
+    {
+     "fips": "48259",
+     "county": "Kendall",
+     "before": 457,
+     "during_min": 11,
+     "after": 518
+    },
+    {
+     "fips": "48299",
+     "county": "Llano",
+     "before": 282,
+     "during_min": 5,
+     "after": 284
+    }
+   ]
+  }
+ ]
+}

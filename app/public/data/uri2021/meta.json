@@ -1,0 +1,46 @@
+{
+  "id": "uri2021",
+  "name": "Uri",
+  "landfall": "2021-02-15",
+  "role": "stress",
+  "satellite": "VNP46A2",
+  "nights": [
+    "2021-02-13",
+    "2021-02-14",
+    "2021-02-15",
+    "2021-02-16",
+    "2021-02-17",
+    "2021-02-18",
+    "2021-02-19",
+    "2021-02-20",
+    "2021-02-21",
+    "2021-02-22",
+    "2021-02-23",
+    "2021-02-24",
+    "2021-02-25",
+    "2021-02-26",
+    "2021-02-27",
+    "2021-02-28",
+    "2021-03-01",
+    "2021-03-02",
+    "2021-03-03",
+    "2021-03-04",
+    "2021-03-05",
+    "2021-03-06",
+    "2021-03-07",
+    "2021-03-08"
+  ],
+  "waiting_periods": [
+    24,
+    48,
+    72
+  ],
+  "default_waiting_period": 72,
+  "generated": "2026-11-09T08:01:08+00:00",
+  "notes": [
+    "est, lo and hi are the estimated fraction of customers without power and its 80% range, from Black Marble night lights. They are null where the satellite can't see the county or it is too dark to measure: unknown, never zero.",
+    "official is EAGLE-I's customers out at the satellite pass (median of the runs within ±60 minutes, feed-dropout runs removed) over the county's customer count.",
+    "Policies and claims are synthetic: 100,000 policies placed by Census housing units (5% business, seed 20261105) and 200 claims, about 10% of them deliberately inflated past the county's official restoration day.",
+    "official is cleaned by model.apply_overcount_rule: 35 county-night(s) it treats as EAGLE-I over-counts (more customers out than the county has) are shown as null, and 8 slightly above 100% are shown as 100%."
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "laura2020",
+  "name": "Laura",
+  "landfall": "2020-08-27",
+  "role": "main",
+  "satellite": "VNP46A2",
+  "nights": [
+    "2020-08-25",
+    "2020-08-26",
+    "2020-08-27",
+    "2020-08-28",
+    "2020-08-29",
+    "2020-08-30",
+    "2020-08-31",
+    "2020-09-01",
+    "2020-09-02",
+    "2020-09-03",
+    "2020-09-04",
+    "2020-09-05",
+    "2020-09-06",
+    "2020-09-07",
+    "2020-09-08",
+    "2020-09-09",
+    "2020-09-10",
+    "2020-09-11",
+    "2020-09-12",
+    "2020-09-13",
+    "2020-09-14",
+    "2020-09-15",
+    "2020-09-16",
+    "2020-09-17"
+  ],
+  "waiting_periods": [
+    24,
+    48,
+    72
+  ],
+  "default_waiting_period": 72,
+  "generated": "2026-11-09T08:00:27+00:00",
+  "notes": [
+    "est, lo and hi are the estimated fraction of customers without power and its 80% range, from Black Marble night lights. They are null where the satellite can't see the county or it is too dark to measure: unknown, never zero.",
+    "official is EAGLE-I's customers out at the satellite pass (median of the runs within ±60 minutes, feed-dropout runs removed) over the county's customer count.",
+    "Policies and claims are synthetic: 100,000 policies placed by Census housing units (5% business, seed 20261105) and 200 claims, about 10% of them deliberately inflated past the county's official restoration day.",
+    "official is cleaned by model.apply_overcount_rule: 37 county-night(s) it treats as EAGLE-I over-counts (more customers out than the county has) are shown as null, and 2 slightly above 100% are shown as 100%.",
+    "EAGLE-I covers too few customers in MS (77%), TX (63%) for the curve to train on, so official numbers there undercount."
+  ]
+}

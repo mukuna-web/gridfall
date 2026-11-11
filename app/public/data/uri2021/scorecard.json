@@ -1,0 +1,52 @@
+{
+  "storm_id": "uri2021",
+  "window": 60,
+  "methods": {
+    "isotonic": {
+      "mae_pp": 2.2623,
+      "peak_total_est": 91725.4085,
+      "peak_total_official": 2890809.0,
+      "catch_rate_50": 0.0,
+      "false_alarm_50": null,
+      "restore_day_err": 11.0,
+      "measurable_share": 0.4511
+    },
+    "wind_only": {
+      "mae_pp": 2.3351,
+      "peak_total_est": 48841.898,
+      "peak_total_official": 2890809.0,
+      "catch_rate_50": 0.0,
+      "false_alarm_50": null,
+      "restore_day_err": 2.0,
+      "measurable_share": 0.4511
+    },
+    "nothing": {
+      "mae_pp": 2.0886,
+      "peak_total_est": 0.0,
+      "peak_total_official": 2890809.0,
+      "catch_rate_50": 0.0,
+      "false_alarm_50": null,
+      "restore_day_err": 2.0,
+      "measurable_share": 0.4511
+    },
+    "hybrid": {
+      "mae_pp": 2.1062,
+      "peak_total_est": 184233.8609,
+      "peak_total_official": 2890809.0,
+      "catch_rate_50": 0.0,
+      "false_alarm_50": null,
+      "restore_day_err": 2.0,
+      "measurable_share": 0.4511
+    },
+    "wind_timing": {
+      "mae_pp": 2.0806,
+      "peak_total_est": 32830.0931,
+      "peak_total_official": 2890809.0,
+      "catch_rate_50": 0.0,
+      "false_alarm_50": null,
+      "restore_day_err": 2.0,
+      "measurable_share": 0.4511
+    }
+  },
+  "note": "Scored against EAGLE-I at the satellite pass (±60-minute window). mae_pp is in percentage points; peak totals are customers. Stress test: the EAGLE-I dropout constants were tuned partly on Uri, so this is not a clean test."
+}

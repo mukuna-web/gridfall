@@ -1,0 +1,52 @@
+{
+  "storm_id": "ian2022",
+  "window": 60,
+  "methods": {
+    "isotonic": {
+      "mae_pp": 1.3494,
+      "peak_total_est": 88572.0115,
+      "peak_total_official": 1431863.0,
+      "catch_rate_50": 0.0,
+      "false_alarm_50": null,
+      "restore_day_err": 9.0,
+      "measurable_share": 0.6238
+    },
+    "wind_only": {
+      "mae_pp": 1.573,
+      "peak_total_est": 217953.3375,
+      "peak_total_official": 1431863.0,
+      "catch_rate_50": 0.0,
+      "false_alarm_50": null,
+      "restore_day_err": 3.0,
+      "measurable_share": 0.6238
+    },
+    "nothing": {
+      "mae_pp": 1.0218,
+      "peak_total_est": 0.0,
+      "peak_total_official": 1431863.0,
+      "catch_rate_50": 0.0,
+      "false_alarm_50": null,
+      "restore_day_err": 3.0,
+      "measurable_share": 0.6238
+    },
+    "hybrid": {
+      "mae_pp": 1.6007,
+      "peak_total_est": 1811171.967,
+      "peak_total_official": 1431863.0,
+      "catch_rate_50": 0.7143,
+      "false_alarm_50": 0.4737,
+      "restore_day_err": 3.0,
+      "measurable_share": 0.6238
+    },
+    "wind_timing": {
+      "mae_pp": 1.5406,
+      "peak_total_est": 1251689.9231,
+      "peak_total_official": 1431863.0,
+      "catch_rate_50": 0.0,
+      "false_alarm_50": null,
+      "restore_day_err": 3.0,
+      "measurable_share": 0.6238
+    }
+  },
+  "note": "Scored against EAGLE-I at the satellite pass (±60-minute window). mae_pp is in percentage points; peak totals are customers. Leave-one-storm-out: the curve was fit without this storm."
+}

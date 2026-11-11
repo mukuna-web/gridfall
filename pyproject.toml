@@ -1,0 +1,57 @@
+[project]
+name = "blackout"
+version = "0.1.0"
+description = "County power-outage estimates after hurricanes from NASA Black Marble night lights, graded against EAGLE-I"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "mukuna-web", email = "252489539+mukuna-web@users.noreply.github.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "blackmarblepy>=2026.6.1",
+    "duckdb>=2.0.0",
+    "geopandas>=1.2.0",
+    "h5py>=3.16.0",
+    "httpx>=0.28.1",
+    "jsonschema>=4.26.0",
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.4",
+    "pandas>=2.3.3",
+    "pyarrow>=26.0.1",
+    "python-dotenv>=1.2.4",
+    "pyyaml>=6.0.3",
+    "rasterio>=1.5.2",
+    "scikit-learn>=1.9.1",
+]
+
+[project.scripts]
+blackout = "blackout.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.11.14,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.17.4",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "realdata: needs the built tables in data/processed; local only, skipped where they are absent (CI)",
+    "lockbox: reads the locked Helene and Milton tables or the recorded opening; runs only with --run-lockbox",
+    "network: reaches NASA or EAGLE-I servers; by hand only, with the user's token in the local environment",
+    "slow: takes minutes (the lockbox reproduction); deselected by default in CI",
+]
+filterwarnings = [
+    # pandas 2.3 adds Timedelta values in a way NumPy 2.5 deprecates; nothing in this repo can change that
+    "ignore:The 'generic' unit for NumPy timedelta is deprecated:DeprecationWarning",
+]
+
+[tool.ruff]
+line-length = 120

@@ -1,0 +1,969 @@
+{
+  "description": "Documents read by both validators (test-plan CT-04). `kind` names the schema $def; `valid` is the schema's verdict (jsonschema, tests/test_contract.py). `ts` says how the app's parser (app/src/data/validate.ts, app/src/data/contract.test.ts) treats the document: `same` (default) gives the schema's verdict; `lenient` accepts a document the schema rejects; `stricter` rejects a document the schema accepts. Every lenient or stricter case is a known, deliberate difference and is listed in the contract report.",
+  "cases": [
+    {
+      "id": "nights-ok-entry",
+      "kind": "nights",
+      "valid": true,
+      "document": {
+        "99001": [
+          {
+            "night": "2099-09-10",
+            "status": "ok",
+            "est": 0.5,
+            "lo": 0.4,
+            "hi": 0.6,
+            "official": 0.45
+          }
+        ]
+      }
+    },
+    {
+      "id": "nights-est-null-on-ok-night",
+      "kind": "nights",
+      "valid": true,
+      "note": "the fit gave no estimate on a night the satellite saw",
+      "document": {
+        "99001": [
+          {
+            "night": "2099-09-10",
+            "status": "ok",
+            "est": null,
+            "lo": null,
+            "hi": null,
+            "official": 0.45
+          }
+        ]
+      }
+    },
+    {
+      "id": "nights-range-excludes-point",
+      "kind": "nights",
+      "valid": true,
+      "note": "neither validator reads across fields; export.verify_export refuses it after writing",
+      "document": {
+        "99001": [
+          {
+            "night": "2099-09-10",
+            "status": "ok",
+            "est": 0.2,
+            "lo": 0.3,
+            "hi": 0.5,
+            "official": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "nights-cant-see-with-est-zero",
+      "kind": "nights",
+      "valid": false,
+      "document": {
+        "99001": [
+          {
+            "night": "2099-09-10",
+            "status": "cant_see",
+            "est": 0.0,
+            "lo": null,
+            "hi": null,
+            "official": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "nights-not-measurable-with-hi",
+      "kind": "nights",
+      "valid": false,
+      "document": {
+        "99001": [
+          {
+            "night": "2099-09-10",
+            "status": "not_measurable",
+            "est": null,
+            "lo": null,
+            "hi": 0.1,
+            "official": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "nights-est-above-one",
+      "kind": "nights",
+      "valid": false,
+      "document": {
+        "99001": [
+          {
+            "night": "2099-09-10",
+            "status": "ok",
+            "est": 1.5,
+            "lo": 1.4,
+            "hi": 1.6,
+            "official": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "nights-official-overcount",
+      "kind": "nights",
+      "valid": false,
+      "document": {
+        "99001": [
+          {
+            "night": "2099-09-10",
+            "status": "ok",
+            "est": 0.5,
+            "lo": 0.4,
+            "hi": 0.6,
+            "official": 1.25
+          }
+        ]
+      }
+    },
+    {
+      "id": "nights-lo-negative",
+      "kind": "nights",
+      "valid": false,
+      "document": {
+        "99001": [
+          {
+            "night": "2099-09-10",
+            "status": "ok",
+            "est": 0.05,
+            "lo": -0.1,
+            "hi": 0.2,
+            "official": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "nights-fips-four-digits",
+      "kind": "nights",
+      "valid": false,
+      "document": {
+        "1207": [
+          {
+            "night": "2099-09-10",
+            "status": "ok",
+            "est": 0.5,
+            "lo": 0.4,
+            "hi": 0.6,
+            "official": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "nights-status-cloudy",
+      "kind": "nights",
+      "valid": false,
+      "document": {
+        "99001": [
+          {
+            "night": "2099-09-10",
+            "status": "cloudy",
+            "est": null,
+            "lo": null,
+            "hi": null,
+            "official": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "nights-missing-official",
+      "kind": "nights",
+      "valid": false,
+      "ts": "lenient",
+      "note": "the parser reads a missing nullable number as null (unknown), by design",
+      "document": {
+        "99001": [
+          {
+            "night": "2099-09-10",
+            "status": "ok",
+            "est": 0.5,
+            "lo": 0.4,
+            "hi": 0.6
+          }
+        ]
+      }
+    },
+    {
+      "id": "nights-extra-key",
+      "kind": "nights",
+      "valid": false,
+      "ts": "lenient",
+      "note": "the parser ignores unknown keys, by design",
+      "document": {
+        "99001": [
+          {
+            "night": "2099-09-10",
+            "status": "ok",
+            "est": 0.5,
+            "lo": 0.4,
+            "hi": 0.6,
+            "official": null,
+            "pct": 50
+          }
+        ]
+      }
+    },
+    {
+      "id": "exposure-null-bracket",
+      "kind": "exposure",
+      "valid": true,
+      "document": {
+        "99001": {
+          "home": 95,
+          "business": 5,
+          "at": {
+            "24": [
+              0.1,
+              0.3
+            ],
+            "48": null,
+            "72": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "exposure-bracket-one-value",
+      "kind": "exposure",
+      "valid": false,
+      "document": {
+        "99001": {
+          "home": 95,
+          "business": 5,
+          "at": {
+            "24": [
+              0.1
+            ],
+            "48": null,
+            "72": null
+          }
+        }
+      }
+    },
+    {
+      "id": "exposure-bracket-three-values",
+      "kind": "exposure",
+      "valid": false,
+      "document": {
+        "99001": {
+          "home": 95,
+          "business": 5,
+          "at": {
+            "24": [
+              0.1,
+              0.2,
+              0.3
+            ],
+            "48": null,
+            "72": null
+          }
+        }
+      }
+    },
+    {
+      "id": "exposure-bracket-above-one",
+      "kind": "exposure",
+      "valid": false,
+      "document": {
+        "99001": {
+          "home": 95,
+          "business": 5,
+          "at": {
+            "24": [
+              0.2,
+              1.2
+            ],
+            "48": null,
+            "72": null
+          }
+        }
+      }
+    },
+    {
+      "id": "exposure-home-fractional",
+      "kind": "exposure",
+      "valid": false,
+      "document": {
+        "99001": {
+          "home": 95.5,
+          "business": 5,
+          "at": {
+            "24": null,
+            "48": null,
+            "72": null
+          }
+        }
+      }
+    },
+    {
+      "id": "exposure-missing-48",
+      "kind": "exposure",
+      "valid": false,
+      "ts": "lenient",
+      "note": "a missing bracket reads as null (unknown), by design",
+      "document": {
+        "99001": {
+          "home": 95,
+          "business": 5,
+          "at": {
+            "24": [
+              0.1,
+              0.3
+            ],
+            "72": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "scorecard-without-optional-methods",
+      "kind": "scorecard",
+      "valid": true,
+      "document": {
+        "storm_id": "synth2099",
+        "window": 60,
+        "methods": {
+          "isotonic": {
+            "mae_pp": 12.5,
+            "peak_total_est": 100000,
+            "peak_total_official": 120000,
+            "catch_rate_50": 0.75,
+            "false_alarm_50": 0.1,
+            "restore_day_err": 1.5,
+            "measurable_share": 0.8
+          },
+          "wind_only": {
+            "mae_pp": 20,
+            "peak_total_est": 80000,
+            "peak_total_official": 120000,
+            "catch_rate_50": 0.5,
+            "false_alarm_50": 0.2,
+            "restore_day_err": 3,
+            "measurable_share": 1
+          },
+          "nothing": {
+            "mae_pp": 35,
+            "peak_total_est": 0,
+            "peak_total_official": 120000,
+            "catch_rate_50": 0,
+            "false_alarm_50": null,
+            "restore_day_err": null,
+            "measurable_share": 1
+          }
+        },
+        "note": "scored"
+      }
+    },
+    {
+      "id": "scorecard-window-45",
+      "kind": "scorecard",
+      "valid": false,
+      "document": {
+        "storm_id": "synth2099",
+        "window": 45,
+        "methods": {
+          "isotonic": {
+            "mae_pp": null,
+            "peak_total_est": null,
+            "peak_total_official": null,
+            "catch_rate_50": null,
+            "false_alarm_50": null,
+            "restore_day_err": null,
+            "measurable_share": null
+          },
+          "wind_only": {
+            "mae_pp": null,
+            "peak_total_est": null,
+            "peak_total_official": null,
+            "catch_rate_50": null,
+            "false_alarm_50": null,
+            "restore_day_err": null,
+            "measurable_share": null
+          },
+          "nothing": {
+            "mae_pp": null,
+            "peak_total_est": null,
+            "peak_total_official": null,
+            "catch_rate_50": null,
+            "false_alarm_50": null,
+            "restore_day_err": null,
+            "measurable_share": null
+          }
+        },
+        "note": ""
+      }
+    },
+    {
+      "id": "scorecard-hyphenated-storm-id",
+      "kind": "scorecard",
+      "valid": false,
+      "document": {
+        "storm_id": "ian-2022",
+        "window": 60,
+        "methods": {
+          "isotonic": {
+            "mae_pp": null,
+            "peak_total_est": null,
+            "peak_total_official": null,
+            "catch_rate_50": null,
+            "false_alarm_50": null,
+            "restore_day_err": null,
+            "measurable_share": null
+          },
+          "wind_only": {
+            "mae_pp": null,
+            "peak_total_est": null,
+            "peak_total_official": null,
+            "catch_rate_50": null,
+            "false_alarm_50": null,
+            "restore_day_err": null,
+            "measurable_share": null
+          },
+          "nothing": {
+            "mae_pp": null,
+            "peak_total_est": null,
+            "peak_total_official": null,
+            "catch_rate_50": null,
+            "false_alarm_50": null,
+            "restore_day_err": null,
+            "measurable_share": null
+          }
+        },
+        "note": ""
+      }
+    },
+    {
+      "id": "scorecard-catch-rate-above-one",
+      "kind": "scorecard",
+      "valid": false,
+      "document": {
+        "storm_id": "synth2099",
+        "window": 60,
+        "methods": {
+          "isotonic": {
+            "mae_pp": 1,
+            "peak_total_est": 1,
+            "peak_total_official": 1,
+            "catch_rate_50": 1.5,
+            "false_alarm_50": 0,
+            "restore_day_err": 0,
+            "measurable_share": 1
+          },
+          "wind_only": {
+            "mae_pp": null,
+            "peak_total_est": null,
+            "peak_total_official": null,
+            "catch_rate_50": null,
+            "false_alarm_50": null,
+            "restore_day_err": null,
+            "measurable_share": null
+          },
+          "nothing": {
+            "mae_pp": null,
+            "peak_total_est": null,
+            "peak_total_official": null,
+            "catch_rate_50": null,
+            "false_alarm_50": null,
+            "restore_day_err": null,
+            "measurable_share": null
+          }
+        },
+        "note": ""
+      }
+    },
+    {
+      "id": "scorecard-negative-mae",
+      "kind": "scorecard",
+      "valid": false,
+      "document": {
+        "storm_id": "synth2099",
+        "window": 60,
+        "methods": {
+          "isotonic": {
+            "mae_pp": -1,
+            "peak_total_est": 1,
+            "peak_total_official": 1,
+            "catch_rate_50": 0.5,
+            "false_alarm_50": 0,
+            "restore_day_err": 0,
+            "measurable_share": 1
+          },
+          "wind_only": {
+            "mae_pp": null,
+            "peak_total_est": null,
+            "peak_total_official": null,
+            "catch_rate_50": null,
+            "false_alarm_50": null,
+            "restore_day_err": null,
+            "measurable_share": null
+          },
+          "nothing": {
+            "mae_pp": null,
+            "peak_total_est": null,
+            "peak_total_official": null,
+            "catch_rate_50": null,
+            "false_alarm_50": null,
+            "restore_day_err": null,
+            "measurable_share": null
+          }
+        },
+        "note": ""
+      }
+    },
+    {
+      "id": "scorecard-missing-nothing",
+      "kind": "scorecard",
+      "valid": false,
+      "document": {
+        "storm_id": "synth2099",
+        "window": 60,
+        "methods": {
+          "isotonic": {
+            "mae_pp": null,
+            "peak_total_est": null,
+            "peak_total_official": null,
+            "catch_rate_50": null,
+            "false_alarm_50": null,
+            "restore_day_err": null,
+            "measurable_share": null
+          },
+          "wind_only": {
+            "mae_pp": null,
+            "peak_total_est": null,
+            "peak_total_official": null,
+            "catch_rate_50": null,
+            "false_alarm_50": null,
+            "restore_day_err": null,
+            "measurable_share": null
+          }
+        },
+        "note": ""
+      }
+    },
+    {
+      "id": "meta-satellite-modis",
+      "kind": "meta",
+      "valid": false,
+      "document": {
+        "id": "synth2099",
+        "name": "Synthetic",
+        "landfall": "2099-09-10",
+        "role": "main",
+        "satellite": "MODIS",
+        "nights": [
+          "2099-09-08"
+        ],
+        "waiting_periods": [
+          24,
+          48,
+          72
+        ],
+        "default_waiting_period": 72,
+        "generated": "2099-09-20T00:00:00+00:00",
+        "notes": []
+      }
+    },
+    {
+      "id": "meta-default-waiting-period-36",
+      "kind": "meta",
+      "valid": false,
+      "document": {
+        "id": "synth2099",
+        "name": "Synthetic",
+        "landfall": "2099-09-10",
+        "role": "main",
+        "satellite": "VNP46A2",
+        "nights": [
+          "2099-09-08"
+        ],
+        "waiting_periods": [
+          24,
+          48,
+          72
+        ],
+        "default_waiting_period": 36,
+        "generated": "2099-09-20T00:00:00+00:00",
+        "notes": []
+      }
+    },
+    {
+      "id": "meta-leading-underscore-id",
+      "kind": "meta",
+      "valid": false,
+      "ts": "same",
+      "note": "the schema now rejects a leading underscore (tightened 2026-11-09), so Python and TypeScript agree",
+      "document": {
+        "id": "_x",
+        "name": "Synthetic",
+        "landfall": "2099-09-10",
+        "role": "main",
+        "satellite": "VNP46A2",
+        "nights": [
+          "2099-09-08"
+        ],
+        "waiting_periods": [
+          24,
+          48,
+          72
+        ],
+        "default_waiting_period": 72,
+        "generated": "2099-09-20T00:00:00+00:00",
+        "notes": []
+      }
+    },
+    {
+      "id": "meta-generated-free-text",
+      "kind": "meta",
+      "valid": false,
+      "ts": "lenient",
+      "note": "the parser reads `generated` as any string; it is shown, never computed with",
+      "document": {
+        "id": "synth2099",
+        "name": "Synthetic",
+        "landfall": "2099-09-10",
+        "role": "main",
+        "satellite": "VNP46A2",
+        "nights": [
+          "2099-09-08"
+        ],
+        "waiting_periods": [
+          24,
+          48,
+          72
+        ],
+        "default_waiting_period": 72,
+        "generated": "yesterday",
+        "notes": []
+      }
+    },
+    {
+      "id": "index-role-test",
+      "kind": "index",
+      "valid": false,
+      "document": {
+        "storms": [
+          {
+            "id": "synth2099",
+            "name": "Synthetic",
+            "landfall": "2099-09-10",
+            "role": "test",
+            "satellite": "VNP46A2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-hyphenated-id",
+      "kind": "index",
+      "valid": false,
+      "document": {
+        "storms": [
+          {
+            "id": "ian-2022",
+            "name": "Ian",
+            "landfall": "2022-09-28",
+            "role": "main",
+            "satellite": "VNP46A2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "counties-state-florida",
+      "kind": "counties",
+      "valid": false,
+      "ts": "lenient",
+      "note": "the parser reads `state` as any string; the map only labels it",
+      "document": {
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    -82.0,
+                    29.0
+                  ],
+                  [
+                    -81.5,
+                    29.0
+                  ],
+                  [
+                    -81.5,
+                    29.5
+                  ],
+                  [
+                    -82.0,
+                    29.5
+                  ],
+                  [
+                    -82.0,
+                    29.0
+                  ]
+                ]
+              ]
+            },
+            "properties": {
+              "fips": "99001",
+              "name": "Alpha",
+              "state": "Florida",
+              "housing_units": 120000,
+              "customers": 140000
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "counties-fips-four-digits",
+      "kind": "counties",
+      "valid": false,
+      "document": {
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    -82.0,
+                    29.0
+                  ],
+                  [
+                    -81.5,
+                    29.0
+                  ],
+                  [
+                    -81.5,
+                    29.5
+                  ],
+                  [
+                    -82.0,
+                    29.5
+                  ],
+                  [
+                    -82.0,
+                    29.0
+                  ]
+                ]
+              ]
+            },
+            "properties": {
+              "fips": "9901",
+              "name": "Alpha",
+              "state": "ZA",
+              "housing_units": 120000,
+              "customers": 140000
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "counties-negative-housing",
+      "kind": "counties",
+      "valid": false,
+      "document": {
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    -82.0,
+                    29.0
+                  ],
+                  [
+                    -81.5,
+                    29.0
+                  ],
+                  [
+                    -81.5,
+                    29.5
+                  ],
+                  [
+                    -82.0,
+                    29.5
+                  ],
+                  [
+                    -82.0,
+                    29.0
+                  ]
+                ]
+              ]
+            },
+            "properties": {
+              "fips": "99001",
+              "name": "Alpha",
+              "state": "ZA",
+              "housing_units": -1,
+              "customers": null
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "counties-ring-of-three",
+      "kind": "counties",
+      "valid": false,
+      "ts": "lenient",
+      "note": "the parser checks the geometry type and that coordinates is an array, not ring depth or closure; MapLibre draws what it can",
+      "document": {
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    -82.0,
+                    29.0
+                  ],
+                  [
+                    -81.5,
+                    29.0
+                  ],
+                  [
+                    -82.0,
+                    29.0
+                  ]
+                ]
+              ]
+            },
+            "properties": {
+              "fips": "99001",
+              "name": "Alpha",
+              "state": "ZA",
+              "housing_units": 120000,
+              "customers": 140000
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "counties-point-geometry",
+      "kind": "counties",
+      "valid": false,
+      "document": {
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                -82.0,
+                29.0
+              ]
+            },
+            "properties": {
+              "fips": "99001",
+              "name": "Alpha",
+              "state": "ZA",
+              "housing_units": 120000,
+              "customers": 140000
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "states-linestring",
+      "kind": "states",
+      "valid": false,
+      "ts": "lenient",
+      "note": "the parser also accepts LineString and MultiLineString outlines, which the exporter never writes",
+      "document": {
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [
+                [
+                  -82.0,
+                  29.0
+                ],
+                [
+                  -81.5,
+                  29.0
+                ]
+              ]
+            },
+            "properties": {
+              "state": "ZA"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "claims-negative-days",
+      "kind": "claims",
+      "valid": false,
+      "document": [
+        {
+          "claim_id": "C0001",
+          "policy_id": "P000001",
+          "fips": "99001",
+          "claimed_days_out": -1
+        }
+      ]
+    },
+    {
+      "id": "claims-empty-claim-id",
+      "kind": "claims",
+      "valid": false,
+      "ts": "lenient",
+      "note": "the parser reads ids as any string",
+      "document": [
+        {
+          "claim_id": "",
+          "policy_id": "P000001",
+          "fips": "99001",
+          "claimed_days_out": 4.5
+        }
+      ]
+    },
+    {
+      "id": "restoration-open-interval",
+      "kind": "restoration",
+      "valid": true,
+      "note": "est_hi null: not back within the window; official_day null: EAGLE-I never showed it back",
+      "document": {
+        "99011": {
+          "est_lo": 7.0,
+          "est_hi": null,
+          "official_day": null
+        }
+      }
+    }
+  ]
+}

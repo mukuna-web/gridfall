@@ -1,0 +1,227 @@
+/* Page frame and the 12-column report grid. */
+
+.page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter) var(--space-7);
+}
+
+/* Masthead: thick rule, kicker and picker, a big storm name, a mono meta line. */
+.masthead {
+  margin-top: var(--space-5);
+  padding: var(--space-3) 0 var(--space-4);
+  border-top: var(--rule-thick) solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.masthead--bare {
+  border-bottom: 0;
+}
+
+.masthead__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+}
+
+.masthead__kicker {
+  color: var(--ink);
+}
+
+.masthead__title {
+  margin-top: var(--space-5);
+  font-size: var(--text-title);
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+}
+
+.masthead__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) 0;
+  margin-top: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+}
+
+.masthead__model {
+  max-width: 68ch;
+  margin: var(--space-2, 0.5rem) 0 0;
+  font-size: var(--text-sm, 0.875rem);
+  line-height: 1.5;
+  color: var(--color-ink-muted, #4a4a46);
+}
+
+.masthead__meta span {
+  padding-right: var(--space-4);
+  margin-right: var(--space-4);
+  border-right: 1px solid var(--hairline);
+}
+
+.masthead__meta span:last-child {
+  border-right: 0;
+}
+
+.report {
+  padding-top: var(--space-6);
+}
+
+.lede {
+  max-width: 60ch;
+  margin-bottom: var(--space-7);
+  font-size: var(--text-lg);
+  line-height: 1.38;
+  letter-spacing: -0.012em;
+}
+
+.lede strong {
+  font-weight: 600;
+}
+
+.lede .num {
+  white-space: nowrap;
+}
+
+/*
+ * Two columns that flow independently: the claim check starts right under
+ * the map however tall the county card and portfolio grow, and the
+ * scorecard follows them on the right. DOM order (map, side, claims, score)
+ * is the reading order once it collapses to one column.
+ */
+.report__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-areas:
+    'map map map map map map map map side side side side'
+    'claims claims claims claims claims claims claims claims side side side side'
+    'claims claims claims claims claims claims claims claims score score score score';
+  align-items: start;
+  gap: var(--space-8) var(--gutter);
+}
+
+.panel {
+  min-width: 0;
+}
+
+.panel--map {
+  grid-area: map;
+}
+
+.report__side {
+  grid-area: side;
+}
+
+.panel--claims {
+  grid-area: claims;
+}
+
+.panel--score {
+  grid-area: score;
+}
+
+.report__side {
+  display: grid;
+  gap: var(--space-7);
+  min-width: 0;
+}
+
+/* Numbered section heads, Swiss style: a rule, an index, a title. */
+.panel__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-4);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--ink);
+}
+
+.panel__index {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-label);
+  color: var(--ink-3);
+}
+
+.panel__title {
+  font-size: var(--text-md);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.panel__tools {
+  margin-left: auto;
+}
+
+/* Footer small print on the same grid. */
+.data-note {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--space-3) var(--gutter);
+  margin-top: var(--space-8);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--ink);
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+}
+
+.data-note p {
+  grid-column: span 6;
+  max-width: 68ch;
+}
+
+.data-note .label {
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--ink);
+}
+
+.data-note__notes {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-left: 1.1em;
+}
+
+@media (max-width: 1080px) {
+  .report__grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'map' 'side' 'claims' 'score';
+  }
+
+  .report__side {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--gutter);
+  }
+
+  .report__grid {
+    row-gap: var(--space-7);
+  }
+}
+
+@media (max-width: 760px) {
+  .report__side {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .data-note p {
+    grid-column: 1 / -1;
+  }
+
+  .masthead__meta span {
+    padding-right: var(--space-3);
+    margin-right: var(--space-3);
+  }
+
+  .panel__tools {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .lede {
+    margin-bottom: var(--space-6);
+  }
+}

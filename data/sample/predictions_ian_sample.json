@@ -1,0 +1,19 @@
+{
+  "source": "data/processed/predictions_ian2022.parquet",
+  "source_sha256": "f4a9b264b70e3f62b0c1a75715b971b9c00410e101e5f43772d7b985c1c96026",
+  "sample": "data/sample/predictions_ian_sample.parquet",
+  "sample_sha256": "c2df64e02aa1eb3476de50664dead62dab047916aae3d7b5a9942fde71d34039",
+  "counties": [
+    "12015",
+    "12021",
+    "12071"
+  ],
+  "rows": 165,
+  "rows_with_estimate": 93,
+  "rows_by_status": {
+    "cant_see": 72,
+    "ok": 93
+  },
+  "lockbox_git_head": "7fd2732f0ca36cfb3c7f9c9ca582f299c2fa598e",
+  "lockbox_run_at_utc": "2026-11-09T07:55:07.363465+00:00"
+}

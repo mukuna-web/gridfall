@@ -1,0 +1,235 @@
+/* County card, portfolio panel and the data tables they share. */
+
+.county-card {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.county-card__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-3);
+}
+
+.county-card__title {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.county-card__night {
+  margin-top: calc(-1 * var(--space-3));
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+
+.county-card__headline {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-2) 0 var(--space-4);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.county-card__why {
+  max-width: 46ch;
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+
+.figure {
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display);
+}
+
+.figure--xl {
+  font-size: var(--text-xl);
+}
+
+/* "can't see" reads as a status, not a number: lighter, laid on the map's hatch. */
+.figure--status {
+  width: fit-content;
+  padding: 0 0.12em 0.04em;
+  font-size: var(--text-xl);
+  font-weight: 400;
+  color: var(--ink-2);
+  background: repeating-linear-gradient(135deg, transparent 0 6px, var(--hatch-faint) 6px 8px);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin: 0;
+}
+
+.fact {
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  min-width: 0;
+}
+
+.fact--wide {
+  grid-column: 1 / -1;
+}
+
+.fact dd {
+  margin: 0;
+}
+
+.fact__value {
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+
+.fact__approx {
+  margin-right: 0.15em;
+  font-weight: 400;
+  color: var(--ink-3);
+}
+
+.fact__aside {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--ink-2);
+}
+
+.fact__note {
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+}
+
+.county-card__visibility {
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--hairline);
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+}
+
+.empty-note {
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+
+/* ---------- Portfolio ---------- */
+
+.portfolio {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.portfolio__headline {
+  display: grid;
+  gap: var(--space-2);
+  font-weight: 400;
+}
+
+.portfolio__lead {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.figure--hero {
+  font-size: var(--text-hero);
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+}
+
+.portfolio__range {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+
+.portfolio__explain {
+  max-width: 52ch;
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+}
+
+.portfolio__unknown {
+  display: flex;
+  align-items: flex-start;
+  padding: var(--space-2) var(--space-3);
+  border-left: 3px solid var(--ink);
+  background: repeating-linear-gradient(135deg, transparent 0 7px, var(--hatch-faint) 7px 8px);
+  font-size: var(--text-sm);
+}
+
+.portfolio__unknown .swatch {
+  margin-top: 3px;
+}
+
+/* ---------- Tables ---------- */
+
+.table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.data-table caption {
+  padding-bottom: var(--space-2);
+  caption-side: top;
+  text-align: left;
+}
+
+.data-table th,
+.data-table td {
+  padding: 7px var(--space-3) 7px 0;
+  border-bottom: 1px solid var(--hairline);
+  text-align: left;
+  vertical-align: baseline;
+}
+
+.data-table th:last-child,
+.data-table td:last-child {
+  padding-right: 0;
+}
+
+.data-table thead th {
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.data-table tbody th {
+  font-weight: 500;
+}
+
+.data-table .num {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Figures stay on one line; column heads may wrap so tables fit at 375 px. */
+.data-table thead th.num {
+  white-space: normal;
+}
+
+.data-table tr.is-selected > * {
+  background: var(--paper-deep);
+}
+
+.data-table tr.is-selected > th {
+  padding-left: var(--space-2);
+  box-shadow: inset 3px 0 0 var(--ink);
+}
+
+.cell--blind {
+  color: var(--ink-2);
+}

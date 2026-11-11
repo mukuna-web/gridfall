@@ -1,0 +1,24 @@
+{
+ "note": "Hashes of the EAGLE-I, Census and HURDAT2 downloads as they were when the committed tables and the lockbox run were built (2026-11-05 to 2026-11-09), and the row count of the EAGLE-I 2022 file. scripts/fetch_eaglei.py and scripts/reproduce.py compare fresh downloads, and an EAGLE-I parquet already on disk, with these, so a change in one of these files is reported as an input change. NASA's Black Marble tiles are NOT pinned: each download is checked only against the MD5 NASA lists for it that day, so a NASA reprocessing shows up as different numbers in the comparison. Update the values only when the tables are rebuilt from new inputs.",
+ "eaglei": {
+  "figshare_article": 24237376,
+  "figshare_version": 4,
+  "files": {
+   "eaglei_outages_2022.csv": {"size": 1187596176, "md5": "0cd04f23ac90ec4ec20ce3a63dcfa25a", "rows": 25796465},
+   "MCC.csv": {"size": 40584, "md5": "7e30d47d44cae46b3342cdabf7c84b7f"},
+   "coverage_history.csv": {"size": 11965, "md5": "33ef0c8549a95bcc1ef52b61c2463271"},
+   "DQI.csv": {"size": 4338, "md5": "fca42544e0c3ee4a191985d1c6c19bc4"}
+  }
+ },
+ "census": {
+  "cb_2022_us_county_500k.zip": "4a2c23c5486916115137fed7e84a32a4dcfeae453d02840d3e3f1fd8efc3ba58",
+  "cb_2021_us_county_500k.zip": "0262e163a6b2effa8e73863912814d499f6bdd07a05726960e0f4135ca62df1e",
+  "acsdt5y2022-b25001.dat": "5bc8c5cf2bb5d4db9417537394f5b2af2399197e853d3efb0d056b8a4c557512",
+  "acsdt5y2021-b25001.dat": "ddc83069353064aee56b4fb58df7bdc04ea9c01307def64028d2aeb9424dcf75"
+ },
+ "hurdat2": {
+  "name": "hurdat2-1851-2025-02272026.txt",
+  "source": "https://www.nhc.noaa.gov/data/hurdat/hurdat2-1851-2025-02272026.txt",
+  "sha256": "1b9b0c7beed5b4505838658b1d30e159fc84330c60891a58cfcf43ae55c37202"
+ }
+}

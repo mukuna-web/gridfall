@@ -1,0 +1,52 @@
+{
+  "storm_id": "synth2099",
+  "window": 60,
+  "methods": {
+    "isotonic": {
+      "mae_pp": 12.5,
+      "peak_total_est": 100000.0,
+      "peak_total_official": 120000.0,
+      "catch_rate_50": 0.75,
+      "false_alarm_50": 0.1,
+      "restore_day_err": 1.5,
+      "measurable_share": 0.8
+    },
+    "wind_only": {
+      "mae_pp": 20.0,
+      "peak_total_est": 80000.0,
+      "peak_total_official": 120000.0,
+      "catch_rate_50": 0.5,
+      "false_alarm_50": 0.2,
+      "restore_day_err": 3.0,
+      "measurable_share": 1.0
+    },
+    "nothing": {
+      "mae_pp": 35.0,
+      "peak_total_est": 0.0,
+      "peak_total_official": 120000.0,
+      "catch_rate_50": 0.0,
+      "false_alarm_50": null,
+      "restore_day_err": null,
+      "measurable_share": 1.0
+    },
+    "hybrid": {
+      "mae_pp": 9.0,
+      "peak_total_est": 150000.0,
+      "peak_total_official": 120000.0,
+      "catch_rate_50": 0.9,
+      "false_alarm_50": 0.25,
+      "restore_day_err": 1.0,
+      "measurable_share": 0.8
+    },
+    "wind_timing": {
+      "mae_pp": 11.0,
+      "peak_total_est": 120000.0,
+      "peak_total_official": 120000.0,
+      "catch_rate_50": 0.8,
+      "false_alarm_50": 0.3,
+      "restore_day_err": 2.0,
+      "measurable_share": 1.0
+    }
+  },
+  "note": "Scored against EAGLE-I at the satellite pass (±60-minute window). mae_pp is in percentage points; peak totals are customers. Leave-one-storm-out: the curve was fit without this storm."
+}

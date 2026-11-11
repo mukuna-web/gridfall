@@ -1,0 +1,52 @@
+{
+  "storm_id": "idalia2023",
+  "window": 60,
+  "methods": {
+    "isotonic": {
+      "mae_pp": 1.5299,
+      "peak_total_est": 122107.6493,
+      "peak_total_official": 289364.5,
+      "catch_rate_50": 0.0,
+      "false_alarm_50": null,
+      "restore_day_err": 5.0,
+      "measurable_share": 0.73
+    },
+    "wind_only": {
+      "mae_pp": 1.6248,
+      "peak_total_est": 46067.3204,
+      "peak_total_official": 289364.5,
+      "catch_rate_50": 0.0,
+      "false_alarm_50": null,
+      "restore_day_err": 2.0,
+      "measurable_share": 0.73
+    },
+    "nothing": {
+      "mae_pp": 1.1451,
+      "peak_total_est": 0.0,
+      "peak_total_official": 289364.5,
+      "catch_rate_50": 0.0,
+      "false_alarm_50": null,
+      "restore_day_err": 2.0,
+      "measurable_share": 0.73
+    },
+    "hybrid": {
+      "mae_pp": 2.1069,
+      "peak_total_est": 391136.917,
+      "peak_total_official": 289364.5,
+      "catch_rate_50": 0.0476,
+      "false_alarm_50": 0.0,
+      "restore_day_err": 2.0,
+      "measurable_share": 0.73
+    },
+    "wind_timing": {
+      "mae_pp": 2.1643,
+      "peak_total_est": 1202963.6606,
+      "peak_total_official": 289364.5,
+      "catch_rate_50": 0.0952,
+      "false_alarm_50": 0.3333,
+      "restore_day_err": 2.0,
+      "measurable_share": 0.73
+    }
+  },
+  "note": "Scored against EAGLE-I at the satellite pass (±60-minute window). mae_pp is in percentage points; peak totals are customers. Leave-one-storm-out: the curve was fit without this storm."
+}

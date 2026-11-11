@@ -1,0 +1,10 @@
+{
+  "storm_id": "milton2024",
+  "window": 60,
+  "methods": {
+    "isotonic": { "mae_pp": 11.1, "peak_total_est": 111111, "peak_total_official": 222222, "catch_rate_50": 0.111, "false_alarm_50": 0.222, "restore_day_err": 1.11, "measurable_share": 0.111 },
+    "wind_only": { "mae_pp": 22.2, "peak_total_est": 333333, "peak_total_official": 222222, "catch_rate_50": 0.222, "false_alarm_50": 0.333, "restore_day_err": null, "measurable_share": 1.0 },
+    "nothing": { "mae_pp": 33.3, "peak_total_est": 0, "peak_total_official": 222222, "catch_rate_50": 0.0, "false_alarm_50": 0.0, "restore_day_err": null, "measurable_share": 1.0 }
+  },
+  "note": "SYNTHETIC test fixture: invented values, not a Milton score."
+}

@@ -1,0 +1,4 @@
+# Every file is stored and checked out byte for byte, on every system. Several checks compare files byte for byte or
+# by their SHA-256 hash (the frozen lockbox record, two model files, the contract fixture, uv.lock), and a line-ending
+# conversion would break them.
+* -text

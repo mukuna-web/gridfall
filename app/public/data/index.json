@@ -1,0 +1,88 @@
+{
+  "storms": [
+    {
+      "id": "florence2018",
+      "name": "Florence",
+      "landfall": "2018-09-14",
+      "role": "main",
+      "satellite": "VNP46A2"
+    },
+    {
+      "id": "michael2018",
+      "name": "Michael",
+      "landfall": "2018-10-10",
+      "role": "main",
+      "satellite": "VNP46A2"
+    },
+    {
+      "id": "isaias2020",
+      "name": "Isaias",
+      "landfall": "2020-08-03",
+      "role": "main",
+      "satellite": "VNP46A2"
+    },
+    {
+      "id": "laura2020",
+      "name": "Laura",
+      "landfall": "2020-08-27",
+      "role": "main",
+      "satellite": "VNP46A2"
+    },
+    {
+      "id": "uri2021",
+      "name": "Uri",
+      "landfall": "2021-02-15",
+      "role": "stress",
+      "satellite": "VNP46A2"
+    },
+    {
+      "id": "ida2021",
+      "name": "Ida",
+      "landfall": "2021-08-29",
+      "role": "main",
+      "satellite": "VNP46A2"
+    },
+    {
+      "id": "ian2022",
+      "name": "Ian",
+      "landfall": "2022-09-28",
+      "role": "main",
+      "satellite": "VNP46A2"
+    },
+    {
+      "id": "ian2022_sample",
+      "name": "Ian (sample: Lee, Charlotte, Collier)",
+      "landfall": "2022-09-28",
+      "role": "main",
+      "satellite": "VNP46A2"
+    },
+    {
+      "id": "idalia2023",
+      "name": "Idalia",
+      "landfall": "2023-08-30",
+      "role": "main",
+      "satellite": "VNP46A2"
+    },
+    {
+      "id": "beryl2024",
+      "name": "Beryl",
+      "landfall": "2024-07-08",
+      "role": "main",
+      "satellite": "VJ146A2"
+    },
+    {
+      "id": "helene2024",
+      "name": "Helene",
+      "landfall": "2024-09-26",
+      "role": "lockbox",
+      "satellite": "VNP46A2"
+    },
+    {
+      "id": "milton2024",
+      "name": "Milton",
+      "landfall": "2024-10-09",
+      "role": "lockbox",
+      "satellite": "VNP46A2"
+    }
+  ]
+}

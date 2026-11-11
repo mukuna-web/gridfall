@@ -1,0 +1,77 @@
+name: reproduce
+run-name: reproduce level ${{ inputs.level }}
+
+# Rebuilds part of Hurricane Ian from NASA and EAGLE-I on a GitHub-hosted runner and compares it with what the
+# repository committed (scripts/reproduce.py). The runner is free for a public repository (a private copy is metered
+# against its plan's included usage). Starting a run needs write access, so anyone else runs it in a fork with a
+# secret of their own. On demand only: it needs the repository secret EARTHDATA_TOKEN, a free NASA Earthdata token
+# that EXPIRES 60 DAYS after it is generated (urs.earthdata.nasa.gov), so rotate the secret before a run; a schedule
+# would go red for that reason alone. Without the secret a level 1 or 2 run stops with an error; a fork drops to level
+# 0, the offline checks, with a warning. Level 1 downloads about 5.5 GB and level 2 (all of Ian) about 14 GB. Each
+# level was timed once on a runner, on 2026-11-10 in the development repository, from start to finish: level 1 about 3
+# minutes, level 2 about 4.5 minutes. Those are single runs and download speed varies, so the timeouts below stay
+# generous for that reason. The report is uploaded as an artifact and summarised on the run page, where PASS appears
+# only for a run that reached its end: the report of a cancelled or killed run says "complete": false, and its
+# summary, when one could still be written, INCOMPLETE. A failure on a fresh runner most likely means an upstream
+# input changed. NHC's dated HURDAT2 file, figshare and Census each have a check of their own that says so. NASA's
+# tiles are not pinned: if NASA reprocesses them, the comparison fails with different numbers, just as it would after
+# a code change.
+
+on:
+  workflow_dispatch:
+    inputs:
+      level:
+        description: "0 offline, 1 three counties (default), 2 all of Ian"
+        default: "1"
+        type: choice
+        options: ["0", "1", "2"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: reproduce
+  cancel-in-progress: false  # a half-finished download is the expensive part: queue behind it instead
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: ${{ inputs.level == '2' && 240 || 120 }}
+    env:
+      HAS_EARTHDATA_TOKEN: ${{ secrets.EARTHDATA_TOKEN != '' }}
+      IS_FORK: ${{ github.event.repository.fork }}
+      REQUESTED_LEVEL: ${{ inputs.level }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # tests/test_lockbox.py reads the development history where the checkout has it
+          persist-credentials: false  # nothing here pushes: keep GITHUB_TOKEN out of .git/config
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.13"
+      - run: uv sync --locked
+      - name: Pick the level
+        id: level
+        run: |
+          level="${REQUESTED_LEVEL:-1}"
+          if [ "$HAS_EARTHDATA_TOKEN" != "true" ] && [ "$level" != "0" ]; then
+            if [ "$IS_FORK" != "true" ]; then
+              echo "::error::level $level needs the repository secret EARTHDATA_TOKEN, which is not set: nothing was rebuilt"
+              exit 1
+            fi
+            echo "::warning::EARTHDATA_TOKEN is not set in this fork; running level 0, the offline checks, only"
+            level=0
+          fi
+          echo "level=$level" >> "$GITHUB_OUTPUT"
+      - name: Reproduce
+        env:
+          EARTHDATA_TOKEN: ${{ secrets.EARTHDATA_TOKEN }}
+          LEVEL: ${{ steps.level.outputs.level }}
+        run: uv run python -I scripts/reproduce.py --level "$LEVEL" --report reproduce-report.json
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() && steps.level.outcome == 'success' }}  # no report exists when the run never started
+        with:
+          name: reproduce-report
+          path: reproduce-report.json
+          if-no-files-found: error  # the script writes the report as it starts and after every check: none is a crash
+          retention-days: 30

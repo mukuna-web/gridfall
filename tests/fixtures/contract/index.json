@@ -1,0 +1,11 @@
+{
+  "storms": [
+    {
+      "id": "synth2099",
+      "name": "Synthetic storm (contract fixture: every number invented)",
+      "landfall": "2099-09-10",
+      "role": "main",
+      "satellite": "VNP46A2"
+    }
+  ]
+}

@@ -1,0 +1,556 @@
+{
+  "pass_bar": {
+    "helene2024": {
+      "60": {
+        "storm_id": "helene2024",
+        "window": 60,
+        "rows_scored": 3715,
+        "mae_pp_curve": 6.77,
+        "mae_pp_wind_only": 7.0,
+        "first_difference_spearman": 0.094,
+        "change_pairs": 3456,
+        "restore_day_median_error": 4.0,
+        "restore_counties": 252,
+        "beats_wind_only": true,
+        "agreement_ok": false,
+        "restore_ok": false,
+        "passes": false
+      },
+      "30": {
+        "storm_id": "helene2024",
+        "window": 30,
+        "rows_scored": 3716,
+        "mae_pp_curve": 6.78,
+        "mae_pp_wind_only": 7.01,
+        "first_difference_spearman": 0.093,
+        "change_pairs": 3457,
+        "restore_day_median_error": 4.0,
+        "restore_counties": 252,
+        "beats_wind_only": true,
+        "agreement_ok": false,
+        "restore_ok": false,
+        "passes": false
+      },
+      "90": {
+        "storm_id": "helene2024",
+        "window": 90,
+        "rows_scored": 3715,
+        "mae_pp_curve": 6.77,
+        "mae_pp_wind_only": 7.0,
+        "first_difference_spearman": 0.096,
+        "change_pairs": 3456,
+        "restore_day_median_error": 4.0,
+        "restore_counties": 252,
+        "beats_wind_only": true,
+        "agreement_ok": false,
+        "restore_ok": false,
+        "passes": false
+      }
+    },
+    "milton2024": {
+      "60": {
+        "storm_id": "milton2024",
+        "window": 60,
+        "rows_scored": 1243,
+        "mae_pp_curve": 1.27,
+        "mae_pp_wind_only": 1.75,
+        "first_difference_spearman": 0.094,
+        "change_pairs": 1170,
+        "restore_day_median_error": 3.0,
+        "restore_counties": 63,
+        "beats_wind_only": true,
+        "agreement_ok": false,
+        "restore_ok": false,
+        "passes": false
+      },
+      "30": {
+        "storm_id": "milton2024",
+        "window": 30,
+        "rows_scored": 1243,
+        "mae_pp_curve": 1.27,
+        "mae_pp_wind_only": 1.75,
+        "first_difference_spearman": 0.096,
+        "change_pairs": 1170,
+        "restore_day_median_error": 3.0,
+        "restore_counties": 63,
+        "beats_wind_only": true,
+        "agreement_ok": false,
+        "restore_ok": false,
+        "passes": false
+      },
+      "90": {
+        "storm_id": "milton2024",
+        "window": 90,
+        "rows_scored": 1243,
+        "mae_pp_curve": 1.27,
+        "mae_pp_wind_only": 1.75,
+        "first_difference_spearman": 0.089,
+        "change_pairs": 1170,
+        "restore_day_median_error": 3.0,
+        "restore_counties": 63,
+        "beats_wind_only": true,
+        "agreement_ok": false,
+        "restore_ok": false,
+        "passes": false
+      }
+    }
+  },
+  "hybrid": {
+    "helene2024": {
+      "60": {
+        "storm_id": "helene2024",
+        "window": 60,
+        "rows_scored": 3715,
+        "mae_pp_curve": 7.16,
+        "mae_pp_wind_only": 7.0,
+        "first_difference_spearman": 0.181,
+        "change_pairs": 3456,
+        "restore_day_median_error": 5.0,
+        "restore_counties": 129,
+        "beats_wind_only": false,
+        "agreement_ok": false,
+        "restore_ok": false,
+        "passes": false
+      },
+      "30": {
+        "storm_id": "helene2024",
+        "window": 30,
+        "rows_scored": 3716,
+        "mae_pp_curve": 7.18,
+        "mae_pp_wind_only": 7.01,
+        "first_difference_spearman": 0.179,
+        "change_pairs": 3457,
+        "restore_day_median_error": 5.0,
+        "restore_counties": 129,
+        "beats_wind_only": false,
+        "agreement_ok": false,
+        "restore_ok": false,
+        "passes": false
+      },
+      "90": {
+        "storm_id": "helene2024",
+        "window": 90,
+        "rows_scored": 3715,
+        "mae_pp_curve": 7.16,
+        "mae_pp_wind_only": 7.0,
+        "first_difference_spearman": 0.181,
+        "change_pairs": 3456,
+        "restore_day_median_error": 5.0,
+        "restore_counties": 129,
+        "beats_wind_only": false,
+        "agreement_ok": false,
+        "restore_ok": false,
+        "passes": false
+      }
+    },
+    "milton2024": {
+      "60": {
+        "storm_id": "milton2024",
+        "window": 60,
+        "rows_scored": 1243,
+        "mae_pp_curve": 2.2,
+        "mae_pp_wind_only": 1.75,
+        "first_difference_spearman": 0.188,
+        "change_pairs": 1170,
+        "restore_day_median_error": 5.0,
+        "restore_counties": 73,
+        "beats_wind_only": false,
+        "agreement_ok": false,
+        "restore_ok": false,
+        "passes": false
+      },
+      "30": {
+        "storm_id": "milton2024",
+        "window": 30,
+        "rows_scored": 1243,
+        "mae_pp_curve": 2.2,
+        "mae_pp_wind_only": 1.75,
+        "first_difference_spearman": 0.184,
+        "change_pairs": 1170,
+        "restore_day_median_error": 4.0,
+        "restore_counties": 73,
+        "beats_wind_only": false,
+        "agreement_ok": false,
+        "restore_ok": false,
+        "passes": false
+      },
+      "90": {
+        "storm_id": "milton2024",
+        "window": 90,
+        "rows_scored": 1243,
+        "mae_pp_curve": 2.2,
+        "mae_pp_wind_only": 1.75,
+        "first_difference_spearman": 0.189,
+        "change_pairs": 1170,
+        "restore_day_median_error": 5.0,
+        "restore_counties": 73,
+        "beats_wind_only": false,
+        "agreement_ok": false,
+        "restore_ok": false,
+        "passes": false
+      }
+    },
+    "uri2021": {
+      "60": {
+        "storm_id": "uri2021",
+        "window": 60,
+        "rows_scored": 2505,
+        "mae_pp_curve": 2.11,
+        "mae_pp_wind_only": 2.34,
+        "first_difference_spearman": 0.043,
+        "change_pairs": 2304,
+        "restore_day_median_error": 2.0,
+        "restore_counties": 198,
+        "beats_wind_only": true,
+        "agreement_ok": false,
+        "restore_ok": true,
+        "passes": false
+      },
+      "30": {
+        "storm_id": "uri2021",
+        "window": 30,
+        "rows_scored": 2505,
+        "mae_pp_curve": 2.09,
+        "mae_pp_wind_only": 2.32,
+        "first_difference_spearman": 0.043,
+        "change_pairs": 2304,
+        "restore_day_median_error": 2.0,
+        "restore_counties": 198,
+        "beats_wind_only": true,
+        "agreement_ok": false,
+        "restore_ok": true,
+        "passes": false
+      },
+      "90": {
+        "storm_id": "uri2021",
+        "window": 90,
+        "rows_scored": 2505,
+        "mae_pp_curve": 2.1,
+        "mae_pp_wind_only": 2.33,
+        "first_difference_spearman": 0.044,
+        "change_pairs": 2304,
+        "restore_day_median_error": 2.0,
+        "restore_counties": 197,
+        "beats_wind_only": true,
+        "agreement_ok": false,
+        "restore_ok": true,
+        "passes": false
+      }
+    }
+  },
+  "stress": {
+    "uri2021": {
+      "60": {
+        "storm_id": "uri2021",
+        "window": 60,
+        "rows_scored": 2505,
+        "mae_pp_curve": 2.26,
+        "mae_pp_wind_only": 2.34,
+        "first_difference_spearman": -0.026,
+        "change_pairs": 2304,
+        "restore_day_median_error": 11.0,
+        "restore_counties": 192,
+        "beats_wind_only": true,
+        "agreement_ok": false,
+        "restore_ok": false,
+        "passes": false
+      },
+      "30": {
+        "storm_id": "uri2021",
+        "window": 30,
+        "rows_scored": 2505,
+        "mae_pp_curve": 2.24,
+        "mae_pp_wind_only": 2.32,
+        "first_difference_spearman": -0.024,
+        "change_pairs": 2304,
+        "restore_day_median_error": 11.0,
+        "restore_counties": 192,
+        "beats_wind_only": true,
+        "agreement_ok": false,
+        "restore_ok": false,
+        "passes": false
+      },
+      "90": {
+        "storm_id": "uri2021",
+        "window": 90,
+        "rows_scored": 2505,
+        "mae_pp_curve": 2.26,
+        "mae_pp_wind_only": 2.33,
+        "first_difference_spearman": -0.026,
+        "change_pairs": 2304,
+        "restore_day_median_error": 11.0,
+        "restore_counties": 191,
+        "beats_wind_only": true,
+        "agreement_ok": false,
+        "restore_ok": false,
+        "passes": false
+      }
+    }
+  },
+  "trigger": {
+    "helene2024": {
+      "isotonic": {
+        "storm_id": "helene2024",
+        "trigger": "county above 50% out at 72 h",
+        "paid_correctly": 0,
+        "paid_wrongly": 0,
+        "missed": 52,
+        "correctly_unpaid": 207,
+        "unknown": 10
+      },
+      "hybrid": {
+        "storm_id": "helene2024",
+        "trigger": "county above 50% out at 72 h",
+        "paid_correctly": 5,
+        "paid_wrongly": 12,
+        "missed": 47,
+        "correctly_unpaid": 195,
+        "unknown": 10
+      }
+    },
+    "milton2024": {
+      "isotonic": {
+        "storm_id": "milton2024",
+        "trigger": "county above 50% out at 72 h",
+        "paid_correctly": 0,
+        "paid_wrongly": 0,
+        "missed": 1,
+        "correctly_unpaid": 72,
+        "unknown": 1
+      },
+      "hybrid": {
+        "storm_id": "milton2024",
+        "trigger": "county above 50% out at 72 h",
+        "paid_correctly": 0,
+        "paid_wrongly": 1,
+        "missed": 1,
+        "correctly_unpaid": 71,
+        "unknown": 1
+      }
+    }
+  },
+  "provenance": {
+    "git_head": "7fd2732f0ca36cfb3c7f9c9ca582f299c2fa598e",
+    "working_tree_dirty": true,
+    "code_sha256_16": {
+      "model.py": "25605eb093a1e0f1",
+      "hybrid.py": "3ab8524766cacbc3",
+      "ranges.py": "5e2e75fcac3eadc1",
+      "evaluate.py": "3c0f953ee364a16e",
+      "final.py": "f4b542333476c09b"
+    },
+    "training_tables": [
+      {
+        "storm_id": "florence2018",
+        "satellite": "VNP46A2",
+        "table": "county_nights_florence2018.parquet",
+        "rows": 24090
+      },
+      {
+        "storm_id": "michael2018",
+        "satellite": "VNP46A2",
+        "table": "county_nights_michael2018.parquet",
+        "rows": 24145
+      },
+      {
+        "storm_id": "laura2020",
+        "satellite": "VNP46A2",
+        "table": "county_nights_laura2020.parquet",
+        "rows": 26125
+      },
+      {
+        "storm_id": "isaias2020",
+        "satellite": "VNP46A2",
+        "table": "county_nights_isaias2020.parquet",
+        "rows": 29260
+      },
+      {
+        "storm_id": "ida2021",
+        "satellite": "VNP46A2",
+        "table": "county_nights_ida2021.parquet",
+        "rows": 11715
+      },
+      {
+        "storm_id": "ian2022",
+        "satellite": "VNP46A2",
+        "table": "county_nights_ian2022.parquet",
+        "rows": 27775
+      },
+      {
+        "storm_id": "idalia2023",
+        "satellite": "VNP46A2",
+        "table": "county_nights_idalia2023.parquet",
+        "rows": 20460
+      },
+      {
+        "storm_id": "beryl2024",
+        "satellite": "VJ146A2",
+        "table": "county_nights_beryl2024.parquet",
+        "rows": 17490
+      }
+    ],
+    "run_at_utc": "2026-11-09T07:55:07.363465+00:00",
+    "training_rows_dropped_as_shared_county_nights": 0
+  },
+  "satellite_increment": [
+    {
+      "storm_id": "helene2024",
+      "rows_big": 566,
+      "rows_half": 175,
+      "mae_big_hybrid": 32.98026806448798,
+      "auc_hybrid": 0.7843341404358354,
+      "mae_big_wind_timing": 35.061995887645594,
+      "auc_wind_timing": 0.7837627118644068,
+      "mae_big_diff": -2.081727823157614,
+      "auc_diff": 0.0005714285714285561
+    },
+    {
+      "storm_id": "milton2024",
+      "rows_big": 41,
+      "rows_half": 4,
+      "mae_big_hybrid": 12.92232972685701,
+      "auc_hybrid": 0.9588377723970944,
+      "mae_big_wind_timing": 14.962350397665544,
+      "auc_wind_timing": 0.9555084745762712,
+      "mae_big_diff": -2.040020670808534,
+      "auc_diff": 0.0033292978208232515
+    },
+    {
+      "storm_id": "all storms pooled",
+      "rows_big": 607,
+      "rows_half": 179,
+      "mae_big_hybrid": 31.625448506262494,
+      "auc_hybrid": 0.7926461322288738,
+      "mae_big_wind_timing": 33.70435920710329,
+      "auc_wind_timing": 0.7829359359675302,
+      "mae_big_diff": -2.078910700840794,
+      "auc_diff": 0.009710196261343618
+    }
+  ],
+  "satellite_test": {
+    "verdict": "yes",
+    "per_storm": {
+      "helene2024": {
+        "evaluable": true,
+        "error_lower": true,
+        "auc_evaluable": true,
+        "auc_higher": true,
+        "passes": true
+      },
+      "milton2024": {
+        "evaluable": true,
+        "error_lower": true,
+        "auc_evaluable": false,
+        "auc_higher": null,
+        "passes": true
+      }
+    }
+  },
+  "verdict": "fail",
+  "ranges": {
+    "isotonic": [
+      {
+        "pred_from": null,
+        "pred_to": 0.0017369614264392832,
+        "rows": 17220,
+        "lo_offset": -0.001671537458099992,
+        "hi_offset": -0.0012491033201054698
+      },
+      {
+        "pred_from": 0.0017369614264392832,
+        "pred_to": 0.0018733091144098484,
+        "rows": 15587,
+        "lo_offset": -0.001854053224964156,
+        "hi_offset": -0.00148970437223198
+      },
+      {
+        "pred_from": 0.0018733091144098484,
+        "pred_to": 0.002108717884510095,
+        "rows": 19978,
+        "lo_offset": -0.001977352545906195,
+        "hi_offset": -0.0018012315503680347
+      },
+      {
+        "pred_from": 0.002108717884510095,
+        "pred_to": 0.003520600695174841,
+        "rows": 18251,
+        "lo_offset": -0.0027455702325809572,
+        "hi_offset": -0.0021010979660432225
+      },
+      {
+        "pred_from": 0.003520600695174841,
+        "pred_to": null,
+        "rows": 17819,
+        "lo_offset": -0.020279728316403678,
+        "hi_offset": -0.0035291305374867904
+      }
+    ],
+    "hybrid": [
+      {
+        "pred_from": null,
+        "pred_to": 0.0029739806672352057,
+        "rows": 71084,
+        "lo_offset": -0.0008821996292471695,
+        "hi_offset": 6.370508791302132e-05
+      },
+      {
+        "pred_from": 0.0029739806672352057,
+        "pred_to": null,
+        "rows": 17771,
+        "lo_offset": -0.042850263323884745,
+        "hi_offset": -0.0032929482690943488
+      }
+    ]
+  },
+  "range_coverage_loso": {
+    "isotonic": {
+      "all_rows": 0.85,
+      "rows": 88855,
+      "hit_event_rows": 0.776,
+      "hit_event_count": 11983
+    },
+    "hybrid": {
+      "all_rows": 0.807,
+      "rows": 88855,
+      "hit_event_rows": 0.705,
+      "hit_event_count": 11983
+    }
+  },
+  "noaa20": [
+    {
+      "storm_id": "ida2021",
+      "pairs": 5739,
+      "event_pairs": 2070,
+      "pearson": 0.424,
+      "spearman": 0.37,
+      "median_abs_diff_pp": 29.3,
+      "event_spearman": 0.119
+    },
+    {
+      "storm_id": "ian2022",
+      "pairs": 972,
+      "event_pairs": 511,
+      "pearson": 0.236,
+      "spearman": 0.081,
+      "median_abs_diff_pp": 17.7,
+      "event_spearman": 0.289
+    },
+    {
+      "storm_id": "beryl2024",
+      "pairs": 7588,
+      "event_pairs": 1284,
+      "pearson": 0.566,
+      "spearman": 0.625,
+      "median_abs_diff_pp": 22.0,
+      "event_spearman": 0.709
+    }
+  ],
+  "lee_noaa20": {
+    "darkest_night": "2022-09-29",
+    "darkest_pct": 0.752,
+    "official_peak_night": "2022-09-29",
+    "half_recovery_dark": "2022-10-02",
+    "half_recovery_official": "2022-10-04",
+    "recovery_gap_nights": -2
+  }
+}

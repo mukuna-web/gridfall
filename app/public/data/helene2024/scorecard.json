@@ -1,0 +1,52 @@
+{
+  "storm_id": "helene2024",
+  "window": 60,
+  "methods": {
+    "isotonic": {
+      "mae_pp": 6.7679,
+      "peak_total_est": 116963.2227,
+      "peak_total_official": 1692128.5,
+      "catch_rate_50": 0.0,
+      "false_alarm_50": null,
+      "restore_day_err": 4.0,
+      "measurable_share": 0.636
+    },
+    "wind_only": {
+      "mae_pp": 7.001,
+      "peak_total_est": 91365.975,
+      "peak_total_official": 1692128.5,
+      "catch_rate_50": 0.0,
+      "false_alarm_50": null,
+      "restore_day_err": 2.0,
+      "measurable_share": 0.636
+    },
+    "nothing": {
+      "mae_pp": 6.7631,
+      "peak_total_est": 0.0,
+      "peak_total_official": 1692128.5,
+      "catch_rate_50": 0.0,
+      "false_alarm_50": null,
+      "restore_day_err": 2.0,
+      "measurable_share": 0.636
+    },
+    "hybrid": {
+      "mae_pp": 7.1644,
+      "peak_total_est": 1163893.3159,
+      "peak_total_official": 1692128.5,
+      "catch_rate_50": 0.0686,
+      "false_alarm_50": 0.6923,
+      "restore_day_err": 5.0,
+      "measurable_share": 0.636
+    },
+    "wind_timing": {
+      "mae_pp": 6.4991,
+      "peak_total_est": 955638.4931,
+      "peak_total_official": 1692128.5,
+      "catch_rate_50": 0.0229,
+      "false_alarm_50": 0.6923,
+      "restore_day_err": 3.0,
+      "measurable_share": 0.636
+    }
+  },
+  "note": "Scored against EAGLE-I at the satellite pass (±60-minute window). mae_pp is in percentage points; peak totals are customers. Lockbox storm: scored once, after the pass bar was committed."
+}

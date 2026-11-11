@@ -1,0 +1,47 @@
+{
+  "id": "michael2018",
+  "name": "Michael",
+  "landfall": "2018-10-10",
+  "role": "main",
+  "satellite": "VNP46A2",
+  "nights": [
+    "2018-10-08",
+    "2018-10-09",
+    "2018-10-10",
+    "2018-10-11",
+    "2018-10-12",
+    "2018-10-13",
+    "2018-10-14",
+    "2018-10-15",
+    "2018-10-16",
+    "2018-10-17",
+    "2018-10-18",
+    "2018-10-19",
+    "2018-10-20",
+    "2018-10-21",
+    "2018-10-22",
+    "2018-10-23",
+    "2018-10-24",
+    "2018-10-25",
+    "2018-10-26",
+    "2018-10-27",
+    "2018-10-28",
+    "2018-10-29",
+    "2018-10-30",
+    "2018-10-31"
+  ],
+  "waiting_periods": [
+    24,
+    48,
+    72
+  ],
+  "default_waiting_period": 72,
+  "generated": "2026-11-09T08:00:22+00:00",
+  "notes": [
+    "est, lo and hi are the estimated fraction of customers without power and its 80% range, from Black Marble night lights. They are null where the satellite can't see the county or it is too dark to measure: unknown, never zero.",
+    "official is EAGLE-I's customers out at the satellite pass (median of the runs within ±60 minutes, feed-dropout runs removed) over the county's customer count.",
+    "Policies and claims are synthetic: 100,000 policies placed by Census housing units (5% business, seed 20261105) and 200 claims, about 10% of them deliberately inflated past the county's official restoration day.",
+    "official is cleaned by model.apply_overcount_rule: 25 county-night(s) it treats as EAGLE-I over-counts (more customers out than the county has) are shown as null, and 3 slightly above 100% are shown as 100%.",
+    "EAGLE-I covers too few customers in AL (79%) for the curve to train on, so official numbers there undercount."
+  ]
+}

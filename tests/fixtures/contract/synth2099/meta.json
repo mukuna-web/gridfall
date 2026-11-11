@@ -1,0 +1,35 @@
+{
+  "id": "synth2099",
+  "name": "Synthetic storm (contract fixture: every number invented)",
+  "landfall": "2099-09-10",
+  "role": "main",
+  "satellite": "VNP46A2",
+  "nights": [
+    "2099-09-08",
+    "2099-09-09",
+    "2099-09-10",
+    "2099-09-11",
+    "2099-09-12",
+    "2099-09-13",
+    "2099-09-14",
+    "2099-09-15",
+    "2099-09-16",
+    "2099-09-17"
+  ],
+  "waiting_periods": [
+    24,
+    48,
+    72
+  ],
+  "default_waiting_period": 72,
+  "generated": "2099-09-20T00:00:00+00:00",
+  "notes": [
+    "est, lo and hi are the estimated fraction of customers without power and its 80% range, from Black Marble night lights. They are null where the satellite can't see the county or it is too dark to measure: unknown, never zero.",
+    "official is EAGLE-I's customers out at the satellite pass (median of the runs within ±60 minutes, feed-dropout runs removed) over the county's customer count.",
+    "Policies and claims are synthetic: 100,000 policies placed by Census housing units (5% business, seed 20261105) and 200 claims, about 10% of them deliberately inflated past the county's official restoration day.",
+    "official is cleaned by model.apply_overcount_rule: 1 county-night(s) it treats as EAGLE-I over-counts (more customers out than the county has) are shown as null, and 1 slightly above 100% are shown as 100%.",
+    "1 visible county-night(s) have no estimate from the fit; they show as unknown.",
+    "EAGLE-I covers too few customers in ZB (70%) for the curve to train on, so official numbers there undercount.",
+    "1 county(ies) have no EAGLE-I customer count (MCC.csv), so official is null there."
+  ]
+}

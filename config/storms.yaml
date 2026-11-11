@@ -1,0 +1,26 @@
+# Storm list for the build (docs/plan.md, Task 4).
+# landfall: the local calendar date of the US landfall record in HURDAT2 (Isaias, Helene and Milton came ashore
+#   late in the evening, so their UTC dates are a day later). landfall_utc: that record's UTC time; the
+#   24/48/72-hour waiting periods count from it. Uri has no landfall: 07:25 UTC is when rotating outages began.
+# states: every state with a county in the 34-kt zone of the storm's tropical (HU/TS) track, so no hit county is
+#   left out (test_states_cover_wind_zone). Defaults: baseline_end = landfall - 3 days, baseline_start =
+#   baseline_end - 30 days, window_end = landfall + 21 days.
+storms:
+  - {id: florence2018, name: Florence, atcf_id: AL062018, landfall: 2018-09-14, landfall_utc: '2018-09-14T11:15Z', role: main, states: [GA, NC, SC, VA]}
+  - {id: michael2018, name: Michael, atcf_id: AL142018, landfall: 2018-10-10, landfall_utc: '2018-10-10T17:30Z', role: main, states: [AL, FL, GA, NC, SC]}
+  - {id: laura2020, name: Laura, atcf_id: AL132020, landfall: 2020-08-27, landfall_utc: '2020-08-27T06:00Z', role: main, states: [AR, LA, MS, TX]}
+  - {id: isaias2020, name: Isaias, atcf_id: AL092020, landfall: 2020-08-03, landfall_utc: '2020-08-04T03:10Z', role: main,
+     states: [CT, DC, DE, FL, MD, NC, NJ, NY, PA, SC, VA]}
+  - {id: ida2021, name: Ida, atcf_id: AL092021, landfall: 2021-08-29, landfall_utc: '2021-08-29T16:55Z', role: main, states: [AL, LA, MS]}
+  - {id: ian2022, name: Ian, atcf_id: AL092022, landfall: 2022-09-28, landfall_utc: '2022-09-28T19:05Z', role: main, states: [FL, GA, NC, SC, VA]}
+  - {id: idalia2023, name: Idalia, atcf_id: AL102023, landfall: 2023-08-30, landfall_utc: '2023-08-30T11:45Z', role: main, states: [FL, GA, NC, SC]}
+  # Suomi NPP has no VNP46A2/A1 files for 2024-07-10..16 or 07-24..29 (NASA CMR, checked 2026-11-08): Beryl's
+  # first week after landfall. NOAA-20 has every day, so Beryl is built from VJ146A2 (baseline and nights alike).
+  - {id: beryl2024, name: Beryl, atcf_id: AL022024, landfall: 2024-07-08, landfall_utc: '2024-07-08T08:40Z', role: main, states: [LA, TX],
+     satellite: VJ146A2}
+  - {id: helene2024, name: Helene, atcf_id: AL092024, landfall: 2024-09-26, landfall_utc: '2024-09-27T03:10Z', role: lockbox,
+     states: [AL, FL, GA, KY, NC, SC, TN, VA]}
+  # Milton's baseline must end before Helene's landfall, or Helene's damage would sit in it.
+  - {id: milton2024, name: Milton, atcf_id: AL142024, landfall: 2024-10-09, landfall_utc: '2024-10-10T00:30Z', role: lockbox, states: [FL, GA, SC],
+     baseline_end: 2024-09-23}
+  - {id: uri2021, name: Uri, atcf_id: null, landfall: 2021-02-15, landfall_utc: '2021-02-15T07:25Z', role: stress, states: [TX], allow_snow: true}

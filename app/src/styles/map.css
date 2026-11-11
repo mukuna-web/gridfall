@@ -1,0 +1,289 @@
+/* Storm map, legend and the night timeline beneath it. */
+
+.map-frame {
+  position: relative;
+  height: var(--map-height);
+  border: 1px solid var(--ink);
+  background: var(--map-field);
+}
+
+.map-frame__loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--ink-3);
+}
+
+.storm-map {
+  position: absolute;
+  inset: 0;
+}
+
+/* MapLibre's stylesheet loads later and sets this element to position:
+   relative, so size it explicitly rather than with inset. */
+.storm-map__canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.storm-map__readout {
+  position: absolute;
+  left: var(--space-3);
+  bottom: var(--space-3);
+  max-width: calc(100% - 2 * var(--space-3));
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  pointer-events: none;
+}
+
+.storm-map__refit {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  text-decoration: none;
+}
+
+.storm-map__refit:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.storm-map__failure {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: var(--space-6);
+  background: var(--map-field);
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+
+/* MapLibre's zoom buttons, redrawn in the report's hairline style. */
+.maplibregl-ctrl-group:not(:empty) {
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: var(--paper);
+  box-shadow: none;
+}
+
+.maplibregl-ctrl-group button + button {
+  border-top: 1px solid var(--hairline);
+}
+
+.maplibregl-canvas:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: -3px;
+}
+
+.map-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4) var(--space-6);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-3) var(--space-6);
+}
+
+.legend__ramp {
+  display: grid;
+  gap: var(--space-1);
+  width: min(260px, 100%);
+}
+
+.legend__bar {
+  display: block;
+  height: 10px;
+  border: 1px solid var(--ink);
+}
+
+.legend__ticks {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--ink-2);
+}
+
+.legend__keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-xs);
+}
+
+.legend__keys li {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ---------- Night timeline ---------- */
+
+.timeline {
+  display: grid;
+  gap: var(--space-2);
+  padding-top: var(--space-4);
+}
+
+.timeline__readout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-3);
+}
+
+.timeline__date {
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.timeline__day {
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+
+.timeline__strip {
+  position: relative;
+  height: 44px;
+  /* Bar centres sit over the slider thumb's centre for each night. */
+  margin-inline: calc(var(--icon-button) + var(--space-2) + var(--thumb) / 2);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.timeline__bar {
+  position: absolute;
+  bottom: 0;
+  left: calc(var(--pos) * 100%);
+  width: clamp(2px, calc(100% / var(--count) - 2px), 14px);
+  height: max(2px, calc(var(--clear) * 100%));
+  background: var(--ink-3);
+  opacity: 0.5;
+  transform: translateX(-50%);
+  cursor: pointer;
+  transition: opacity var(--duration-fast) ease;
+}
+
+.timeline__bar:hover {
+  opacity: 0.85;
+}
+
+.timeline__bar.is-before {
+  opacity: 0.22;
+}
+
+.timeline__bar.is-current {
+  background: var(--ink);
+  opacity: 1;
+}
+
+.timeline__landfall {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--pos) * 100%);
+  padding-left: 4px;
+  border-left: 1px dashed var(--ink);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-2);
+  pointer-events: none;
+}
+
+.timeline__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.timeline__range {
+  flex: 1;
+  min-width: 0;
+  height: var(--icon-button);
+  margin: 0;
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+}
+
+.timeline__range::-webkit-slider-runnable-track {
+  height: 2px;
+  background: var(--ink);
+}
+
+.timeline__range::-webkit-slider-thumb {
+  width: var(--thumb);
+  height: var(--thumb);
+  margin-top: calc((2px - var(--thumb)) / 2);
+  border: 2px solid var(--ink);
+  border-radius: 0;
+  background: var(--paper);
+  appearance: none;
+}
+
+.timeline__range::-moz-range-track {
+  height: 2px;
+  background: var(--ink);
+}
+
+.timeline__range::-moz-range-thumb {
+  box-sizing: border-box;
+  width: var(--thumb);
+  height: var(--thumb);
+  border: 2px solid var(--ink);
+  border-radius: 0;
+  background: var(--paper);
+}
+
+.timeline__range:focus-visible {
+  outline: none;
+}
+
+.timeline__range:focus-visible::-webkit-slider-thumb {
+  background: var(--ink);
+  box-shadow:
+    0 0 0 2px var(--paper),
+    0 0 0 4px var(--ink);
+}
+
+.timeline__range:focus-visible::-moz-range-thumb {
+  background: var(--ink);
+  box-shadow:
+    0 0 0 2px var(--paper),
+    0 0 0 4px var(--ink);
+}
+
+.timeline__key {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--ink-3);
+}

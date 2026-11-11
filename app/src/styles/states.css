@@ -1,0 +1,78 @@
+/* Loading, error notices and the empty state. */
+
+.loading {
+  padding: var(--space-7) 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+
+/* A rule that grows and shrinks (transform only); reduced motion leaves it static (base.css). */
+.loading::after {
+  content: '';
+  display: block;
+  width: 180px;
+  height: 2px;
+  margin-top: var(--space-3);
+  background: var(--ink);
+  transform-origin: left center;
+  animation: loading-rule 1.1s var(--ease-out) infinite alternate;
+}
+
+@keyframes loading-rule {
+  from {
+    transform: scaleX(0.08);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.notice {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 72ch;
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--ink);
+  border-left-width: 4px;
+  background: var(--paper-bright);
+}
+
+.notice__title {
+  font-weight: 600;
+}
+
+.notice__body {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+}
+
+.notice .button {
+  justify-self: start;
+}
+
+.empty-state {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 64ch;
+  padding: var(--space-7) 0;
+}
+
+.empty-state__title {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: var(--tracking-display);
+}
+
+.empty-state__code {
+  margin: 0;
+  padding: var(--space-4);
+  overflow-x: auto;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}

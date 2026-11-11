@@ -1,0 +1,6 @@
+{
+  "99001": { "est_lo": 3, "est_hi": 4, "official_day": 4 },
+  "99003": { "est_lo": 1, "est_hi": 4, "official_day": 4 },
+  "99005": { "est_lo": null, "est_hi": null, "official_day": 2 },
+  "99007": { "est_lo": 3, "est_hi": 4, "official_day": null }
+}
