@@ -41,17 +41,17 @@ The sample is three real Florida counties (Lee, Charlotte, Collier) through Hurr
 
 You do not need the author's data to check the numbers. `scripts/reproduce.py` rebuilds part of Hurricane Ian from NASA and EAGLE-I and compares it with what the repository committed; it runs on a laptop, on a GitHub Actions runner (free for a public repository), or in a free Google Colab session. Levels 1 and 2 need a free NASA Earthdata token ([urs.earthdata.nasa.gov](https://urs.earthdata.nasa.gov); tokens expire 60 days after they are generated, and the script tries the token on one byte of a real tile before it downloads anything large).
 
-| Level | What it checks | Time (estimates) | Download |
+| Level | What it checks | Time | Download |
 |---|---|---|---|
-| 0 | The test suite, the sample export and the frozen lockbox record (offline) | 2-3 min | none |
-| 1 | Lee, Charlotte and Collier counties rebuilt for all 55 Ian nights, every column against `data/sample/` | 15-25 min on Colab's 2 vCPUs | about 5.5 GB |
-| 2 | All of Ian (505 counties, 3 tiles) against the fingerprint in `docs/reproduce/` | 35-60 min on Colab; the build alone took 8 min on an 8-core laptop | about 14 GB |
+| 0 | The test suite, the sample export and the frozen lockbox record (offline) | 2-3 min (estimate) | none |
+| 1 | Lee, Charlotte and Collier counties rebuilt for all 55 Ian nights, every column against `data/sample/` | about 4.5 min on Colab, about 3 min on a GitHub runner (measured) | about 5.5 GB |
+| 2 | All of Ian (505 counties, 3 tiles) against the fingerprint in `docs/reproduce/` | about 5.5 min on Colab right after a level 1 run, about 4.5 to 5 min on a GitHub runner (measured); the build alone took 8 min on an 8-core laptop | about 14 GB |
 
 ```bash
 uv run python -I scripts/reproduce.py --level 1 --report reproduce-report.json
 ```
 
-- **Colab:** open [notebooks/reproduce_colab.ipynb](notebooks/reproduce_colab.ipynb) in Google Colab, add your Earthdata token as the secret `EARTHDATA_TOKEN`, and run the four cells. Satellite tiles stream through memory, so the free CPU runtime's 12 GB is enough. Keep the tab open: free Colab ends the session on disconnect and caches nothing between sessions.
+- **Colab:** open [notebooks/reproduce_colab.ipynb](notebooks/reproduce_colab.ipynb) in Google Colab, add your Earthdata token as the secret `EARTHDATA_TOKEN`, and run the four cells. Satellite tiles stream through memory, so the free CPU runtime's 12 GB is enough. Keep the tab open: free Colab ends the session on disconnect and caches nothing between sessions. Levels 1 and 2 were each run there once, on 2026-11-11 (US Pacific time), and passed: level 1 in about 4.5 minutes from the start of the run to the verdict, in a new session, and level 2 in about 5.5 minutes in the same session right after it, which spared it the EAGLE-I, Census and HURDAT2 downloads and the installing of the Python packages (satellite tiles are never kept, so it still downloaded all three of its tiles). Colab keeps no public record of a run; [docs/reproduce/plan.md](docs/reproduce/plan.md) notes these two.
 - **GitHub Actions:** the `reproduce` workflow runs on demand (Actions → reproduce → Run workflow, pick the level) with the token stored as the repository secret `EARTHDATA_TOKEN`. GitHub offers Run workflow only to accounts with write access, so to run it yourself, fork the repository, enable Actions in the fork if GitHub asks, and add your own token there under the same secret name. Without the secret a level 1 or 2 run stops with an error that says so (a fork drops to level 0 with a warning). The report is uploaded as an artifact and summarised on the run page. Levels 1 and 2 were each timed twice on a runner, from start to finish: on 2026-11-10 in the development repository (see Project notes) and on 2026-11-11 (US Pacific time) in this one, where the runs can be opened on the Actions page. Level 1 took about 3 minutes both times; level 2 took about 4.5 minutes and about 5 minutes.
 - **Only if you keep a private copy:** Colab cannot download a private repository without a login, so add a read-only GitHub token as the Colab secret `GITHUB_TOKEN` and set `REPO` in the notebook's cell 1 to your copy. GitHub Actions runs in a private repository are metered against the plan's included usage.
 

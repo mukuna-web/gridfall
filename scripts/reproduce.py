@@ -3,8 +3,8 @@
 Run from the repo root:
 
     uv run python -I scripts/reproduce.py --level 0     # offline: tests, sample export, frozen record    (~2 min)
-    uv run python -I scripts/reproduce.py --level 1     # one NASA tile, three counties, 55 nights (15-25 min, Colab)
-    uv run python -I scripts/reproduce.py --level 2     # all of Ian, 505 counties, 3 tiles        (35-60 min, Colab)
+    uv run python -I scripts/reproduce.py --level 1     # one NASA tile, three counties, 55 nights (~4.5 min on Colab)
+    uv run python -I scripts/reproduce.py --level 2     # all of Ian, 505 counties, 3 tiles        (~5.5 min on Colab)
 
 Levels 1 and 2 need a free NASA Earthdata token in the EARTHDATA_TOKEN environment variable (or a .env file); tokens
 expire 60 days after they are generated, and the token is tried on one byte of a real tile before anything large is
