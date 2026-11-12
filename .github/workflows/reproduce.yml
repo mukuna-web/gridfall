@@ -7,15 +7,15 @@ run-name: reproduce level ${{ inputs.level }}
 # secret of their own. On demand only: it needs the repository secret EARTHDATA_TOKEN, a free NASA Earthdata token
 # that EXPIRES 60 DAYS after it is generated (urs.earthdata.nasa.gov), so rotate the secret before a run; a schedule
 # would go red for that reason alone. Without the secret a level 1 or 2 run stops with an error; a fork drops to level
-# 0, the offline checks, with a warning. Level 1 downloads about 5.5 GB and level 2 (all of Ian) about 14 GB. Each
-# level was timed once on a runner, on 2026-11-10 in the development repository, from start to finish: level 1 about 3
-# minutes, level 2 about 4.5 minutes. Those are single runs and download speed varies, so the timeouts below stay
-# generous for that reason. The report is uploaded as an artifact and summarised on the run page, where PASS appears
-# only for a run that reached its end: the report of a cancelled or killed run says "complete": false, and its
-# summary, when one could still be written, INCOMPLETE. A failure on a fresh runner most likely means an upstream
-# input changed. NHC's dated HURDAT2 file, figshare and Census each have a check of their own that says so. NASA's
-# tiles are not pinned: if NASA reprocesses them, the comparison fails with different numbers, just as it would after
-# a code change.
+# 0, the offline checks, with a warning. Level 1 downloads about 5.5 GB and level 2 (all of Ian) about 14 GB. Both
+# were timed twice on a runner, from start to finish, on 2026-11-10 in the development repository and on 2026-11-11
+# (US Pacific time) in the public one: level 1 about 3 minutes both times, level 2 about 4.5 and about 5 minutes. Two
+# runs each are few and download speed varies, so the timeouts below stay generous for that reason. The report is
+# uploaded as an artifact and summarised on the run page, where PASS appears only for a run that reached its end:
+# the report of a cancelled or killed run says "complete": false, and its summary, when one could still be
+# written, INCOMPLETE. A failure on a fresh runner most likely means an upstream input changed. NHC's dated HURDAT2
+# file, figshare and Census each have a check of their own that says so. NASA's tiles are not pinned: if NASA
+# reprocesses them, the comparison fails with different numbers, just as it would after a code change.
 
 on:
   workflow_dispatch:
