@@ -1,4 +1,4 @@
-# Blackout from Space: the app
+# Gridfall: the app
 
 A static report on one storm at a time. It shows county outage estimates from
 NASA Black Marble night lights, the official EAGLE-I numbers beside them and, as

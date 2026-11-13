@@ -1,4 +1,4 @@
-# Blackout from Space Implementation Plan
+# Gridfall Implementation Plan
 
 > **For the builder:** you write every line of code. Claude reviews each task before you start the next. Steps use checkboxes (`- [ ]`).
 >
@@ -75,7 +75,7 @@
 ## File map
 
 ```
-blackout-from-space/
+gridfall/
   pyproject.toml · README.md · .github/workflows/ci.yml · .gitignore
   config/storms.yaml                 storm list, dates, roles
   schema/export.schema.json          contract between pipeline and app

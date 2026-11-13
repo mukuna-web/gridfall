@@ -1,4 +1,4 @@
-# Blackout from Space: test plan
+# Gridfall: test plan
 
 > **Status, 2026-11-11.** This plan describes the repository as it stood at `966313a` on 2026-11-09; read it as a record. Some tests it lists as backlog were never written, and "the user" is the project's author. Three things have changed since: the project is on GitHub, where the `ci` workflow has run on pushes since 2026-11-09 (in the development repository until the public one was created); the `reproduce` workflow, added afterwards, reads the Earthdata token from a repository secret, which §6 rules out for the tests planned here; and the project has a public repository. That repository starts from one commit, so the commits this plan names are not in it: they are in the private development archive, and the tests that need them are skipped wherever that history is missing (README, project notes).
 

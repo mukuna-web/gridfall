@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Blackout from Space: static export for the app",
+  "title": "Gridfall: static export for the app",
   "description": "The contract between the pipeline (src/blackout/export.py) and the app (app/src/types.ts). Each file validates against one entry in $defs: index.json -> index; <storm>/meta.json -> meta; counties.geojson -> counties; states.geojson -> states; nights.json -> nights; restoration.json -> restoration; exposure.json -> exposure; claims.json -> claims; scorecard.json -> scorecard. Fractions are 0..1. Every number is finite or null, and null means unknown, never zero.",
   "anyOf": [
     {

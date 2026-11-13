@@ -24,7 +24,7 @@ function Shell({ children }: { readonly children: ReactNode }) {
   return (
     <div className="page">
       <header className="masthead masthead--bare">
-        <p className="masthead__kicker label">Blackout from Space · Storm outage report</p>
+        <p className="masthead__kicker label">Gridfall · Storm outage report</p>
       </header>
       <main className="report" id="main">
         {children}

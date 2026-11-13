@@ -1,4 +1,4 @@
-# Blackout from Space
+# Gridfall
 
 Estimates how many electricity customers lost power in each US county after a hurricane, from NASA's Black Marble night-light images, and grades those estimates against the US Department of Energy's EAGLE-I outage counts on storms the model never saw.
 

@@ -43,7 +43,7 @@ MANIFEST_PATH = REPO_ROOT / "data" / "interim" / "geo_fetch_manifest.json"
 ACS_API_JSON = RAW_CENSUS / "acs5_2022_fl_B25001.json"
 ACS_BULK_DAT = RAW_CENSUS / "acsdt5y2022-b25001.dat"
 
-USER_AGENT = "blackout-from-space-phase0/geo (public-data research script)"
+USER_AGENT = "gridfall-phase0/geo (public-data research script)"
 CHUNK_BYTES = 64 * 1024
 HEAD_BYTES = 4096
 MiB = 1024 * 1024

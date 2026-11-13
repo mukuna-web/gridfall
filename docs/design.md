@@ -1,4 +1,4 @@
-# Blackout from Space: Design
+# Gridfall: Design
 
 *Written on 2026-11-05, before anything was built, as planning notes addressed to the project's author ("you"); "my" refers to Claude, which did the planning. The [decision log](decision-log.md) records the calls made since.*
 

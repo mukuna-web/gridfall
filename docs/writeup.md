@@ -1,4 +1,4 @@
-# Blackout from Space: write-up
+# Gridfall: write-up
 
 *Results from `docs/scorecard.md`, 2026-11-08. The leave-one-storm-out numbers can be rerun from a fresh clone (README); the lockbox numbers are a one-time record, frozen in `docs/lockbox_result.json` and not recomputed.*
 

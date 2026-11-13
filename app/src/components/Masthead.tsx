@@ -35,7 +35,7 @@ export function Masthead({ storms, storm, meta, onStormChange }: MastheadProps) 
   return (
     <header className="masthead">
       <div className="masthead__top">
-        <p className="masthead__kicker label">Blackout from Space · Storm outage report</p>
+        <p className="masthead__kicker label">Gridfall · Storm outage report</p>
         <label className="picker">
           <span className="label">Storm</span>
           <select className="select" value={storm.id} onChange={(e) => onStormChange(e.target.value)}>

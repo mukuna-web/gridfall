@@ -143,16 +143,16 @@ def test_the_checkout_is_reused_only_for_the_repository_and_branch_it_was_cloned
         return subprocess.CompletedProcess(cmd, 0, stdout="", stderr="")
 
     monkeypatch.setattr(subprocess, "run", run)
-    first = {"REPO": "owner/blackout-from-space", "BRANCH": "main", "github_token": None}
+    first = {"REPO": "owner/gridfall", "BRANCH": "main", "github_token": None}
     run_cell("2. Get the code", tmp_path, **first)
-    dest = tmp_path / "blackout-from-space"
+    dest = tmp_path / "gridfall"
     assert commands[0] == ["git", "clone", "--quiet", "--branch", "main",
-                           "https://github.com/owner/blackout-from-space.git", str(dest)]
+                           "https://github.com/owner/gridfall.git", str(dest)]
     assert len(commands) == 4  # the clone, then pip, uv sync and the Python version
     run_cell("2. Get the code", tmp_path, **first)
     assert len(commands) == 7 and [cmd[0] for cmd in commands].count("git") == 1  # run again: no second clone
     for changed in ({**first, "BRANCH": "review-branch"}, {**first, "REPO": "someone-else/a-fork"}):
-        with pytest.raises(SystemExit, match="holds owner/blackout-from-space at main, not .* delete it"):
+        with pytest.raises(SystemExit, match="holds owner/gridfall at main, not .* delete it"):
             run_cell("2. Get the code", tmp_path, **changed)
     assert len(commands) == 7
 
@@ -177,27 +177,27 @@ def test_the_checkout_can_be_deleted_and_cloned_again_wherever_the_kernel_was_le
         return subprocess.CompletedProcess(cmd, 0, stdout="", stderr="")
 
     def cd_into_the_checkout() -> None:
-        os.chdir(dest)  # the cell's `%cd /content/blackout-from-space`, which run_cell leaves out
+        os.chdir(dest)  # the cell's `%cd /content/gridfall`, which run_cell leaves out
 
     monkeypatch.setattr(subprocess, "run", run)
-    first = {"REPO": "owner/blackout-from-space", "BRANCH": "main", "github_token": None}
+    first = {"REPO": "owner/gridfall", "BRANCH": "main", "github_token": None}
     changed = {**first, "BRANCH": "review-branch"}
-    dest = tmp_path / "blackout-from-space"
+    dest = tmp_path / "gridfall"
     run_cell("2. Get the code", tmp_path, **first)
     cd_into_the_checkout()
     # The recovery as the cell words it: BRANCH changed, the cell stops, the checkout is deleted, the cell is run again.
     with pytest.raises(SystemExit, match="delete it .* and run this cell again"):
         run_cell("2. Get the code", tmp_path, **changed)
-    shutil.rmtree(dest)  # `!rm -rf /content/blackout-from-space`
+    shutil.rmtree(dest)  # `!rm -rf /content/gridfall`
     run_cell("2. Get the code", tmp_path, **changed)
-    assert (dest / ".git" / "cloned-from").read_text() == "owner/blackout-from-space at review-branch"
+    assert (dest / ".git" / "cloned-from").read_text() == "owner/gridfall at review-branch"
     # The same with the checkout deleted first, from inside it: the cell starts in a folder that is gone.
     cd_into_the_checkout()
     shutil.rmtree(dest)
     with pytest.raises(FileNotFoundError):
         os.getcwd()
     run_cell("2. Get the code", tmp_path, **first)
-    assert (dest / ".git" / "cloned-from").read_text() == "owner/blackout-from-space at main"
+    assert (dest / ".git" / "cloned-from").read_text() == "owner/gridfall at main"
     assert len(started_in) == 12 and started_in[8].samefile(tmp_path)  # three clones of four commands, from /content
     assert Path.cwd().samefile(tmp_path)  # and the kernel is in a real folder again
 
